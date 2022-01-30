@@ -285,7 +285,7 @@ In this handbook, the C</mnt> directory is used as a default mountpoint.
 =head3 Download rootfs tarball
 
   # cd /mnt
-  # wget -c https://github.com/zeppe-lin/zeppe-lin/releases/download/\
+  # wget -c https://github.com/zeppe-lin/pkgsrc/releases/download/\
   2021-12-01/rootfs-2021-12-01-x86_64.tar.xz{,.sig}
 
 =head4 Signature verification
@@ -307,9 +307,9 @@ chrooted root:
 
 Mount Linux' pseudo-filesystems:
 
-  # mount --bind /dev /mnt/dev
-  # mount --bind /tmp /mnt/tmp
-  # mount --bind /run /mnt/run
+  # mount -B /dev /mnt/dev
+  # mount -B /tmp /mnt/tmp
+  # mount -B /run /mnt/run
   # mount -t proc proc /mnt/proc
   # mount -t sysfs none /mnt/sys
   # mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts /mnt/dev/pts
@@ -342,7 +342,7 @@ Edit F</etc/fstab> to configure your filesystems (add something like this):
 
 Edit F</etc/rc.conf> to configure font, keyboard, timezone, hostname and
 services. See
-L<rc.conf(5)|https://github.com/zeppe-lin/zeppe-lin/blob/master/rc/rc.conf.5.pod>
+L<rc.conf(5)|https://github.com/zeppe-lin/rc/blob/master/rc/rc.conf.5.pod>
 for more info.
 
 Edit F</etc/rc.d/net>, F</etc/hosts> and F</etc/resolv.conf> to configure your
@@ -354,7 +354,7 @@ in F</etc/fstab> and C<mount pkgmk>.
 =head3 Prepare the package sources
 
   (chrooted) # cd /usr/src/
-  (chrooted) # git clone https://github.com/zeppe-lin/zeppe-lin
+  (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc
 
 =head4 Update the core packages
 
@@ -396,7 +396,7 @@ following content:
   luks_root=/dev/sda2
 
 See
-L<tinyramfs.config(5)|https://github.com/zeppe-lin/zeppe-lin/blob/master/tinyramfs/tinyramfs.config.5.pod>
+L<tinyramfs.config(5)|https://github.com/zeppe-lin/tinyramfs/blob/master/tinyramfs.config.5.pod>
 for more information.
 
 =head3 Install the kernel
@@ -444,21 +444,21 @@ the program, and I<release> is the version number of the package.
 The I<pkg.tar.gz> extension is used (instead of just I<tar.gz>) to indicate
 that this is not just any I<tar.gz> file, but a I<tar.gz> that is meant to be
 installed using
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>.
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>.
 This helps distinguish packages from other I<tar.gz> files. Note that
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 nowadays supports additional compression schemes like B<bzip2> with the I<tar.bz2>
 extension or B<XZ> ending with I<tar.xz>.
 
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>,
-L<pkgrm(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgrm.8.pod>,
-L<pkginfo(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkginfo.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>,
+L<pkgrm(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgrm.8.pod>,
+L<pkginfo(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkginfo.8.pod>
 are the basic package management
 utilities and are the part of the package B<pkgutils>. In addition to
 them, the package management includes utilities such as
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>,
-L<rejmerge(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/rejmerge/rejmerge.8.pod>,
-L<revdep(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/revdep/revdep.1.pod>.
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>,
+L<rejmerge(8)|https://github.com/zeppe-lin/rejmerge/blob/master/rejmerge.8.pod>,
+L<revdep(1)|https://github.com/zeppe-lin/revdep/blob/master/revdep.1.pod>.
 
 They could also be considered basic, but they are placed in separate packages,
 so that changes in one utility do not require rebuilding all of them. 
@@ -468,12 +468,12 @@ query the package database, merge files that were rejected during package
 upgrades, and check for missing libraries of installed packages.
 
 When a new package is installed using
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>,
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>,
 a new record is added to the package database (stored in F</var/lib/pkg/db>).
 The basic package system does not have any kind of dependency checking, this
 it will not warn you if you install a package that requires other packages to
 be installed. The included
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 tool (B<pkgman>), however, does support dependencies.
 
 The following sections will in describe in short how to use the package
@@ -485,7 +485,7 @@ respective man page.
 =head3 Installing a Package
 
 Installing a package is done by using
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>.
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>.
 This utility requires at least one argument, the package you want to install. Example:
 
   # pkgadd bash#5.0.18-1.pkg.tar.gz
@@ -493,7 +493,7 @@ This utility requires at least one argument, the package you want to install. Ex
 When installing a package the package manager will ensure that no previously
 installed files are overwritten. If conflicts are found, an error message
 will be printed and
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 will abort without installing the package. The error message will contain the
 names of the conflicting files. Example:
 
@@ -563,49 +563,49 @@ files. Use this option with extreme care, preferably not at all.
 
 As earlier, the package file itself does not contain any meta data. Instead,
 the
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 uses the package filename to determine the package name and
 version. Thus, when installing a package file named
 I<bash#5.0.18-1.pkg.tar.gz>,
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 will interpret this as a package named I<bash> at version I<5.0.18-1>. If
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 is unable to interpret the filename (e.g. # is missing or the filename does
 not end with .pkg.tar.gz) an error message will be printed and
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 will abort without installing the package.
 
 =head3 Upgrading a Package
 
 Upgrading a package is done using
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 with the B<-u> option. Example:
 
   # pkgadd -u bash#5.0.18-1.pkg.tar.gz
 
 This will replace the previously installed bash package with the new one.
 If you have not previously installed bash,
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 will print an error message.
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 does not care about the version number of the package in that you can
 "upgrade" version 2.05-1 with version 2.04-1 (or even with version 2.05-1
 itself). The installed package will be replaced with the specified package.
 
 Upgrading a package is equivalent to executing
-L<pkgrm(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgrm.8.pod>
+L<pkgrm(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgrm.8.pod>
 followed by
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 with one (big) exception. When upgrading a package (with C<pkgadd -u>) you
 have the option to prevent some of the already installed files from getting
 replaced. This is typically useful when you want to preserve configuration
 and log files.
 
 When executing
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 the file F</etc/pkgadd.conf> will be read. This file can contain rules
 describing how
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 should behave when doing upgrades. A rule is built out of three fragments:
 I<event>, I<pattern> and I<action>.
 The I<event> describes in what kind of situation this rule applies. Currently
@@ -628,7 +628,7 @@ Example:
   # End of file.
 
 The above example will cause
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 to never upgrade anything in F</etc/> or F</var/log/>
 (subdirectories included), except files in F</etc/X11/>
 (subdirectories included), unless it is the file F</etc/X11/xorg.conf>.
@@ -641,14 +641,14 @@ referring to the files in the package, not the files on the disk.
 =head4 rejmerge
 
 If
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 finds that a specific file should not be upgraded, it will install it under
 F</var/lib/pkg/rejected/>. Files in this directory are never added to the
 package database. The user is then free to examine, use and/or remove that
 file manually. Another option is to use
-L<rejmerge(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/rejmerge/rejmerge.8.pod>
+L<rejmerge(8)|https://github.com/zeppe-lin/rejmerge/blob/master/rejmerge.8.pod>
 . For each rejected file found in F</var/lib/pkg/rejected/>,
-L<rejmerge(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/rejmerge/rejmerge.8.pod>
+L<rejmerge(8)|https://github.com/zeppe-lin/rejmerge/blob/master/rejmerge.8.pod>
 will display the difference between the installed version and the rejected
 version. The user can then choose to keep the installed version, upgrade to
 the rejected version or perform a merge of the two.
@@ -664,7 +664,7 @@ Example (using the above F</etc/pkgadd.conf>):
 =head3 Removing a package
 
 Removing a package is done by using
-L<pkgrm(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgrm.8.pod>.
+L<pkgrm(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgrm.8.pod>.
 This utility requires one argument, the name of the package you want to remove. Example:
 
   # pkgrm bash
@@ -720,7 +720,7 @@ about what could happen if you misspelled glib as glibc).
 =head3 Querying the Package Database
 
 Querying the package database is done using
-L<pkginfo(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkginfo.8.pod>.
+L<pkginfo(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkginfo.8.pod>.
 This utility has a few options to answer different queries.
 
 =begin man
@@ -842,7 +842,7 @@ Print footprint for file:
   -rw-r--r--      root/root       usr/share/man/man1/xkill.1.gz
 
 This feature is mainly used by
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 for creating and comparing footprints.
 
 The B<-r> (B<--root>) option should be used if you want to display
@@ -854,10 +854,10 @@ specify which database to use.
 
 In its current form B<pkgutils> does not have a concept of dependency
 handling. To address this, a frontend utility called
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 exists.
 
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 supports dependency handling (with the caveat mentioned below) as well as
 some overlap with B<pkgutils> features.
 
@@ -934,7 +934,7 @@ Some examples of pkgman's functionality and use are as follows:
 B<NOTE>: The C<install> command does B<NOT> process dependencies without
 B<--deps> option, and it's usually recommended to use B<--deps> with
 C<install>. It is also worth noting that
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 by default tries to install all the packages specified in the dependencies,
 and if one of the dependencies does not build, it will skip it, and go
 further. At the end, it will show the C<build-failed packages> in the report.
@@ -943,7 +943,7 @@ with many dependencies at a time. Because, one dependency may not build, and
 affect the building of another dependency, and thereby affect the third, etc.
 
 We can tell
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 not to skip the C<fails>, but to stop. Then we can fix the packages sources
 and start installation further.
 
@@ -957,7 +957,7 @@ In case if one of the dependency build has failed, just fix it and retry:
   $ pkgman install --deps --group --force xterm
 
 The option B<--force> tell to
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 to skip installation of already installed package(s). It just ignores the
 package and installing next in the listed order. At the end of installation
 procedure, all skipped packages will be in the report.
@@ -1006,14 +1006,14 @@ following options can be configured:
 
 This option can occur multiple times and specifies a directory with a
 packages' sources "collection" which
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 should check in its operation. By default the "core" and "extra" collections
 are enabled.
 
 =item runscripts
 
 This option configures
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 to run pre-install, post-install, pre-remove and post-remove scripts if they
 exists in package source directory. These scripts are run during
 F<install>, F<update>, F<sysup> and F<remove> operations.
@@ -1031,16 +1031,16 @@ This option configures a file for pkgman to log its operation if desired.
 This is B<NOT> an exhaustive list of all of pkgman's commands, features,
 and configuration options, merely a starting point. More information can
 be found in the
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 and
-L<pkgman.conf(5)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.conf.5.pod>.
+L<pkgman.conf(5)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.conf.5.pod>.
 
 =head2 Creating Packages
 
 Creating a package is done using
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>.
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>.
 This utility uses a file called Pkgfile (see
-L<Pkgfile(5)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/Pkgfile.5.pod>
+L<Pkgfile(5)|https://github.com/zeppe-lin/pkgmk/blob/master/Pkgfile.5.pod>
 for more info), which contains information about the package (such as name,
 version, etc) and the commands that should be executed in order to compile
 the package in question. To be more specific, the Pkgfile file is actually a
@@ -1123,7 +1123,7 @@ is built in some other way, e.g. does not use B<autoconf>.
 When the build() function has been executed, the $PKG directory will be made
 into a package named I<name#version-release.pkg.tar.gz>. Before the package
 creation is completed,
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 will check the content of the package against the F<.footprint> file. If
 this file does not exist, it will be created and the test will be skipped.
 The F<.footprint> file will contain a list of all files that should be in
@@ -1136,19 +1136,19 @@ simply do C<pkgmk -uf>. This test ensures that a rebuild of the package
 turned out as expected.
 
 If the package built without errors it's time to install it by using
-L<pkgadd(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.8.pod>
+L<pkgadd(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.8.pod>
 and try it out. It's highly recommend to look at the Pkgfile in another
 package(s), since looking at examples is a great way to learn.
 
 See
-L<Pkgfile(5)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/Pkgfile.5.pod>
+L<Pkgfile(5)|https://github.com/zeppe-lin/pkgmk/blob/master/Pkgfile.5.pod>
 for additional information.
 
 =head2 Adjusting/Configuring the Package Build Process
 
 Many settings pertaining to the package build process can be adjusted by
 editing the
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 configuration file F</etc/pkgmk.conf>. Some of these configurable settings
 include:
 
@@ -1168,19 +1168,19 @@ source archives.
 =item PKGMK_SOURCE_DIR
 
 This setting defines where
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 will store (if downloading) and use source archives when building.
 
 =item PKGMK_PACKAGE_DIR
 
 This setting defines where
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 will create package files once the build process is complete.
 
 =item PKGMK_WORK_DIR
 
 This setting defines a work area
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 will use to build the package.
 
 =back
@@ -1190,7 +1190,7 @@ Here are some examples:
   PKGMK_SOURCE_MIRRORS=(http://fileserver.intranet/crux/sources/)
 
 This setting instructs
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 to attempt to fetch all source archives from
 L<http://fileserver.intranet/zeppe-lin/sources/>
 before falling back to the source URL specified in the Pkgfile. Multiple URLs
@@ -1199,7 +1199,7 @@ can be separated by spaces.
   PKGMK_SOURCE_DIR="/var/cache/pkgmk/sources"
 
 This setting instructs
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 to store and find source archives in C</var/cache/pkgmk/sources>. An example
 benefit of this setup would be the ability to store
 C</var/cache/pkgmk/sources> on an NFS server on your local network for use
@@ -1209,7 +1209,7 @@ C<PKGMK_PACKAGE_DIR> can be set and used the same way.
   PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name"
 
 This setting instructs
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>
 to use C</var/cache/pkgmk/work/$name> as a work area for building the
 specified package. Building the B<grep> package would result in the work
 area being C</var/cache/pkgmk/work/grep>.
@@ -1218,13 +1218,13 @@ L<tmpfs(5)|https://www.mankier.com/5/tmpfs>
 as your work directory.
 
 There are a few more settings which can be found in the
-L<pkgmk.conf(5)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.conf.5.pod>
+L<pkgmk.conf(5)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.conf.5.pod>
 manual page. 
 
 =head2 Package Guidelines
 
 A detailed guideline is described in
-L<Pkgfile(5)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/Pkgfile.5.pod>
+L<Pkgfile(5)|https://github.com/zeppe-lin/pkgmk/blob/master/Pkgfile.5.pod>
 manual page.
 
 =head1 THE PACKAGES SOURCES SYSTEM
@@ -1235,7 +1235,7 @@ manual page.
 
 A package source is a directory containing the files needed for building a
 package using
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>.
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>.
 This means that this directory at least has the files F<Pkgfile> (which is
 the package build description) and F<.footprint> (which is used for
 regression testing and contains a list of files this package is expected to
@@ -1281,11 +1281,11 @@ structure (F</usr/src/zeppe-lin/*>) is empty. To obtains the source at first
 time, use C<git clone>. Example:
 
   # cd /usr/src/
-  # git clone https://github.com/zeppe-lin/zeppe-lin
+  # git clone https://github.com/zeppe-lin/pkgsrc
 
 To bring your local packages sources up to date use C<git pull>. Example:
 
-  # cd /usr/src/zeppe-lin
+  # cd /usr/src/pkgsrc
   # git pull
 
 =head3 Listing Local Packages Sources
@@ -1297,7 +1297,7 @@ Under each of these directories you will find packages sources. You can
 simply browse around in the directory structure to find out which packages
 sources are available.
 
-  $ cd /usr/src/zeppe-lin/core
+  $ cd /usr/src/pkgsrc/core
   $ ls
   acl              gettext-tiny  libtirpc         python3-setuptools
   asciidoctor      git           libtool          rc
@@ -1336,7 +1336,7 @@ check all Pkgfiles in this collection to make sure that the packages in this
 collection do not depend on packages in C<extra> collection.
 
 You can also use
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 with command B<list> and option B<--all> to list all local packages sources.
 
 Example:
@@ -1372,7 +1372,7 @@ B<search> command instead of C<list | grep>:
 To find out if the packages sources structure carries packages that are
 different (likely newer) compared to the versions currently installed you
 can use
-L<pkgman-diff(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman-diff.1.pod>.
+L<pkgman-diff(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman-diff.1.pod>.
 If versions differences are found, the output could look like this:
 
   $ pkgman diff --deps --full
@@ -1478,17 +1478,17 @@ If you will build packages with non-root privileges, the installed files
 will have user permissions. This is wrong, both in terms of security and
 distribution of these packages. It is better to use 
 L<fakeroot(1)|https://www.mankier.com/1/fakeroot>, to run
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgmk.8.pod>
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgmk.8.pod>
 in an environment faking root privileges. Example:
 
   # fakeroot pkgmk -d
 
 The
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 already uses it by default in zeppelin installation.
 
 If the package was built successfully you can use
-L<pkgadd(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgutils/pkgadd.1.pod>
+L<pkgadd(1)|https://github.com/zeppe-lin/pkgutils/blob/master/pkgadd.1.pod>
 to install or upgrade it. Example:
 
   # pkgadd gawk#3.1.5-3.pkg.tar.gz
@@ -1533,9 +1533,9 @@ If you keep using your computer while compiling packages you will notice that
 your box is much less responsive as usual. This is caused by having two
 C<groups> of processes with the same nice priority: your usual running tasks
 on one side, and
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 (and its child processes) on other. Now, if you could renice
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 and its children to a higher nice (i.e. lower priority!) value
 (default is 0), compiling would inevitably take somewhat longer, but you
 could use your workstation without noticing much difference to its usual
@@ -1607,7 +1607,7 @@ F</etc/pkgmk.conf> to the following:
 =head4 Build using pkgmk
 
 So, if you build the package directly with
-L<pkgmk(8)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgmk/pkgmk.8.pod>,
+L<pkgmk(8)|https://github.com/zeppe-lin/pkgmk/blob/master/pkgmk.8.pod>,
 the just run:
 
   # PKGMK_DEBUG=yes fakeroot pkgmk -d
@@ -1615,7 +1615,7 @@ the just run:
 =head4 Build using pkgman
 
 To build debug packages using
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>,
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>,
 adjust your F</etc/pkgman.conf> to something like this:
 
   makecommand sudo -H -u pkgmk --preserve-env=PKGMK_DEBUG fakeroot pkgmk
@@ -1626,7 +1626,7 @@ This will allow you to build debug packages by the following command:
 
 To build a regular (non-debug) package, you do not need to specify
 C<PKGMK_DEBUG=no>. Call
-L<pkgman(1)|https://github.com/zeppe-lin/zeppe-lin/blob/master/pkgman/pkgman.1.pod>
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
 as usual.
 
 I<Note> that all of the above actions imply that the package is built only
@@ -1766,7 +1766,7 @@ _
 
 Modify F</etc/rc.modules>, F</etc/rc.local> and F</etc/rc.conf> according to
 your needs. See
-L<rc.conf(5)|https://github.com/zeppe-lin/zeppe-lin/blob/master/rc/rc.conf.5.pod>
+L<rc.conf(5)|https://github.com/zeppe-lin/rc/blob/master/rc.conf.5.pod>
 for more information about system configuration file (F</etc/rc.conf>).
 
 =head3 Generating Locales
