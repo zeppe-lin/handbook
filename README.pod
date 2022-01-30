@@ -342,7 +342,7 @@ Edit F</etc/fstab> to configure your filesystems (add something like this):
 
 Edit F</etc/rc.conf> to configure font, keyboard, timezone, hostname and
 services. See
-L<rc.conf(5)|https://github.com/zeppe-lin/rc/blob/master/rc/rc.conf.5.pod>
+L<rc.conf(5)|https://github.com/zeppe-lin/rc/blob/master/rc.conf.5.pod>
 for more info.
 
 Edit F</etc/rc.d/net>, F</etc/hosts> and F</etc/resolv.conf> to configure your
