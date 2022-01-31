@@ -263,7 +263,12 @@ root | ext4 | rest of the disk | root fs
 
 =end html
 
-Create the logical volumes:
+To see the actual amount of RAM, type the following command:
+
+  # free -m
+
+For example, we have 4GB RAM. Swap will have 8GB.
+Let's create the aforementioned two logical volumes:
 
   # lvcreate -L 8G -n swap zpln
   # lvcreate -l 100%FREE -n root zpln
@@ -315,7 +320,7 @@ Mount Linux' pseudo-filesystems:
   # mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts /mnt/dev/pts
 
   (UEFI only)
-  # mount --bind /sys/firmware/efi/efivars /mnt/sys/firmware/efi/efivars
+  # mount -B /sys/firmware/efi/efivars /mnt/sys/firmware/efi/efivars
 
   # chroot /mnt /bin/bash
 
@@ -358,26 +363,98 @@ in F</etc/fstab> and C<mount pkgmk>.
 
 =head4 Update the core packages
 
+Current zeppe-lin installation has a bug, incorrect access permissions
+to pkgmk directories. It will be fixed in next release, now just type:
+
+  (chrooted) # chown -R pkgmk:pkgmk /var/cache/pkgmk/
+
+And let's update the system:
+
   (chrooted) # pkgman sysup --deps --depsort --group
 
 =head3 Install bare metal packages
 
   (chrooted) # pkgman install --deps --group \
-    cryptsetup e2fsprogs dosfstools grub2{,-efi} iw gnupg lvm2 \
+    cryptsetup e2fsprogs dosfstools grub2 grub2-efi iw gnupg lvm2 \
     pinentry wireless-tools wpa-supplicant dhcpcd iputils
 
-=head3 Configure GRUB
+=head3 Install the kernel
 
-Create F</etc/default/grub> file with the following content:
+=head4 Package
 
- GRUB_TIMEOUT=3
- GRUB_DISTRIBUTOR=ZPLN
- GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
+Zeppe-lin provides a package with the kernel and non-free firmware:
 
-Next, install GRUB:
+  (chrooted) # pkgman install --deps --group \
+               --config-append="runscripts no" linux linux-firmware
 
-  (chrooted) # grub-install --target=x86_64-efi \
-    --efi-directory=/boot /dev/sda
+The B<linux> package has B<post-install> script that executes
+B<tinyramfs> and updates the grub config. We turn off the execution
+of this script, because we'll do it manually.  It is useful when
+regularly updating the system.
+
+If you installed the kernel package through a package manager, you can
+jump over the next paragraph, to the B<Install tinyramfs>.
+
+=head4 Manually
+
+Since the
+L<pkgman(1)|https://github.com/zeppe-lin/pkgman/blob/master/pkgman.1.pod>
+build the package that contains only the binaries (kernel and modules),
+you may want to build your own kernel. For example, you do not need
+such a fat kernel, which goes by default, or you need the sources of
+the running kernel, because you want to build the nvidia driver and/or
+virtualbox.
+
+In this case, it is recommended to use the kernel from package sources.
+First, you need to remember that zeppe-lin uses the suckless core.
+This means that the kernel downloaded from kernel.org may need to
+patch. The linux package already contains the necessary patches.
+
+So, let's download the linux' source:
+
+  # pkgman install -do linux
+
+The C<-do> option means C<download-only>. The source is downloaded
+to F</var/cache/pkgmk/sources> if you have not changed the
+F<PKGMK_SOURCE_DIR> location in F</etc/pkgmk.conf>. Unpack it:
+
+  # tar -xvf /var/cache/pkgmk/sources/linux-5.4.X.tar.?z -C /usr/src/
+
+Apply the required patches:
+
+  # cd linux-5.4.X
+  # for p in `pkgman path linux`/*.patch; do patch -Np1 -i $p; done
+
+If you're downloaded non-packaged kernel, you can print the results of
+applying the patches without actually changing any files. Just add
+C<--dry-run> option.
+
+Next, you can create your own, minimal config and adjust it to your
+system:
+
+  # make menuconfig
+
+Or you can use the C<all-inclusive> config from the package:
+
+  # cp `pkgman path linux`/x86_64-dotconfig .config
+  # make oldconfig
+
+Build the kernel and modules:
+
+  # make -j$(getconf _NPROCESSORS_ONLN) all
+
+Install the kernel and modules:
+
+  # KV=$(make kernelversion)
+  # cp arch/x86/boot/bzImage /boot/vmlinuz-$KV
+  # cp .config /boot/config-$KV
+  # make modules_install
+
+You may still need to install the kernel non-free firmwares:
+
+  # pkgman install --deps linux-firmware
+
+Next, we need to prepare the initramfs and update our bootloader.
 
 =head3 Install tinyramfs
 
@@ -386,9 +463,9 @@ Next, install GRUB:
 Add tinyramfs' configuration file (F</etc/tinyramfs/config>) with the
 following content:
 
-  hostonly=1
+  hostonly=1 #(optional)
   compress="gzip --fast"
-  hooks="eudev luks lvm resume"
+  hooks="smdev luks lvm resume"
   root=/dev/zpln/root
   root_type=ext4
   resume=/dev/zpln/swap
@@ -399,19 +476,43 @@ See
 L<tinyramfs.config(5)|https://github.com/zeppe-lin/tinyramfs/blob/master/tinyramfs.config.5.pod>
 for more information.
 
-=head3 Install the kernel
+Now, prepare an initramfs:
 
-  (chrooted) # pkgman install --deps --group linux{,-firmware}
+  (chrooted) # tinyramfs -o /boot/initramfs-$KV.img -k $KV
 
-The B<linux> package has B<post-install> script that executes B<tinyramfs>
-and updates grub config. In case you compiled your own kernel, don't forget
-to prepare the initramfs and update your bootloader.
+=head3 Configure GRUB
+
+Create F</etc/default/grub> file with the following content:
+
+  GRUB_TIMEOUT=3
+  GRUB_DISTRIBUTOR=ZPLN
+  GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
+
+Next, install GRUB:
+
+  (chrooted) # grub-install --target=x86_64-efi \
+    --efi-directory=/boot /dev/sda
+
+Update GRUB configuration file:
+
+  (chrooted) # grub-mkconfig -o /boot/grub/grub.cfg
 
 =head3 Exit from chroot and umount /mnt
 
   (chrooted) # exit
   # cd /
-  # umount -R /mnt
+
+  (UEFI only)
+  # umount /mnt/sys/firmware/efi/efivars
+
+  # umount /mnt/dev/pts
+  # umount /mnt/sys
+  # umount /mnt/proc
+  # umount /mnt/run
+  # umount /mnt/tmp
+  # umount /mnt/dev
+  # umount /mnt/boot
+  # umount /mnt
 
 =head3 Reboot and pray.
 
