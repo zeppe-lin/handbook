@@ -354,7 +354,7 @@ Edit F</etc/rc.d/net>, F</etc/hosts> and F</etc/resolv.conf> to configure your
 network (ip-address/gateway/hostname/domain/dns).
 
 Note: If you want to build the packages in RAM, then uncomment B<pkgmk> entry
-in F</etc/fstab> and C<mount pkgmk>.
+in F</etc/fstab> and type C<mount /var/cache/pkgmk/work> or C<mount pkgmk>.
 
 =head3 Prepare the package sources
 
@@ -476,7 +476,12 @@ See
 L<tinyramfs.config(5)|https://github.com/zeppe-lin/tinyramfs/blob/master/tinyramfs.config.5.pod>
 for more information.
 
-Now, prepare an initramfs:
+Now, prepare an initramfs. If you installed the kernel C<linux>
+manually, you have already set C<KV> set. Else, type:
+
+  (chrooted) # KV=$(pkgman printf "%v" --filter=linux)
+
+Now, generate an initramfs image:
 
   (chrooted) # tinyramfs -o /boot/initramfs-$KV.img -k $KV
 
@@ -512,6 +517,10 @@ Update GRUB configuration file:
   # umount /mnt/tmp
   # umount /mnt/dev
   # umount /mnt/boot
+
+  (Only if "Build in RAM" was mounted)
+  # umount /mnt/var/cache/pkgmk/work
+
   # umount /mnt
 
 =head3 Reboot and pray.
