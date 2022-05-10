@@ -345,6 +345,12 @@ Edit F</etc/fstab> to configure your filesystems (add something like this):
   /dev/sda1       /boot  vfat  defaults,noatime,nodiratime  1 2
   /dev/zpln/swap  swap   swap  defaults                     0 0
 
+Mount C</var/cache/pkgmk/work> (if you set to build packages in RAM),
+and C</dev/shm>:
+
+  (chrooted) # mount /var/cache/pkgmk/work
+  (chrooted) # mount /dev/shm
+
 Edit F</etc/rc.conf> to configure font, keyboard, timezone, hostname and
 services. See
 L<rc.conf(5)|https://github.com/zeppe-lin/rc/blob/master/rc.conf.5.pod>
@@ -352,9 +358,6 @@ for more info.
 
 Edit F</etc/rc.d/net>, F</etc/hosts> and F</etc/resolv.conf> to configure your
 network (ip-address/gateway/hostname/domain/dns).
-
-Note: If you want to build the packages in RAM, then uncomment B<pkgmk> entry
-in F</etc/fstab> and type C<mount /var/cache/pkgmk/work> or C<mount pkgmk>.
 
 =head3 Prepare the package sources
 
@@ -515,6 +518,7 @@ Update GRUB configuration file:
   # umount /mnt/proc
   # umount /mnt/run
   # umount /mnt/tmp
+  # umount /mnt/dev/shm
   # umount /mnt/dev
   # umount /mnt/boot
 
