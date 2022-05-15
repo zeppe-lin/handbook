@@ -366,13 +366,6 @@ network (ip-address/gateway/hostname/domain/dns).
 
 =head4 Update the core packages
 
-Current zeppe-lin installation has a bug, incorrect access permissions
-to pkgmk directories. It will be fixed in next release, now just type:
-
-  (chrooted) # chown -R pkgmk:pkgmk /var/cache/pkgmk/
-
-And let's update the system:
-
   (chrooted) # pkgman sysup --deps --depsort --group
 
 =head3 Install bare metal packages
