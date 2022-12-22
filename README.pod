@@ -290,8 +290,7 @@ mountpoint.
 =head3 Download rootfs tarball
 
   # cd /mnt
-  # wget -c https://github.com/zeppe-lin/pkgsrc/releases/download/\
-    2022-12-08/rootfs-2022-12-08-x86_64.tar.xz{,.sig}
+  # wget -c https://github.com/zeppe-lin/pkgsrc/releases/download/2022-12-08/rootfs-2022-12-08-x86_64.tar.xz{,.sig}
 
 =head4 Signature verification
 
