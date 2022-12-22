@@ -1876,11 +1876,7 @@ Example:
 =head4 Dynamic address
 
 If you want to configure your system to use a dynamic IP address,
-install C<dhcpcd> package and run F</etc/rc.d/dhcpcd> service.  By
-default,
-L<dhcpcd(8)|https://www.mankier.com/8/dhcpcd> run on all interfaces.
-You can specify the interface, by modifying the C<OPTS> value in
-F</etc/rc.d/dhcpcd> service file.
+install C<dhcpcd> package and run F</etc/rc.d/dhcpcd> service.
 
 =head4 Wireless network
 
