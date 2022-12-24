@@ -6,12 +6,12 @@ PREFIX    = /usr/local
 MANPREFIX = ${PREFIX}/share/man
 
 check:
-	@podchecker *.pod
+	@podchecker README.pod
 	@grep -Eiho "https?://[^\"\\'> ]+" *.* | httpx -silent -fc 200 -sc
 
 man:
 	pod2man --nourls -r ${VERSION} -n handbook -s 7 \
-		-c 'Zeppe-Lin Handbook' handbook.7.pod > handbook.7
+		-c 'Zeppe-Lin Handbook' README.pod > handbook.7
 
 install-man: man
 	mkdir -p         ${DESTDIR}${MANPREFIX}/man7
