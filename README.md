@@ -19,6 +19,8 @@ INSTALL
 The shell commands `make man && make install-man` should build and
 install this *handbook* as a manual page.
 
+The shell command `make check` should start some tests.
+
 LICENSE
 -------
 *handbook* is licensed through WTFPLv2 License.
