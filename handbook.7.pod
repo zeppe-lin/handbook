@@ -1356,8 +1356,8 @@ The official rootfs images are built based on this collection.
 
 Of course, this collection shouldn't have dependencies outside itself.
 To enforce this rule during maintenance see
-L<lint.mk|https://github.com/zeppe-lin/pkgsrc/blob/master/lint.mk> in
-pkgsrc repository,
+L<Makefile|https://github.com/zeppe-lin/pkgsrc/blob/master/Makefile>
+in pkgsrc repository,
 L<finddeps-linked(1)|https://zeppe-lin.github.io/finddeps-linked.1.html>,
 and L<revdep(1)|https://zeppe-lin.github.io/revdep.1.html>.
 
