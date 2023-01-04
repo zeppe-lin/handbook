@@ -12,7 +12,7 @@ Build time:
 
 Tests:
   * podchecker(1pm) to check POD for errors
-  * httpx(1) to check URLs for non-200 response code
+  * curl(1) to check URLs for response code
 
 INSTALL
 -------
