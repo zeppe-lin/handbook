@@ -6,7 +6,9 @@ PREFIX    = /usr/local
 MANPREFIX = ${PREFIX}/share/man
 
 check:
+	@echo "=======> Check PODs for errors"
 	@podchecker *.pod
+	@echo "=======> Check URLs for response code"
 	@grep -Eiho "https?://[^\"\\'> ]+" *.* | httpx -silent -fc 200 -sc
 
 man:
