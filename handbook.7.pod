@@ -1444,18 +1444,15 @@ packages' sources are available.
   gcc              libpcre2      psmisc
   gdbm             libpipeline   python3
 
-Pay attention to the files C<lint.mk> and C<rootfs.mk> file in the
-root directory:
+Pay attention to the file F<Makefile> in the root directory:
 
   $ cd /usr/src/pkgsrc
   $ ls
-  COPYING    core/     lint.mk    README.rootfs.md  stuff/   xorg/
-  COPYRIGHT  desktop/  README.md  rootfs.mk         system/
+  COPYING    core/     Makefile   stuff/   xorg/
+  COPYRIGHT  desktop/  README.md  system/
 
-F<lint.mk> will check packages' sources for some typical errors.  Type
-C<make -f lint.mk help> for more information.  F<rootfs.mk> will allow
-you to build Zeppe-Lin rootfs archive.  See F<README.rootfs.mk> for
-more information.
+F<Makefile> will check packages' sources for some typical errors.
+Type C<make> for more information.
 
 You can also use L<pkgman(1)|https://zeppe-lin.github.io/pkgman.1.html>
 with command B<list> and option B<--all> to list all local packages'
