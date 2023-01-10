@@ -635,8 +635,7 @@ names of the conflicting files.  Example:
   pkgadd error: listed file(s) already installed (use -f to ignore and overwrite)
 
 To force the installation and overwrite the conflicting files, you
-can use the option B<-f> (or B<--force>).
-Example:
+can use the option B<-f> (or B<--force>).  Example:
 
   # pkgadd -f bash#5.0.18-1.pkg.tar.gz
 
@@ -731,8 +730,7 @@ is supported, that is UPGRADE.  The I<pattern> is a filename pattern
 expressed as a regular expression and the I<action> applicable to the
 UPGRADE event is YES or NO.  More than one rule of the same event type
 is allowed, in which case the first rule will have the lowest priority
-and the last rule will have the highest priority.
-Example:
+and the last rule will have the highest priority.  Example:
 
   #
   # /etc/pkgadd.conf: pkgadd(8) configuration
@@ -943,7 +941,7 @@ you specify which database to use.
 =head2 Package Management Frontend: pkgman
 
 In its current form B<pkgutils> does not have a concept of dependency
-handling.  To address this, a frontend utility called
+handling.  To address this, a front-end utility called
 L<pkgman(1)|https://zeppe-lin.github.io/pkgman.1.html> exists.
 
 L<pkgman(1)|https://zeppe-lin.github.io/pkgman.1.html> supports
@@ -1395,8 +1393,7 @@ first time, use C<git clone>.  Example:
   # cd /usr/src/
   # git clone https://github.com/zeppe-lin/pkgsrc
 
-To bring your local pkgsrc up to date use C<git pull>.
-Example:
+To bring your local pkgsrc up to date use C<git pull>.  Example:
 
   # cd /usr/src/pkgsrc
   # git pull
