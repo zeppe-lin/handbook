@@ -836,10 +836,12 @@ l | l.
 Option @ Description
 _
 -i, --installed @ List installed packages and their version.
--l, --list PACKAGE|FILE @ List files in PACKAGE or FILE.
--o, --owner PATTERN @ List owner(s) of file(s) matching PATTERN.
--f, --footprint FILE @ Print footprint for FILE.
--r, --root PATH @ Specify alternative installation root.
+-l, --list=PACKAGE|FILE @ List files in PACKAGE or FILE.
+-o, --owner=PATTERN @ List owner(s) of file(s) matching PATTERN.
+-f, --footprint=FILE @ Print footprint for FILE.
+-r, --root=PATH @ Specify alternative installation root.
+-v, --version @ Print version and exit.
+-h, --help @ Print help and exit.
 .TE
 
 =end man
@@ -856,20 +858,28 @@ _
       <td>List installed packages and their version.</td>
     </tr>
     <tr>
-      <td>-l, --list PACKAGE|FILE</td>
+      <td>-l, --list=PACKAGE|FILE</td>
       <td>List files in PACKAGE or FILE.</td>
     </tr>
     <tr>
-      <td>-o, --owner PATTERN</td>
+      <td>-o, --owner=PATTERN</td>
       <td>List owner(s) of file(s) matching PATTERN.</td>
     </tr>
     <tr>
-      <td>-f, --footprint FILE</td>
+      <td>-f, --footprint=FILE</td>
       <td>Print footprint for FILE.</td>
     </tr>
     <tr>
-      <td>-r, --root PATH</td>
+      <td>-r, --root=PATH</td>
       <td>Specify alternative installation root.</td>
+    </tr>
+    <tr>
+      <td>-v, --version</td>
+      <td>Print version and exit.</td>
+    </tr>
+    <tr>
+      <td>-h, --help</td>
+      <td>Print help and exit.</td>
     </tr>
   </table>
 
