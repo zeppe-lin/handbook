@@ -1,3 +1,5 @@
+.POSIX:
+
 # handbook version
 VERSION = 0.1
 
