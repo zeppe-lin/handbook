@@ -1,11 +1,6 @@
 .POSIX:
 
-# handbook version
-VERSION = 0.1
-
-# paths
-PREFIX    = /usr/local
-MANPREFIX = ${PREFIX}/share/man
+include config.mk
 
 check:
 	@echo "=======> Check PODs for errors"
