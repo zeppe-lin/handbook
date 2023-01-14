@@ -20,6 +20,7 @@ man:
 install-man: man
 	mkdir -p         ${DESTDIR}${MANPREFIX}/man7
 	cp -f handbook.7 ${DESTDIR}${MANPREFIX}/man7/
+	chmod 0644       ${DESTDIR}${MANPREFIX}/man7/handbook.7
 
 uninstall-man:
 	rm -f ${DESTDIR}${MANPREFIX}/man7/handbook.7
