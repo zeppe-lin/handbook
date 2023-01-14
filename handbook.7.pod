@@ -1143,7 +1143,7 @@ L<Pkgfile(5)|https://zeppe-lin.github.io/Pkgfile.5.html> for more info),
 which contains information about the package (such as name, version,
 etc) and the commands that should be executed in order to compile the
 package in question.  To be more specific, the Pkgfile file is
-actually a POSIX L<sh(1)|https://www.mankier.com/1p/sh> script, which
+actually a POSIX L<sh(1p)|https://www.mankier.com/1p/sh> script, which
 defines a number of variables (name, version, release and source) and
 a function (build).  Below is an example of what a Pkgfile file might
 look like.  The example shows how to package the
