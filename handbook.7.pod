@@ -458,7 +458,7 @@ system:
 Or you can use the C<all-inclusive> config from the package:
 
   (chrooted) # cp $(pkgman path linux)/x86_64-dotconfig .config
-  (chrooted) # make oldconfig
+  (chrooted) # make olddefconfig
 
 Build the kernel and modules:
 
