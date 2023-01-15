@@ -985,7 +985,6 @@ Some examples of pkgman's functionality and use are as follows:
   Description:  Access Control List filesystem support
   URL:          http://savannah.nongnu.org/projects/acl
   Dependencies: attr
-  Files:        ABOUT
 
 =head4 Searching for packages sources by name
 
