@@ -1,7 +1,7 @@
 ABOUT
 -----
-This directory contains *Zeppe-Lin Handbook*, which is used for
-generating *Zeppe-Lin Website* (<https://zeppe-lin.github.io>) and the
+This directory contains _Zeppe-Lin Handbook_, which is used for
+generating _Zeppe-Lin Website_ (<https://zeppe-lin.github.io>) and the
 `handbook(7)` manual page.
 
 REQUIREMENTS
@@ -17,14 +17,14 @@ Tests:
 INSTALL
 -------
 The shell commands `make man && make install-man` should build and
-install this *handbook* as a manual page.
+install this _handbook_ as a manual page.
 
 The shell command `make check` should start some tests.
 
 LICENSE
 -------
-*handbook* is licensed through WTFPLv2 License.
-See *LICENSE* file for copyright and license details.
+_handbook_ is licensed through WTFPLv2 License.
+See _LICENSE_ file for copyright and license details.
 
 <!-- vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
 End of file. -->
