@@ -8,7 +8,7 @@ REQUIREMENTS
 ------------
 Build time:
   * POSIX sh(1p), make(1p) and "mandatory utilities"
-  * pod2man(1p) to build man page
+  * pod2man(1pm) to build man page
 
 Tests:
   * podchecker(1pm) to check POD for errors
