@@ -1,0 +1,31 @@
+ABOUT handbook
+
+	This directory contains Zeppe-Lin Handbook, which is used for
+	generating Zeppe-Lin Website (<https://zeppe-lin.github.io>) and the
+	handbook(7) manual page.
+
+REQUIREMENTS
+
+	Build time:
+
+		* POSIX sh(1p), make(1p) and "mandatory utilities"
+		* pod2man(1pm) to build man page
+
+	Tests:
+
+		* podchecker(1pm) to check POD for errors
+		* curl(1) to check URLs for response code
+
+INSTALL
+
+	The shell commands "make man && make install-man" should build and
+	install this handbook as a manual page.
+
+	The shell command "make check" should start some tests.
+
+LICENSE
+
+	handbook is licensed through WTFPLv2 License.
+	See LICENSE file for copyright and license details.
+
+End of file.
