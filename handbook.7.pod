@@ -147,7 +147,7 @@ simple as run C<sed 's/sda/sdb/g'>.
 =begin man
 
 .TS
-center, box, line, tab (|) ;
+center, box, tab (|) ;
 l | l | l | l
 l | l | l | l.
 Partition|Filesystem|Size|Description
@@ -226,7 +226,7 @@ This is a quiet simple logical volumes scheme used in this handbook.
 =begin man
 
 .TS
-center, box, line, tab (|) ;
+center, box, tab (|) ;
 l | l | l | l
 l | l | l | l.
 Volume name | Filesystem | Size | Description
@@ -647,7 +647,7 @@ Directories can however be owned by more than one package.
 =begin man
 
 .TS
-center, box, line, tab (|) ;
+center, box, tab (|) ;
 c
 c.
 <WARNING>
@@ -787,7 +787,7 @@ Example:
 =begin man
 
 .TS
-center, box, line, tab (|) ;
+center, box, tab (|) ;
 c
 c.
 <WARNING>
@@ -830,7 +830,7 @@ utility has a few options to answer different queries.
 =begin man
 
 .TS
-center, box, line, tab (@) ;
+center, box, tab (@) ;
 l | l
 l | l.
 Option @ Description
@@ -1558,7 +1558,7 @@ the package will be built.
 =begin man
 
 .TS
-center, box, line, tab (|) ;
+center, box, tab (|) ;
 c
 c.
 <WARNING>
@@ -1703,7 +1703,7 @@ F</etc/inittab>).
 =begin man
 
 .TS
-center, box, line, tab (|) ;
+center, box, tab (|) ;
 l | l
 l | l.
 Runlevel | Description
@@ -1742,7 +1742,7 @@ The initialization scripts used in Zeppe-Lin follow the BSD-style
 =begin man
 
 .TS
-center, box, line, tab (|) ;
+center, box, tab (|) ;
 l | l
 l | l.
 File | Description
