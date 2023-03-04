@@ -631,7 +631,7 @@ names of the conflicting files.  Example:
 
   # pkgadd bash#5.0.18-1.pkg.tar.gz
   bin/sh
-  usr/man/man1/sh.1.gz
+  usr/share/man/man1/sh.1.gz
   pkgadd error: listed file(s) already installed (use -f to ignore and overwrite)
 
 To force the installation and overwrite the conflicting files, you
