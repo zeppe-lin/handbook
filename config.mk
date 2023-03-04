@@ -2,5 +2,4 @@
 VERSION = 0.1
 
 # paths
-PREFIX = /usr/local
-MANPREFIX = ${PREFIX}/share/man
+MANPREFIX = /usr/share/man
