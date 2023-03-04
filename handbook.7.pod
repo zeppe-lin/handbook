@@ -913,11 +913,11 @@ _
   usr/bin/egrep
   usr/bin/fgrep
   usr/bin/grep
-  usr/man/
-  usr/man/man1/
-  usr/man/man1/egrep.1.gz
-  usr/man/man1/fgrep.1.gz
-  usr/man/man1/grep.1.gz
+  usr/share/man/
+  usr/share/man/man1/
+  usr/share/man/man1/egrep.1.gz
+  usr/share/man/man1/fgrep.1.gz
+  usr/share/man/man1/grep.1.gz
 
 =head4 List owners of files matching F<bin/ls>
 
