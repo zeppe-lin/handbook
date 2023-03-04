@@ -18,7 +18,7 @@
 
 =head1 NAME
 
-handbook -- Zeppe-Lin Handbook
+handbook - Zeppe-Lin Handbook
 
 =end man
 
