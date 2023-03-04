@@ -901,14 +901,12 @@ _
   $ pkginfo -l bash
   bin/
   bin/bash
-  bin/sh
   etc/
   etc/profile
   usr/
-  usr/man/
-  usr/man/man1/
-  usr/man/man1/bash.1.gz
-  usr/man/man1/sh.1.gz
+  usr/share/man/
+  usr/share/man/man1/
+  usr/share/man/man1/bash.1.gz
   $ pkginfo -l grep#2.5-1.pkg.tar.gz
   usr/
   usr/bin/
