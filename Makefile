@@ -13,7 +13,7 @@ check:
 		| sort -u
 
 man:
-	pod2man --nourls -r ${VERSION} -n handbook -s 7 \
+	pod2man --nourls -r "handbook ${VERSION}" -n handbook -s 7 \
 		-c 'Zeppe-Lin Handbook' handbook.7.pod > handbook.7
 
 install-man: man
