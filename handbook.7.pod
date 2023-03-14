@@ -398,7 +398,7 @@ users and they may occupy your id:
 
 Edit F</etc/rc.d/dhcpcd> and F</etc/rc.d/wpa_supplicant> if needed.
 If you configured the networking bridge, don't forget to specify the
-bridge interface to dhcpcd and/or wpa_supplicant rc files.
+bridge interface to B<dhcpcd> and/or B<wpa_supplicant> RC files.
 
 =head3 Install the kernel
 
@@ -411,7 +411,7 @@ Zeppe-Lin provides a package with the kernel and non-free firmware:
 
 The B<linux> package has a B<post-install> script that executes
 L<mkinitramfs(8)|https://zeppe-lin.github.io/mkinitramfs.8.html> and
-updates the grub config.  We turn off the execution of this script
+updates the B<grub> config.  We turn off the execution of this script
 because we'll do it manually.  It is useful when regularly updating
 the system.
 
@@ -429,7 +429,7 @@ virtualbox.
 
 In this case, it is recommended to use the kernel from package sources.
 
-So, let's download the linux source:
+So, let's download the B<linux> source:
 
   (chrooted) # pkgman install -do linux
 
@@ -481,7 +481,7 @@ Next, we need to prepare the initramfs and update our bootloader.
 
   (chrooted) # pkgman install --deps mkinitramfs
 
-Add the mkinitramfs configuration file (F</etc/mkinitramfs/config>)
+Add the B<mkinitramfs> configuration file (F</etc/mkinitramfs/config>)
 with the following content:
 
   #
@@ -527,12 +527,12 @@ Create F</etc/default/grub> file with the following content:
   GRUB_DISTRIBUTOR=ZPLN
   GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
 
-Next, install GRUB:
+Next, install B<GRUB>:
 
   (chrooted) # grub-install --target=x86_64-efi \
     --efi-directory=/boot /dev/sda
 
-Update GRUB configuration file:
+Update B<GRUB> configuration file:
 
   (chrooted) # grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -552,7 +552,7 @@ one:
 
   # pkgman search -vv xf86-
 
-Next, install xorg and the drivers you wish:
+Next, install B<xorg> and the drivers you wish:
 
   # pkgman install --deps --group xorg ...
 
