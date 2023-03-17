@@ -722,6 +722,8 @@ rules in this file are exceptions to that rule.
 B<NOTE:> A pattern should never contain an initial "/" since you are
 referring to the files in the package, not the files on the disk.
 
+See L<pkgadd.conf(5)> for more information.
+
 =head4 rejmerge
 
 If L<pkgadd(8)> finds that a specific file should not be upgraded, it
