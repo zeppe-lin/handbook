@@ -1172,14 +1172,14 @@ of how grep is built.  The contents of the function can differ
 significantly if the program is built in some other way, e.g. does not
 use B<autoconf>.
 
-When the build() function has been executed, the $PKG directory will
-be made into a package named I<name#version-release.pkg.tar.gz>.
+When the build() function has been executed, the C<$PKG> directory
+will be made into a package named I<name#version-release.pkg.tar.gz>.
 Before the package creation is completed, L<pkgmk(8)> will check the
 content of the package against the F<.footprint> file.  If this file
 does not exist, it will be created and the test will be skipped.  The
 F<.footprint> file will contain a list of all files that should be in
 the package if the build was successful or a list of all the files
-that were installed in $PKG (if the F<.footprint> did not already
+that were installed in C<$PKG> (if the F<.footprint> did not already
 exist).  If there is a mismatch the test will fail and an error
 message will be printed.  You should NOT write the F<.footprint> file
 by hand.  Instead, when a package has been upgraded and you need to
