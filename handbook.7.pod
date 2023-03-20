@@ -265,8 +265,8 @@ To see the actual amount of RAM, type the following command:
 
   # free -m
 
-For example, we have 4GB RAM. The swap will have 8GB.
-Let's create the aforementioned two logical volumes:
+For example, we have 4GB RAM.  The swap will have 8GB.  Let's create
+the aforementioned two logical volumes:
 
   # lvcreate -L 8G -n swap zpln
   # lvcreate -l 100%FREE -n root zpln
@@ -430,7 +430,7 @@ So, let's download the B<linux> source:
 
 The C<-do> option means C<download-only>.  The source is downloaded
 to F</var/cache/pkgmk/sources> if you have not changed the
-F<PKGMK_SOURCE_DIR> location in F</etc/pkgmk.conf>. Unpack it:
+F<PKGMK_SOURCE_DIR> location in F</etc/pkgmk.conf>.  Unpack it:
 
   (chrooted) # tar -xvf /var/cache/pkgmk/sources/linux-5.4.X.tar.?z \
     -C /usr/src/
