@@ -412,7 +412,7 @@ execution of this script because we'll do it manually.  It is useful
 when regularly updating the system.
 
 If you installed the kernel package through a package manager, you can
-jump over the next paragraph, to the B<Install mkinitramfs>.
+jump over the next paragraph, to the L</"Install mkinitramfs">.
 
 =head4 Install the kernel manually
 
