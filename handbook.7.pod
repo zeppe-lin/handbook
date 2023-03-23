@@ -863,7 +863,7 @@ _
   zip 2.3-1
   zlib 1.1.4-1
 
-=head4 List files in PACKAGE or FILE:
+=head4 List files in PACKAGE or FILE
 
   $ pkginfo -l bash
   bin/
