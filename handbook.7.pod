@@ -420,7 +420,7 @@ Since the L<pkgman(1)> build the package that contains only the
 binaries (kernel and modules), you may want to build your own kernel.
 For example, you do not need such a fat kernel, which goes by default,
 or you need the sources of the running kernel because you want to
-build the nvidia driver and/or virtualbox.
+build the Nvidia driver and/or VirtualBox.
 
 In this case, it is recommended to use the kernel from package sources.
 
