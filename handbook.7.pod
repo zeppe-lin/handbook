@@ -1540,32 +1540,39 @@ install or upgrade it.  Example:
 
 =head3 Build packages as an unprivileged user
 
-This is already done in default Zeppe-Lin installation.  The following
-describes how to achieve this, so that you now how it is done in
-Zeppe-Lin.
+It is already done in the default Zeppe-Lin distribution.  The
+packages C<core/filesystem>, C<core/pkgmk> and C<core/pkgman> have
+corresponding configuration.  However, it does not hurt to describe
+how to achieve this, so that you will know how it is done in
+Zeppe-Lin or if you would like to adjust default settings.
 
-First, add the new user:
+First, add a new user (C<pkgmk> for example):
 
   # useradd -b /var/cache/ -m -s /bin/false -U pkgmk
 
-This will create the user C<pkgmk> and the group with the same name
-as the user.  Also, the F</var/cache/pkgmk> home directory will be
-created.  Default shell for this user is F</bin/false>.
+This command will create the user C<pkgmk> and the group with the same
+name, with F</var/cache/pkgmk> as the home directory and F</bin/false>
+as the default shell.
 
-Second, add directories required for C<pkgmk>:
+Second, add the directories required for L<pkgmk(8)> to build the
+packages and set user C<pkgmk> (which we created previously) as their
+owner:
 
   # mkdir -p /var/cache/pkgmk/{sources,packages,work}
   # chown -R pkgmk:pkgmk /var/cache/pkgmk/{sources,packages,work}
 
-Third, add C<pkgmk> directories to F<pkgmk.conf>:
+Third, specify these directories in F</etc/pkgmk.conf>, so that when
+you call L<pkgmk(8)>, these directories will be used.
 
-Edit F</etc/pkgmk.conf>'s variables C<PKGMK_SOURCE_DIR>,
-C<PKGMK_PACKAGE_DIR> and C<PKGMK_WORK_DIR> to refer to previously
-created directories in F</var/cache/pkgmk>.
+  ... skipped
+  PKGMK_SOURCE_DIR=/var/cache/pkgmk/sources
+  PKGMK_PACKAGE_DIR=/var/cache/pkgmk/packages
+  PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$
+  ... skipped
 
-Fourth, set up the C<makecommand> in F<pkgman.conf>:
-
-Edit F</etc/pkgman.conf>'s C<makecommand> to build as a regular user:
+Fourth, tell L<pkgman(1)> to call L<pkgmk(8)> on behalf of C<pkgmk>
+user.  To do that, edit variable C<makecommand> in the
+F</etc/pkgman.conf> file as the following:
 
   makecommand sudo -H -u pkgmk fakeroot pkgmk
 
