@@ -1552,12 +1552,12 @@ This will create the user C<pkgmk> and the group with the same name
 as the user.  Also, the F</var/cache/pkgmk> home directory will be
 created.  Default shell for this user is F</bin/false>.
 
-Second, add directories required for pkgmk:
+Second, add directories required for C<pkgmk>:
 
   # mkdir -p /var/cache/pkgmk/{sources,packages,work}
   # chown -R pkgmk:pkgmk /var/cache/pkgmk/{sources,packages,work}
 
-Third, add pkgmk directories to F<pkgmk.conf>:
+Third, add C<pkgmk> directories to F<pkgmk.conf>:
 
 Edit F</etc/pkgmk.conf>'s variables C<PKGMK_SOURCE_DIR>,
 C<PKGMK_PACKAGE_DIR> and C<PKGMK_WORK_DIR> to refer to previously
