@@ -1,8 +1,7 @@
 OVERVIEW
 
-	This directory contains Zeppe-Lin Handbook, which is used for
-	generating Zeppe-Lin Website (<https://zeppe-lin.github.io>) and the
-	handbook(7) manual page.
+	This directory contains the Zeppe-Lin handbook(7) that covers the
+	installation, configuration, and administration of Zeppe-Lin.
 
 REQUIREMENTS
 
