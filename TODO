@@ -1,0 +1,9 @@
+TODO handbook
+
+	[ ] Rewrite pkgsrc documentation.
+	Reflect latest changes in pkgsrc system (separate repositories).
+	Change pkgsrc/Makefile reference to pkgmaint package.
+	Don't forget to add footprintchk(1) to pkgmaint package as a
+	replacement of Makefile.
+
+End of file.
