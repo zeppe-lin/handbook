@@ -1,6 +1,6 @@
 # project metadata
 NAME = handbook
-VERSION = 0.1
+VERSION = 1.0
 DESCRIPTION = Zeppe-Lin Handbook
 
 # paths
