@@ -4,4 +4,9 @@ TODO handbook
 	Reflect latest changes in pkgsrc system (separate repositories).
 	Done: Thu Apr 13 07:57:58 AM EEST 2023
 
+	[ ] Add development section:
+	    1. Developer documentation:
+	       a) how to contribute
+	       b) pkgsrc guidelines? Pkgfile(5)?
+
 End of file.
