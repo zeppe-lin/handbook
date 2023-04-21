@@ -16,5 +16,9 @@ uninstall-man:
 
 clean:
 	rm -f handbook.7
+	rm -f ${DIST}.tar.gz
 
-.PHONY: install-man uninstall-man clean
+dist: clean
+	git archive --format=tar.gz -o ${DIST}.tar.gz --prefix=${DIST}/ HEAD
+
+.PHONY: install-man uninstall-man clean dist
