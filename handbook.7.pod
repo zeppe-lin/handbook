@@ -26,7 +26,7 @@ handbook - Zeppe-Lin Handbook
 
 =begin html
 
-<img alt="Zeppe-Lin Logo" class="logo">
+<img alt="Zeppe-Lin" class="logo" src="/images/logo-small.png">
 
 =end html
 
