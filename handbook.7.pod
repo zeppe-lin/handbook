@@ -1035,7 +1035,7 @@ Some examples of pkgman's functionality and use are as follows:
   readline
    ncurses
 
-  $ pkgman dep bash --recursive -vv --tree
+  $ pkgman dep bash --recursive --tree -vv
   -- dependencies ([i] = installed, --> seen before)
   [i] bash 5.1.8-1: GNU Bourne Again Shell
   [i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
@@ -1056,7 +1056,7 @@ consequences if you install many programs with many dependencies at a
 time.  Because, one dependency may not build, and affect the building
 of another dependency, and thereby affect the third, etc.
 
-We can tell L<pkgman(1)> not to skip the C<fails>, but to stop.  Then
+We can tell L<pkgman(1)> not to skip the fails, but to stop.  Then
 we can fix the package build and start installation further.
 
 There is an option B<--group> for this.  In this handbook, it is
