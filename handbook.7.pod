@@ -418,8 +418,8 @@ B<do not> fit into any of the collections above.
 
 =back
 
-Clone the collections you need, but note that one collection depends
-on another.  Example:
+Clone the collections you need, but keep in mind that each subsequent
+collection depends on the previous ones. Example:
 
   (chrooted) # cd /usr/src/
   (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core
