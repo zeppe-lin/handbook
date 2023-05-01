@@ -1077,12 +1077,12 @@ procedure, all skipped packages will be in the report.
 =head4 Viewing and updating outdated packages
 
 Since the packages sources for Zeppe-Lin is distributed via L<git(1)>,
-the first thing to do is to update the C<pkgsrc> collection:
+the first thing to do is to update the C<pkgsrc> collections:
 
-  $ cd /usr/src/pkgsrc-core     &&  git pull
-  $ cd /usr/src/pkgsrc-system   &&  git pull
-  $ cd /usr/src/pkgsrc-xorg     &&  git pull
-  $ cd /usr/src/pkgsrc-desktop  &&  git pull
+  $ git -C /usr/src/pkgsrc-core    pull
+  $ git -C /usr/src/pkgsrc-system  pull
+  $ git -C /usr/src/pkgsrc-xorg    pull
+  $ git -C /usr/src/pkgsrc-desktop pull
 
 It's may be annoying to do this few steps every time you want to
 synchronize C<pkgsrc> repositories.  If so, just add these steps to
