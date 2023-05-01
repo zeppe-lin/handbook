@@ -1407,27 +1407,21 @@ you need at first time, use C<git clone>.  Example:
 
   # cd /usr/src/
   # git clone https://github.com/zeppe-lin/pkgsrc-core
-
-The same for other collections from the list:
-
-  # cd /usr/src
   # git clone https://github.com/zeppe-lin/pkgsrc-system
-  ...
+  # git clone https://github.com/zeppe-lin/pkgsrc-xorg
+  # git clone https://github.com/zeppe-lin/pkgsrc-desktop
 
 Edit F</etc/pkgman.conf> and enable the collections you cloned.  By
 default only C<core> collection is enabled.  See L<pkgman.conf(5)> for
 more information.
 
-To bring your local C<core> collection up to date use C<git pull>.  Example:
+To bring your local C<core> collection up to date use C<git pull>.
+Example:
 
-  # cd /usr/src/pkgsrc-core     &&  git pull
-
-The same for other collections from the list:
-
-  # cd /usr/src/pkgsrc-system   &&  git pull
-  # cd /usr/src/pkgsrc-xorg     &&  git pull
-  # cd /usr/src/pkgsrc-desktop  &&  git pull
-  # cd /usr/src/pkgsrc-stuff    &&  git pull
+  # git -C /usr/src/pkgsrc-core    pull
+  # git -C /usr/src/pkgsrc-system  pull
+  # git -C /usr/src/pkgsrc-xorg    pull
+  # git -C /usr/src/pkgsrc-desktop pull
 
 Depending on what collections you already have.
 
