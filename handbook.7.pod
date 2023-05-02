@@ -631,6 +631,12 @@ enabled since you need first to update B<openssl> for example, and
 only then all dependent packages.  The same for Perl, or Python, etc:
 first update the interpretators and then the modules.
 
+=head2 Binary Packages
+
+In case you encountered a problem while updating any package from
+C<core> pkgsrc collection, you can download the precompiled C<core>
+packages and upgrade them via L<pkgadd(8)>.
+
 =end comment
 
 =head1 THE PACKAGE SYSTEM
