@@ -1327,7 +1327,7 @@ binary packages.
 Packages' sources are organized in so called collections.  There are
 five different layer (or five categories) of packages.
 
-=head4 core
+=head4 L<core|https://github.com/zeppe-lin/pkgsrc-core>
 
 This collection contains build scripts and files for the packages
 required to create a basic system, on the basis of which you can build
@@ -1344,27 +1344,27 @@ L<pkgmaint|https://github.com/zeppe-lin/pkgmaint> and corresponding
 B<system/pkgmaint> package for various package maintaining utilities.
 It will not be superfluous to mention L<revdep(1)>.
 
-=head4 system
+=head4 L<system|https://github.com/zeppe-lin/pkgsrc-system>
 
 This collection contains build scripts and files for the packages
 required for minimal installation on real hardware: boot loader,
 filesystem utilities, hw-monitors, servers, and so on.  Packages in
 this collection depends B<only> on the C<core> pkgsrc collection.
 
-=head4 xorg
+=head4 L<xorg|https://github.com/zeppe-lin/pkgsrc-xorg>
 
 This collection contains build scripts and files for the packages
 required for X Window System applications.  Packages in this
 collection depends on the C<system> collection.
 
-=head4 desktop
+=head4 L<desktop|https://github.com/zeppe-lin/pkgsrc-desktop>
 
 This collection contains build scripts and files for the packages
 typically used on a desktop: web browser, music/video player, file
 manager, chat messenger, etc.  Packages in this collection depends on
 the C<xorg> collection.
 
-=head4 stuff
+=head4 L<stuff|https://github.com/zeppe-lin/pkgsrc-stuff>
 
 This collection contains build scripts and files for the packages that
 do not fit into the above categories.  Packages in this collection may
