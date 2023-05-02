@@ -1394,10 +1394,10 @@ more information.
 To bring your local C<core> collection up to date use C<git pull>.
 Example:
 
-  # git -C /usr/src/pkgsrc-core    pull
-  # git -C /usr/src/pkgsrc-system  pull
-  # git -C /usr/src/pkgsrc-xorg    pull
-  # git -C /usr/src/pkgsrc-desktop pull
+  # git -C /usr/src/pkgsrc-core     pull
+  # git -C /usr/src/pkgsrc-system   pull
+  # git -C /usr/src/pkgsrc-xorg     pull
+  # git -C /usr/src/pkgsrc-desktop  pull
 
 Depending on what collections you already have.
 
