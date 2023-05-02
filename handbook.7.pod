@@ -414,7 +414,9 @@ collection.
 =item C<stuff>
 
 This collection contains build scripts and files for the packages that
-B<do not> fit into any of the collections above.
+B<do not> fit into any of the collections above.  Since this
+collection contains packages of different (often dubious) quality and
+purpose, we will not use it in the examples.
 
 =back
 
@@ -1402,7 +1404,10 @@ the C<xorg> collection.
 
 This collection contains build scripts and files for the packages that
 do not fit into the above categories.  Packages in this collection may
-depend on any of the collections listed above.
+depend on any of the collections listed above.  Since this collection
+contains packages of different (often dubious) quality and purpose, we
+will not use it in the examples and warn you that if you can live
+without it - it's better to do so.
 
 =head2 Using The Pkgsrc
 
