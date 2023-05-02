@@ -461,6 +461,13 @@ L<mkinitramfs(8)> and updates the B<grub> config.  We turn off the
 execution of this script because we'll do it manually.  It is useful
 when regularly updating the system.
 
+Also, you may want to lock the B<linux> package and do not update it
+during regular system updates, since the update will remove the
+current working kernel and its modules.  If you plan not to turn off
+the computer for a long time, it is better to do this and update the
+kernel separately, through C<pkgman update>.  See L<pkgman-lock(8)>
+for more information about package locking.
+
 If you installed the kernel package through a package manager, you can
 jump over the next paragraph, to the L</"Install mkinitramfs">.
 
