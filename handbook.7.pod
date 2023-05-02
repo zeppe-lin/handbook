@@ -571,6 +571,68 @@ Next, install B<xorg> and the drivers you wish:
 
   # pkgman install --deps --group xorg ...
 
+=begin comment
+
+=head1 UPDATE ZEPPE-LIN
+
+The goal of this section if to provide a common and typical set of
+instructions for upgrading Zeppe-Lin from one release to another.
+
+Please assist in ensuring that these instructions are complete, make
+changes to this handbook that are needed to make these instructions
+100% reliable, and if the instructions seem to not work properly,
+please consider opening a bug at
+<L<https://github.com/zeppe-lin/handbook>> or asking for assistance at
+C<#zeppe-lin> on Libera.Chat.  Thank you.
+
+=head2 Set Release And Sync
+
+TODO
+
+=head2 Upgrade Toolchain
+
+Toolchain build order is:
+
+  1. linux-api-headers (already included in glibc{,-32} packages
+  2. glibc{,-32}
+  3. binutils
+  4. gcc
+  5. libtool
+  6. binutils (again)
+  7. glibc (again)
+  8. libtool (again)
+
+Update these packages conforming the order.
+
+=head2 Updating The System
+
+First, install the new packages that was introduced by the new
+release.  Use the following command to search all new (uninstalled)
+packages.
+
+  pkgman printf '%i %n\n' | awk '/^no /{print $2}'
+
+After installing them, look at the packages that was removed on new
+release:
+
+  pkgman list-orphans
+
+If you missing the package you liked, feel free to copy the package
+source from the previous release branch.
+
+Now, update all packages:
+
+  pkgman sysup --deps --depsort --group
+
+The B<--deps> option will tell B<pkgman> to download all new
+dependencies for a packages. The B<--depsort> option will tell
+B<pkgman> to sort by dependencies during update.  This option must be
+enabled since you need first to update B<openssl> for example, and
+only then all dependent packages.  The same for Perl, or Python, etc:
+first update the interpretators and then the modules.
+
+=end comment
+
 =head1 THE PACKAGE SYSTEM
 
 =head2 Introduction
