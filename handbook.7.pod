@@ -465,7 +465,7 @@ Also, you may want to lock the B<linux> package and do not update it
 during regular system updates, since the update will remove the
 current working kernel and its modules.  If you plan not to turn off
 the computer for a long time, it is better to do this and update the
-kernel separately, through C<pkgman update>.  See L<pkgman-lock(8)>
+kernel separately, through L<pkgman-update(8)>.  See L<pkgman-lock(8)>
 for more information about package locking.
 
 If you installed the kernel package through a package manager, you can
