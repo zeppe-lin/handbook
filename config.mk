@@ -1,6 +1,6 @@
 # project metadata
 NAME = handbook
-VERSION = 1.2
+VERSION = 1.2.1
 DESCRIPTION = Zeppe-Lin Handbook
 DIST = ${NAME}-${VERSION}
 
