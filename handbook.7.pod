@@ -291,16 +291,16 @@ mountpoint.
 =head3 Download rootfs tarball
 
   # cd /mnt
-  # wget -c https://github.com/zeppe-lin/pkgsrc/releases/download/2023-01-02/rootfs-2023-01-02-x86_64.tar.xz{,.sig}
+  # wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99/rootfs-v0.99-x86_64.tar.xz{,.sig}
 
 =head4 Signature verification
 
   # gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-  # gpg --verify rootfs-2023-01-02-x86_64.tar.xz.sig rootfs-2023-01-02-x86_64.tar.xz
+  # gpg --verify rootfs-v0.99-x86_64.tar.xz.sig rootfs-v0.99-x86_64.tar.xz
 
 =head3 Extract rootfs tarball
 
-  # tar -xvf rootfs-2023-01-02-x86_64.tar.xz -C .
+  # tar -xvf rootfs-v0.99-x86_64.tar.xz -C .
 
 =head3 Chroot
 
