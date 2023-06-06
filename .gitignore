@@ -1,0 +1,11 @@
+# build files and artefacts
+handbook.7
+
+# vim undo files
+.*.un~
+
+# backup files
+*.bak
+
+# dist tarballs
+*.tar.gz
