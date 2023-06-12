@@ -35,7 +35,7 @@ L<CRUX Handbook|https://crux.nu/Main/Documentation>.
 
 =begin html
 
-It's also available on the Zeppe-Lin system as
+It's also available on the Zeppe-Lin system as a
 <a href="https://github.com/zeppe-lin/handbook">handbook(7)</a>
 manual page.
 
@@ -52,7 +52,7 @@ architecture targeted at experienced users.  It is forked from CRUX
 and the primary focus of this distribution is "keep it simple" too.
 
 The KISS principle reflects in a simple tar.gz-based package system,
-BSD-style init scripts and a relatively small collection of trimmed
+BSD-style init scripts, and a relatively small collection of trimmed
 packages.
 
 The secondary focus is the utilization of new GNU/Linux features and
@@ -136,7 +136,7 @@ C<cryptsetup>, C<lvm2>.
 
 Let's go.
 
-Boot from the LiveCD, open a terminal, and get root privileges
+Boot from the LiveCD, open a terminal and get root privileges
 (e.g. C<sudo su>).
 
 =head3 Disk partitions
@@ -199,13 +199,13 @@ Using L<parted(8)> utility we can create all required partitions.
 
 =head4 Boot partition filesystem
 
-Create fat32 filesystem for first (boot) partition:
+Create a FAT32 filesystem for the first (boot) partition:
 
   # mkfs.vfat -F32 /dev/sda1
 
 =head4 Encrypt LUKS partition
 
-Encrypt the second (luks) partition with LUKS and open LUKS device:
+Encrypt the second (luks) partition with LUKS and open the LUKS device:
 
   # cryptsetup luksFormat /dev/sda2
   # cryptsetup luksOpen /dev/sda2 crypt
@@ -222,7 +222,7 @@ Encrypt the second (luks) partition with LUKS and open LUKS device:
 
 =head4 Create the logical volume
 
-This is a quiet simple logical volumes scheme used in this handbook.
+This is a quite simple logical volumes scheme used in this handbook.
 
 =begin man
 
@@ -381,7 +381,7 @@ users and they may occupy your id:
 
 =head3 Prepare the package sources
 
-Packages' sources are organized in so called collections, see
+Packages' sources are organized in so-called collections, see
 L</"pkgsrc collections"> for more information about that.
 
 Clone the collections you need, but keep in mind that each subsequent
@@ -394,8 +394,8 @@ collection depends on the previous ones.
   (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop
 
 Edit F</etc/pkgman.conf> and enable the collections you cloned.  By
-default only C<core> collection is enabled.  See L<pkgman.conf(5)> for
-more information.
+default, only C<core> collection is enabled.  See L<pkgman.conf(5)>
+for more information.
 
 =head4 Update the core packages and configuration files
 
@@ -427,7 +427,7 @@ L<mkinitramfs(8)> and updates the B<grub> config.  We turn off the
 execution of this script because we'll do it manually.  It is useful
 when regularly updating the system.
 
-Also, you may want to lock the B<linux> package and do not update it
+Also, you may want to lock the B<linux> package and not update it
 during regular system updates, since the update will remove the
 current working kernel and its modules.  If you plan not to turn off
 the computer for a long time, it is better to do this and update the
@@ -682,9 +682,9 @@ this will not warn you if you install a package that requires other
 packages to be installed.  The included L<pkgman(1)> tool (B<pkgman>),
 however, does support dependencies.
 
-The following sections will in describe in short how to use the
-package utilities.  Additional information about these utilities can
-be found on their respective manpage.
+The following sections will describe in short how to use the package
+utilities.  Additional information about these utilities can be found
+on their respective manpage.
 
 =head2 Using the Package System
 
@@ -785,13 +785,14 @@ you want to preserve configuration and log files.
 When executing L<pkgadd(8)> the file F</etc/pkgadd.conf> will be read.
 This file can contain rules describing how L<pkgadd(8)> should behave
 when doing upgrades.  A rule is built out of three fragments:
-I<event>, I<pattern> and I<action>.  The I<event> describes in what
-kind of situation this rule applies.  Currently only one type of event
-is supported, that is UPGRADE.  The I<pattern> is a filename pattern
-expressed as a regular expression and the I<action> applicable to the
-UPGRADE event is YES or NO.  More than one rule of the same event type
-is allowed, in which case the first rule will have the lowest priority
-and the last rule will have the highest priority.  Example:
+I<event>, I<pattern>, and I<action>.  The I<event> describes in what
+kind of situation this rule applies.  Currently, only one type of
+event is supported, that is UPGRADE.  The I<pattern> is a filename
+pattern expressed as a regular expression and the I<action> applicable
+to the UPGRADE event is YES or NO.  More than one rule of the same
+event type is allowed, in which case the first rule will have the
+lowest priority and the last rule will have the highest priority.
+Example:
 
   #
   # /etc/pkgadd.conf: pkgadd(8) configuration
@@ -999,7 +1000,7 @@ This feature is mainly used by L<pkgmk(8)> for creating and comparing
 footprints.
 
 The B<-r> (B<--root>) option should be used if you want to display
-information about a package that is installed on a temporary mounted
+information about a package that is installed on a temporarily mounted
 partition, which is "owned" by another system.  By using this option
 you specify which database to use.
 
@@ -1112,25 +1113,26 @@ retry:
 
 The option B<--force> tell to L<pkgman(1)> to skip installation of
 already installed package(s).  It just ignores the package and
-installing next in the listed order.  At the end of installation
+installs next in the listed order.  At the end of the installation
 procedure, all skipped packages will be in the report.
 
 =head4 Viewing and updating outdated packages
 
-Since the packages sources for Zeppe-Lin is distributed via L<git(1)>,
-the first thing to do is to update the C<pkgsrc> collections:
+Since the packages sources for Zeppe-Lin are distributed via
+L<git(1)>, the first thing to do is to update the C<pkgsrc>
+collections:
 
   $ git -C /usr/src/pkgsrc-core    pull
   $ git -C /usr/src/pkgsrc-system  pull
   $ git -C /usr/src/pkgsrc-xorg    pull
   $ git -C /usr/src/pkgsrc-desktop pull
 
-It's may be annoying to do this few steps every time you want to
+It's maybe annoying to do these few steps every time you want to
 synchronize C<pkgsrc> repositories.  If so, just add these steps to
 your L<crond(8)> daemon and synchronize your local repos once a week,
 for example.
 
-Listing installed packages which are out of date
+Listing installed packages that are out of date
 (including their new dependencies):
 
   $ pkgman diff --deps --full
@@ -1141,8 +1143,7 @@ Listing installed packages which are out of date
   bindutils                                           9.16.8-1
 
   --
-  1 update
-  1 install
+  1 update, 1 install
 
 Updating an individual package:
 
@@ -1155,8 +1156,8 @@ Updating all installed packages:
 =head3 Configuration
 
 pkgman's main configuration file, F</etc/pkgman.conf>, contains
-options that can be used to change pkgman's behaviour.  Notably in
-this file the following options can be configured:
+options that can be used to change pkgman's behavior.  Notably in
+this file, the following options can be configured:
 
 =over 4
 
@@ -1164,7 +1165,7 @@ this file the following options can be configured:
 
 This option can occur multiple times and specifies a directory with a
 packages' sources "collection" which L<pkgman(1)> should check in its
-operation.  By default, the I<core> collection is enabled, and
+operation.  By default, the I<core> collection is enabled, but
 I<system>, I<xorg>, I<desktop>, and I<stuff> collections are
 commented.
 
@@ -1198,7 +1199,7 @@ information about the package (such as name, version, etc) and the
 commands that should be executed in order to compile the package in
 question.  To be more specific, the Pkgfile file is actually a POSIX
 L<sh(1p)> script, which defines a number of variables (name, version,
-release and source) and a function (build).  Below is an example of
+release, and source) and a function (build).  Below is an example of
 what a Pkgfile file might look like.  The example shows how to package
 the L<grep(1)> utility.  Some comments are inserted for explanation.
 
@@ -1237,17 +1238,18 @@ the L<grep(1)> utility.  Some comments are inserted for explanation.
           # by all Makefiles, some use prefix and others use ROOT,
           # etc.  You have to inspect the Makefile in question to
           # find out.  Some Makefiles do not support redirection at
-          # all.  In those cases you will have to create a patch for it.
+          # all.  In those cases, you will have to create a patch for
+          # it.
           make DESTDIR=$PKG install
 
-          # Remove unwanted files, in this case the info-pages.
+          # Remove unwanted files, in this case, the info-pages.
           rm -rf $PKG/usr/info
   }
 
 In reality, you do not include all those comments, so the real Pkgfile
 for L<grep(1)> looks like this:
 
-  # Description: GNU grep, egrep and fgrep
+  # Description: GNU grep, egrep, and fgrep
   # URL:         http://www.gnu.org/software/grep/grep.html
 
   name=grep
@@ -1288,14 +1290,14 @@ expected.
 
 If the package is built without errors it's time to install it by
 using L<pkgadd(8)> and try it out.  It's highly recommended to look at
-the Pkgfile in another package(s), since looking at examples is a
-great way to learn.
+the Pkgfile in another package(s) since looking at examples is a great
+way to learn.
 
 See L<Pkgfile(5)> for additional information.
 
 =head2 Adjusting/Configuring the Package Build Process
 
-Many settings of to the package build process can be adjusted by
+Many settings of the package build process can be adjusted by
 editing the L<pkgmk(8)> configuration file F</etc/pkgmk.conf>.  Some
 of these configurable settings include:
 
@@ -1336,7 +1338,8 @@ Here are some examples:
 This setting instructs L<pkgmk(8)> to attempt to fetch all source
 archives from I<http://fileserver.intranet/zeppe-lin/sources/> before
 falling back to the source URL specified in the Pkgfile.  Multiple
-URLs can be separated by spaces (the spaces in URL replace by C<%20>).
+URLs can be separated by spaces (the spaces in the URL itself replace
+by C<%20>!).
 
   PKGMK_SOURCE_DIR="/var/cache/pkgmk/sources"
 
@@ -1354,7 +1357,7 @@ specified package.  Building the B<grep> package would result in the
 work area being C</var/cache/pkgmk/work/grep>.  An alternative would
 be to use a L<tmpfs(5)> as your work directory.
 
-There are a few more settings which can be found in the
+There are a few more settings that can be found on the
 L<pkgmk.conf(5)> manual page. 
 
 =head2 Package Guidelines
@@ -1375,8 +1378,8 @@ and contains a list of files this package is expected to contain once
 it is built).  Further, a package source directory can contain patches
 and/or other files needed for building the package, even software
 sources.  It is important to understand that the actual source code
-for the package is not necessarily present in package source
-directory.  Instead the F<Pkgfile> contains an URL which points to a
+for the package is not necessarily present in the package source
+directory.  Instead, the F<Pkgfile> contains an URL that points to a
 location where the source can be downloaded.
 
 The use of the words "package source" in this context is borrowed
@@ -1392,8 +1395,8 @@ binary packages.
 
 =head3 pkgsrc collections
 
-Packages' sources are organized in so called collections.  There are
-five different layer (or five categories) of packages.
+Packages' sources are organized in so-called collections.  There are
+five different layers (or five categories) of packages.
 
 =head4 L<core|https://github.com/zeppe-lin/pkgsrc-core>
 
@@ -1407,7 +1410,7 @@ To enforce this rule during maintenance see
 L<Makefile|https://github.com/zeppe-lin/pkgsrc-core/blob/master/Makefile>
 in the collection root directory.  This F<Makefile> checks collection
 files for typical errors, including misconfigured dependencies, and is
-included into the other collections too.  Also, see
+included in the other collections too.  Also, see
 L<pkgmaint|https://github.com/zeppe-lin/pkgmaint> and corresponding
 B<system/pkgmaint> package for various package maintaining utilities.
 It will not be superfluous to mention L<revdep(1)>.
@@ -1417,19 +1420,19 @@ It will not be superfluous to mention L<revdep(1)>.
 This collection contains build scripts and files for the packages
 required for minimal installation on real hardware: boot loader,
 filesystem utilities, hw-monitors, servers, and so on.  Packages in
-this collection depends B<only> on the C<core> pkgsrc collection.
+this collection depend B<only> on the C<core> pkgsrc collection.
 
 =head4 L<xorg|https://github.com/zeppe-lin/pkgsrc-xorg>
 
 This collection contains build scripts and files for the packages
 required for X Window System applications.  Packages in this
-collection depends on the C<system> collection.
+collection depend on the C<system> collection.
 
 =head4 L<desktop|https://github.com/zeppe-lin/pkgsrc-desktop>
 
 This collection contains build scripts and files for the packages
 typically used on a desktop: web browser, music/video player, file
-manager, chat messenger, etc.  Packages in this collection depends on
+manager, chat messenger, etc.  Packages in this collection depend on
 the C<xorg> collection.
 
 =head4 L<stuff|https://github.com/zeppe-lin/pkgsrc-stuff>
@@ -1446,8 +1449,8 @@ without it - it's better to do so.
 =head3 Synchronizing your local pkgsrc repository
 
 When Zeppe-Lin is installed for the first time there are no local
-pkgsrc collections (F<usr/src/pkgsrc*>).  To obtains the collection
-you need at first time, use C<git clone>.  Example:
+pkgsrc collections (F<usr/src/pkgsrc*>).  To obtain the collection
+you need the first time, use C<git clone>.  Example:
 
   # cd /usr/src/
   # git clone https://github.com/zeppe-lin/pkgsrc-core
@@ -1456,7 +1459,7 @@ you need at first time, use C<git clone>.  Example:
   # git clone https://github.com/zeppe-lin/pkgsrc-desktop
 
 Edit F</etc/pkgman.conf> and enable the collections you cloned.  By
-default only C<core> collection is enabled.  See L<pkgman.conf(5)> for
+default, only C<core> collection is enabled.  See L<pkgman.conf(5)> for
 more information.
 
 To bring your local C<core> collection up to date use C<git pull>.
@@ -1469,7 +1472,7 @@ Example:
 
 Depending on what collections you already have.
 
-It's may be annoying to do this few steps every time you want to
+It's maybe annoying to do these few steps every time you want to
 synchronize C<pkgsrc> repositories.  If so, just add these steps to
 your L<crond(8)> daemon and sync your local repos once a week, for
 example.
@@ -1482,14 +1485,13 @@ TODO: add example!
 
 =head3 Listing local pkgsrc repositories
 
-When the local pkgsrc repositories has been cloned/updated the
+When the local pkgsrc repositories have been cloned/updated the
 directory C</usr/src/> will contain some C<pkgsrc-???> directories.
 
-Under each of these directories you will find packages' sources: build
-scripts and files for building binary package.  You
-can simply browse around in the directory structure to find out which
-packages' sources are available.  Let's take C<pkgsrc-core> as an
-example:
+Under each of these directories, you will find packages' sources:
+build scripts and files for building binary packages.  You can simply
+browse around in the directory structure to find out which packages'
+sources are available.  Let's take C<pkgsrc-core> as an example:
 
   $ cd /usr/src/pkgsrc-core
   $ ls -p
@@ -1593,7 +1595,7 @@ packages.  The option B<--full> shows the table above, not just the
 list of packages.
 
 Pay attention to C<trinity-extra-theme> package.  The available
-package has the lower version than installed.  You can use
+package has a lower version than the installed one.  You can use
 B<--config-set>="preferhigher yes" to prefer higher installed
 versions over lower packages, overwriting default B<preferhigher>
 configuration settings.
@@ -1619,8 +1621,8 @@ L<pkgmk(8)> to build it.  Example:
 
 The B<-d> option means download missing source files and tells
 L<pkgmk(8)> to download the source(s) specified in F<Pkgfile> (in case
-the source are already downloaded this option is ignored).  When the
-download is completed the package will be built.
+the source files are already downloaded this option is ignored).  When
+the download is completed the package will be built.
 
 =begin man
 
@@ -1674,8 +1676,8 @@ install or upgrade it.  Example:
 =head3 Build packages as an unprivileged user
 
 It is already done in the default Zeppe-Lin distribution.  The
-packages C<core/filesystem>, C<core/pkgmk> and C<core/pkgman> have
-corresponding configuration.  However, it does not hurt to describe
+packages C<core/filesystem>, C<core/pkgmk>, and C<core/pkgman> have
+corresponding configurations.  However, it does not hurt to describe
 how to achieve this, so that you will know how it is done in
 Zeppe-Lin or if you would like to adjust default settings.
 
@@ -1712,14 +1714,14 @@ F</etc/pkgman.conf> file as the following:
 =head3 Renice pkgmk's child process
 
 If you keep using your computer while compiling packages you will
-notice that your box is much less responsive as usual.  This is caused
-by having two C<groups> of processes with the same nice priority: your
-usual running tasks on one side, and L<pkgman(1)> (and its child
-processes) on other.  Now, if you could renice L<pkgman(1)> and its
-children to a higher nice (i.e. lower priority!) value (default is 0),
-compiling would inevitably take somewhat longer, but you could use
-your workstation without noticing much difference to its usual
-performance.
+notice that your box is much less responsive than usual.  This is
+caused by having two C<groups> of processes with the same nice
+priority: your usual running tasks on one side, and L<pkgman(1)> (and
+its child processes) on the other.  Now, if you could renice
+L<pkgman(1)> and its children to a higher nice (i.e. lower priority!)
+value (default is 0), compiling would inevitably take somewhat longer,
+but you could use your workstation without noticing much difference to
+its usual performance.
 
 Just set up the C<makecommand> in the F</etc/pkgman.conf> to something
 like this:
@@ -1730,7 +1732,7 @@ like this:
 
 By default, Zeppe-Lin already has C<pkgmk> user and F</etc/fstab>'s
 entry for this.  Just edit F</etc/fstab>'s C<pkgmk> entry, remove
-C<-pipe> from F</etc/pkgmk.conf> and type C<mount pkgmk>.
+C<-pipe> from F</etc/pkgmk.conf>, and type C<mount pkgmk>.
 
 Below is described how this was done in Zeppe-Lin.
 
@@ -1874,7 +1876,7 @@ _
 
 C</etc/rc.local> is empty by default.
 
-Modify F</etc/rc.modules>, F</etc/rc.local> and F</etc/rc.conf>
+Modify F</etc/rc.modules>, F</etc/rc.local>, and F</etc/rc.conf>
 according to your needs.  See L<rc.conf(5)> and L<rc(8)> for more
 information about F<rc.conf> configuration file and initialization
 scripts.
@@ -1893,10 +1895,10 @@ You may wish to add C<export LANG=en_US.UTF-8> to F</etc/profile>.
 
 =head4 Static address
 
-The network configuration is found in the service script
-F</etc/rc.d/net>.  To enable this service you need to add C<net> to
-the C<SERVICES> string in  F</etc/rc.conf>.  By default this service
-script configures a static IP address.  Example:
+The network configuration is found in the RC script F</etc/rc.d/net>.
+To enable this service you need to add C<net> to the C<SERVICES>
+string in  F</etc/rc.conf>.  By default, this RC script configures a
+static IP address.  Example:
 
   #!/bin/sh -e
   #
@@ -1946,7 +1948,7 @@ Example:
 =head4 Dynamic address
 
 If you want to configure your system to use a dynamic IP address,
-install C<dhcpcd> package and run F</etc/rc.d/dhcpcd> service.
+install the C<dhcpcd> package and run F</etc/rc.d/dhcpcd> service.
 
 =head4 Wireless network
 
@@ -1988,20 +1990,20 @@ F</etc/wpa_supplicant.conf>:
 
 Zeppe-Lin uses C<SHA512> passwords by default.  To change the password
 encryption method set the C<ENCRYPT_METHOD> variable in
-F</etc/login.defs> to C<DES>, C<MD5> or C<SHA256>.
+F</etc/login.defs> to C<DES>, C<MD5>, or C<SHA256>.
 
 Furthermore, when compiling programs that use the L<crypt(3)> function
 to authenticate users you should make sure that these programs are
 linked against the B<libcrypt> library (i.e. use C<-lcrypt> when
 linking) which contains the C<SHA512> version of the crypt function
-(this version is backwards compatible and understands C<DES> passwords
+(this version is backward compatible and understands C<DES> passwords
 as well).
 
 =head1 REPORTING BUGS
 
 The source code for this site is available at:
 L<https://github.com/zeppe-lin/zeppe-lin.github.io>.  Please note that
-it is generated (by L<pod2html(1pm)>) from the handbook, that is
+it is generated (by L<pod2html(1pm)>) from the handbook, which is
 available at L<https://github.com/zeppe-lin/handbook>.  If you'd like
 to fix some C<CSS> bugs and build files, refer to the source code of
 the site, otherwise to the handbook source.
