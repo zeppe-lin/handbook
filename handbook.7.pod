@@ -1316,17 +1316,17 @@ source archives.
 
 =item PKGMK_SOURCE_DIR
 
-This setting defines where L<pkgmk(8)> will store (if downloading) and
+This setting defines where pkgmk will store (if downloading) and
 use source archives when building.
 
 =item PKGMK_PACKAGE_DIR
 
-This setting defines where L<pkgmk(8)> will create package files once
+This setting defines where pkgmk will create package files once
 the build process is complete.
 
 =item PKGMK_WORK_DIR
 
-This setting defines a work area that L<pkgmk(8)> will use to build
+This setting defines a work area that pkgmk will use to build
 the package.
 
 =back
@@ -1335,7 +1335,7 @@ Here are some examples:
 
   PKGMK_SOURCE_MIRRORS="http://fileserver.intranet/crux/sources/"
 
-This setting instructs L<pkgmk(8)> to attempt to fetch all source
+This setting instructs pkgmk to attempt to fetch all source
 archives from I<http://fileserver.intranet/zeppe-lin/sources/> before
 falling back to the source URL specified in the Pkgfile.  Multiple
 URLs can be separated by spaces (the spaces in the URL itself replace
@@ -1343,7 +1343,7 @@ by C<%20>!).
 
   PKGMK_SOURCE_DIR="/var/cache/pkgmk/sources"
 
-This setting instructs L<pkgmk(8)> to store and find source archives
+This setting instructs pkgmk to store and find source archives
 in C</var/cache/pkgmk/sources>.  An example benefit of this setup
 would be the ability to store C</var/cache/pkgmk/sources> on an NFS
 server on your local network for use by multiple Zeppe-Lin
@@ -1351,7 +1351,7 @@ installations.  C<PKGMK_PACKAGE_DIR> can be set and used the same way.
 
   PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name"
 
-This setting instructs L<pkgmk(8)> to use
+This setting instructs pkgmk to use
 C</var/cache/pkgmk/work/$name> as a work area for building the
 specified package.  Building the B<grep> package would result in the
 work area being C</var/cache/pkgmk/work/grep>.  An alternative would
