@@ -1194,14 +1194,15 @@ information can be found in L<pkgman(1)> and L<pkgman.conf(5)>.
 =head2 Creating Packages
 
 Creating a package is done using L<pkgmk(8)>.  This utility uses a
-file called Pkgfile (see L<Pkgfile(5)> for more info), which contains
-information about the package (such as name, version, etc) and the
-commands that should be executed in order to compile the package in
-question.  To be more specific, the Pkgfile file is actually a POSIX
-L<sh(1p)> script, which defines a number of variables (name, version,
-release, and source) and a function (build).  Below is an example of
-what a Pkgfile file might look like.  The example shows how to package
-the L<grep(1)> utility.  Some comments are inserted for explanation.
+file called F<Pkgfile> (see L<Pkgfile(5)> for more info), which
+contains information about the package (such as name, version, etc)
+and the commands that should be executed in order to compile the
+package in question.  To be more specific, the F<Pkgfile> file is
+actually a POSIX L<sh(1p)> script, which defines a number of variables
+(name, version, release, and source) and a function (build).  Below is
+an example of what a F<Pkgfile> file might look like.  The example
+shows how to package the L<grep(1)> utility.  Some comments are
+inserted for explanation.
 
   # Specify the name of the package.
   name=grep
@@ -1290,8 +1291,8 @@ expected.
 
 If the package is built without errors it's time to install it by
 using L<pkgadd(8)> and try it out.  It's highly recommended to look at
-the Pkgfile in another package(s) since looking at examples is a great
-way to learn.
+the F<Pkgfile> in another package(s) since looking at examples is a
+great way to learn.
 
 See L<Pkgfile(5)> for additional information.
 
