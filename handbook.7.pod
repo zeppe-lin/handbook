@@ -659,7 +659,8 @@ indicate that this is not just any I<tar.gz> file, but a I<tar.gz>
 that is meant to be installed using L<pkgadd(8)>.  This helps
 distinguish packages from other I<tar.gz> files.  Note that
 L<pkgmk(8)> supports additional compression schemes like B<bzip2> with
-the I<tar.bz2> extension or B<XZ> ending with I<tar.xz>.
+the I<tar.bz2> extension, B<lzip> with the I<tar.lz>, or B<xz> ending
+with I<tar.xz>.
 
 L<pkgadd(8)>, L<pkgrm(8)>, and L<pkginfo(1)> are the basic package
 management utilities and are part of the package B<pkgutils>.  In
