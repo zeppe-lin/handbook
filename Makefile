@@ -1,7 +1,6 @@
 .POSIX:
 
 include config.mk
-include utils.mk
 
 man:
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
