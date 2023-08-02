@@ -11,7 +11,7 @@ deadlinks:
 
 podchecker:
 	@echo "=======> Check PODs for syntax errors"
-	@podchecker *.pod
+	@podchecker *.pod >/dev/null
 
 longlines:
 	@echo "=======> Check for long lines"
