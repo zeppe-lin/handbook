@@ -1,3 +1,6 @@
+# Makefile.lint is the automated checking of handbook project
+# for various programmatic and stylistic errors.
+
 all: deadlinks podchecker longlines
 
 deadlinks:
