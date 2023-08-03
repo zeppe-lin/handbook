@@ -1,8 +1,9 @@
 # build files and artefacts
 handbook.7
 
-# vim undo files
+# vim undo and swap files
 .*.un~
+*.swp
 
 # backup files
 *.bak
