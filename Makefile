@@ -2,6 +2,9 @@
 
 include config.mk
 
+all: help
+help:
+
 man:
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
 		-n handbook -s 7 handbook.7.pod > handbook.7
