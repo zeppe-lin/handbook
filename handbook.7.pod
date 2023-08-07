@@ -1051,19 +1051,19 @@ Some examples of pkgman's functionality and use are as follows:
 
 =head4 Searching for packages sources by name
 
-  $ pkgman search glibc -vv
+  $ pkgman search -vv glibc
   -- search ([i] = installed)
   [i] glibc 2.32-5: GNU C Library
   [i] glibc-32 2.32-5: GNU C Library (32bit)
 
-  $ pkgman search --regex '^(glib)c?$' -vv
+  $ pkgman search -vv --regex '^(glib)c?$'
   -- search ([i] = installed)
   [i] glib 2.70.1-1: Common C routines used by Gtk+ and other libs
   [i] glibc 2.32-5: GNU C Library
 
 =head4 Searching for packages sources by words in their description
 
-  $ pkgman dsearch archive -vv
+  $ pkgman dsearch -vv archive
   -- search ([i] = installed)
   [i] cpio 2.13-2: Copy files into or out of a cpio or tar archive
   [i] libarchive 3.5.2-1: Multi-format archive and compression library
