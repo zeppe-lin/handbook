@@ -1066,9 +1066,8 @@ Some examples of pkgman's functionality and use are as follows:
   $ pkgman dsearch archive -vv
   -- search ([i] = installed)
   [i] cpio 2.13-2: Copy files into or out of a cpio or tar archive
-  [i] libarchive 3.5.2-1: Library to create and read several archive formats
+  [i] libarchive 3.5.2-1: Multi-format archive and compression library
   [ ] unrar 6.0.7-1: Extracts RAR archives
-  [i] wordlistctl 0.9.2-1: Fetch, install and search wordlist archives from websites
   [ ] zip 3.0-1: Compression and file packaging/archive utility
 
 =head4 Viewing dependency lists
