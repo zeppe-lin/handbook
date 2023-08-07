@@ -6,6 +6,11 @@ man:
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
 		-n handbook -s 7 handbook.7.pod > handbook.7
 
+pdf:
+	pod2pdf --title       "${DESCRIPTION}" \
+		--footer-text "${NAME} ${VERSION}" \
+		handbook.7.pod > "Zeppe-Lin-Handbook.pdf"
+
 install-man: man
 	mkdir -p         ${DESTDIR}${MANPREFIX}/man7
 	cp -f handbook.7 ${DESTDIR}${MANPREFIX}/man7/
