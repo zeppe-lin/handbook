@@ -1030,11 +1030,13 @@ Some examples of pkgman's functionality and use are as follows:
   acl 2.3.1-1
   attr 2.5.1-1
   autoconf 2.71-1
+  [...]
 
   $ pkgman list -vv
   acl 2.3.1-1: Access Control List filesystem support
   attr 2.5.1-1: Extended attribute support library for ACL support
   autoconf 2.71-1: Generates automatic source code configuration scripts
+  [...]
 
 =head4 Querying information about a package source
 
