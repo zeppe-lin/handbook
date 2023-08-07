@@ -1087,7 +1087,7 @@ Some examples of pkgman's functionality and use are as follows:
 
 =head4 Installing packages
 
-  $ pkgman install xterm
+  $ pkgman install --deps xterm
 
 Note, that the C<install> command B<DOES NOT> process dependencies
 without B<--deps> option, and it's usually recommended to use
