@@ -14,8 +14,8 @@ man:
 		-n handbook -s 7 ${POD} > ${MAN}
 
 pdf:
-	pod2pdf --title "${DESCRIPTION}" --footer-text "${NAME} ${VERSION}" \
-		${POD} > ${PDF}
+	pod2pdf --footer-text "${NAME} ${VERSION}" \
+		--title "${DESCRIPTION}" ${POD} > ${PDF}
 
 install-man: man
 	mkdir -p         ${DESTDIR}${MANPREFIX}/man7
