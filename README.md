@@ -9,6 +9,7 @@ REQUIREMENTS
 **Build time**:
 - POSIX sh(1p), make(1p) and "mandatory utilities"
 - pod2man(1pm) to build man page
+- pod2pdf(1) to build pdf version of the handbook (optional)
 
 
 INSTALL
