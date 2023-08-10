@@ -1583,7 +1583,7 @@ output could look like this:
   feh                             3.7.2-1             3.7.2-2
   joomscan-scm                    20211112-1          20211121-1
   trinity-extra-theme             0.4-3cc4340-2       0.1-1
-  zhandbook                       0.3-1               0.3.1-1
+  handbook                        0.3-1               0.3.1-1
 
   -- Packages which was not found in the packages sources tree
   Package                         Installed           Required by
