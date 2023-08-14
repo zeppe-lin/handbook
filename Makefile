@@ -36,4 +36,4 @@ clean:
 dist: clean
 	git archive --format=tar.gz -o ${DIST}.tar.gz --prefix=${DIST}/ HEAD
 
-.PHONY: install-man uninstall-man clean dist
+.PHONY: man txt pdf install-man uninstall-man clean dist
