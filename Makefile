@@ -4,6 +4,7 @@ include config.mk
 
 POD = handbook.7.pod
 MAN = handbook.7
+TXT = Zeppe-Lin-Handbook.txt
 PDF = Zeppe-Lin-Handbook.pdf
 
 all: help
@@ -12,6 +13,9 @@ help:
 man:
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
 		-n handbook -s 7 ${POD} > ${MAN}
+
+txt:
+	pod2text ${POD} > ${TXT}
 
 pdf:
 	pod2pdf --footer-text "${NAME} ${VERSION}" \
