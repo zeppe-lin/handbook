@@ -382,7 +382,7 @@ users and they may occupy your id:
 =head3 Prepare the package sources
 
 Packages' sources are organized in so-called collections, see
-L</"pkgsrc collections"> for more information about that.
+L</"The pkgsrc collections"> for more information about that.
 
 Clone the collections you need, but keep in mind that each subsequent
 collection depends on the previous ones.
@@ -1367,7 +1367,7 @@ L<pkgmk.conf(5)> manual page.
 
 A detailed guideline is described in L<Pkgfile(5)> manual page.
 
-=head1 THE PACKAGES' SOURCES SYSTEM
+=head1 THE PKGSRC SYSTEM
 
 =head2 Introduction
 
@@ -1396,7 +1396,7 @@ The term I<pkgsrc repository> refers to a remote repository
 containing packages' sources: build scripts and files for building
 binary packages.
 
-=head3 pkgsrc collections
+=head3 The pkgsrc collections
 
 Packages' sources are organized in so-called collections.  There are
 five different layers (or five categories) of packages.
