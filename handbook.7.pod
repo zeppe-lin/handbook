@@ -103,9 +103,8 @@ particular package is licensed, have a look at its source code.
 
 All package build scripts in Zeppe-Lin are Copyright (C) 2000-2021
 by Per Liden and the CRUX development team and CRUX contrib team and
-are released under the GNU General Public License version 3.
-See L<https://gnu.org/licenses/gpl.html> for more information about
-this license.
+are released under the GPLv3+: GNU General Public License version 3 or
+later L<https://gnu.org/licenses/gpl.html>.
 
 =head2 NO WARRANTY
 
