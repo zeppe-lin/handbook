@@ -624,7 +624,7 @@ Now, update all packages:
   pkgman sysup --deps --depsort --group
 
 The B<--deps> option will tell B<pkgman> to download all new
-dependencies for a packages. The B<--depsort> option will tell
+dependencies for a packages.  The B<--depsort> option will tell
 B<pkgman> to sort by dependencies during update.  This option must be
 enabled since you need first to update B<openssl> for example, and
 only then all dependent packages.  The same for Perl, or Python, etc:
@@ -1701,11 +1701,11 @@ owner:
 Third, specify these directories in F</etc/pkgmk.conf>, so that when
 you call L<pkgmk(8)>, these directories will be used.
 
-  ... skipped
+  [...]
   PKGMK_SOURCE_DIR=/var/cache/pkgmk/sources
   PKGMK_PACKAGE_DIR=/var/cache/pkgmk/packages
   PKGMK_WORD_DIR=/var/cache/pkgmk/work/$name-$$
-  ... skipped
+  [...]
 
 Fourth, tell L<pkgman(1)> to call L<pkgmk(8)> on behalf of C<pkgmk>
 user.  To do that, edit variable C<makecommand> in the
