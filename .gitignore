@@ -1,6 +1,8 @@
 # build files and artefacts
 handbook.7
-Zeppe-Lin-Handbook.pdf
+handbook.7.pdf
+handbook.7.pod
+handbook.7.txt
 
 # vim undo and swap files
 .*.un~
