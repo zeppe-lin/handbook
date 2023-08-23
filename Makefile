@@ -2,10 +2,10 @@
 
 include config.mk
 
-POD = handbook.7.pod
 MAN = handbook.7
-TXT = handbook.7.txt
 PDF = handbook.7.pdf
+POD = handbook.7.pod
+TXT = handbook.7.txt
 
 SRC = $(wildcard src/*.pod)
 
