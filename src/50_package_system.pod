@@ -254,13 +254,13 @@ l | l
 l | l.
 Option @ Description
 _
--f, --footprint=FILE @ print footprint for FILE
--i, --installed @ list installed packages and their version
--l, --list=PACKAGE|FILE @ list files in PACKAGE or FILE
--o, --owner=PATTERN @ list owner(s) of file(s) matching PATTERN
--r, --root=DIR @ specify an alternate root directory
--v, --version @ print version and exit
--h, --help @ print help and exit
+-f, --footprint=FILE@print footprint for FILE
+-i, --installed@list installed packages and their version
+-l, --list=PACKAGE|FILE@list files in PACKAGE or FILE
+-o, --owner=PATTERN@list owner(s) of file(s) matching PATTERN
+-r, --root=DIR@specify an alternate root directory
+-v, --version@print version and exit
+-h, --help@print help and exit
 .TE
 
 =end man
