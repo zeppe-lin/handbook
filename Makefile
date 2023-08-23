@@ -7,17 +7,22 @@ MAN = handbook.7
 TXT = handbook.7.txt
 PDF = handbook.7.pdf
 
+SRC = $(wildcard src/*.pod)
+
 all: help
 help:
 
-man:
+pod: ${SRC}
+	perl -0pe 's/\R?$$/\n\n/' $^ > ${POD}
+
+man: pod
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
 		-n handbook -s 7 ${POD} > ${MAN}
 
-txt:
+txt: pod
 	pod2text ${POD} > ${TXT}
 
-pdf:
+pdf: pod
 	pod2pdf --footer-text "${NAME} ${VERSION}" \
 		--title "${DESCRIPTION}" ${POD} > ${PDF}
 
@@ -30,7 +35,7 @@ uninstall-man:
 	rm -f ${DESTDIR}${MANPREFIX}/man7/handbook.7
 
 clean:
-	rm -f ${MAN} ${TXT} ${PDF}
+	rm -f ${POD} ${MAN} ${TXT} ${PDF}
 	rm -f ${DIST}.tar.gz
 
 dist: clean
