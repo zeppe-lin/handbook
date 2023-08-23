@@ -1970,8 +1970,8 @@ and append the output to the F</etc/wpa_supplicant.conf> file:
 Then, run F</etc/rc.d/wpa_supplicant> and F</etc/rc.d/dhcpcd>
 services.
 
-  # /etc/rc.d/wpa_supplicant
-  # /etc/rc.d/dhcpcd
+  # /etc/rc.d/wpa_supplicant start
+  # /etc/rc.d/dhcpcd start
 
 To use B<WPA-EAP> generate the password hash like this:
 
