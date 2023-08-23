@@ -1,5 +1,3 @@
-.POSIX:
-
 include config.mk
 
 MAN = handbook.7
