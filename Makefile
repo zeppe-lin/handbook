@@ -30,7 +30,7 @@ uninstall-man:
 	rm -f ${DESTDIR}${MANPREFIX}/man7/handbook.7
 
 clean:
-	rm -f ${MAN} ${PDF} ${TXT}
+	rm -f ${MAN} ${TXT} ${PDF}
 	rm -f ${DIST}.tar.gz
 
 dist: clean
