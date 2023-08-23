@@ -86,11 +86,11 @@ c.
 <WARNING>
 _
 .SP
-It is often not a good idea to force the installation unless you
-really know what you are doing.  If a package conflicts with already
-installed files it could be a sign that the package is broken and
-installs unexpected files.  Use this option with extreme care,
-preferably not at all.
+It is often not a good idea to force the installation unless
+you really know what you are doing.  If a package conflicts
+with already installed files it could be a sign that the
+package is broken and installs unexpected files.  Use this
+option with extreme care, preferably not at all.
 .TE
 
 =end man
@@ -213,11 +213,11 @@ c.
 <WARNING>
 _
 .SP
-This will remove all files owned by the package, no questions asked.
-Think twice before doing it and make sure that you did not misspell
-the package name since that could remove something completely
-different (e.g. think about what could happen if you misspelled glib
-as glibc).
+This will remove all files owned by the package, no questions
+asked.  Think twice before doing it and make sure that you did
+not misspell the package name since that could remove something
+completely different (e.g., think about what could happen if
+you misspelled glib as glibc).
 .TE
 
 =end man
