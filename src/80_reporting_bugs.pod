@@ -1,0 +1,14 @@
+=head1 REPORTING BUGS
+
+The source code for this site is available at:
+L<https://github.com/zeppe-lin/zeppe-lin.github.io>.  Please note that
+it is generated (by L<pod2html(1pm)>) from the handbook, which is
+available at L<https://github.com/zeppe-lin/handbook>.  If you'd like
+to fix some C<CSS> bugs and build files, refer to the source code of
+the site, otherwise to the handbook source.
+
+Also, note that almost everything in Zeppe-Lin is distributed as a
+package, so if you found any bug in the documentation and code, refer
+to the Zeppe-Lin source code: L<https://github.com/zeppe-lin>.
+
+=cut

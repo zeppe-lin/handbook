@@ -1,0 +1,729 @@
+=head1 THE PACKAGE SYSTEM
+
+=head2 Introduction
+
+=head3 Basic package management tools
+
+The package system (B<pkgutils>) is a fork of CRUX's pkgutils.
+It is made with simplicity in mind, where all packages are plain
+I<tar.gz files> (i.e. without any kind of metadata).
+
+Packages follow the naming convention
+I<name#version-release.pkg.tar.gz>, where I<name> is the name of the
+program, I<version> is the version number of the program, and
+I<release> is the version number of the package.
+
+The I<pkg.tar.gz> extension is used (instead of just I<tar.gz>) to
+indicate that this is not just any I<tar.gz> file, but a I<tar.gz>
+that is meant to be installed using L<pkgadd(8)>.  This helps
+distinguish packages from other I<tar.gz> files.  Note that
+L<pkgmk(8)> supports additional compression schemes like B<bzip2> with
+the I<tar.bz2> extension, B<lzip> with I<tar.lz>, B<xz> with I<tar.xz>,
+or C<zstd> ending with I<tar.zst>.
+
+L<pkgadd(8)>, L<pkgrm(8)>, and L<pkginfo(1)> are the basic package
+management utilities and are part of the package B<pkgutils>.  In
+addition to them, package management includes utilities such as
+L<pkgmk(8)>, L<rejmerge(8)>, and L<revdep(1)>.
+
+They could also be considered basic, but they are placed in separate
+packages so that changes in one utility do not require rebuilding all
+of them.
+
+With these utilities, you can install, uninstall, inspect, make
+packages, query the package database, merge files that were rejected
+during package upgrades, and check for missing libraries of installed
+packages.
+
+When a new package is installed using L<pkgadd(8)>, a new record is
+added to the package database (stored in F</var/lib/pkg/db>).  The
+basic package system does not have any kind of dependency checking,
+this will not warn you if you install a package that requires other
+packages to be installed.  The included L<pkgman(1)> tool (B<pkgman>),
+however, does support dependencies.
+
+The following sections will describe in short how to use the package
+utilities.  Additional information about these utilities can be found
+on their respective manpage.
+
+=head2 Using the Package System
+
+=head3 Installing a package
+
+Installing a package is done by using L<pkgadd(8)>.  This utility
+requires at least one argument, the package you want to install.
+Example:
+
+  # pkgadd bash#5.0.18-1.pkg.tar.gz
+
+When installing a package the package manager will ensure that no
+previously installed files are overwritten.  If conflicts are found,
+an error message will be printed and L<pkgadd(8)> will abort without
+installing the package.  The error message will contain the names of
+the conflicting files.  Example:
+
+  # pkgadd bash#5.0.18-1.pkg.tar.gz
+  bin/sh
+  usr/share/man/man1/sh.1.gz
+  pkgadd error: listed file(s) already installed (use -f to ignore and overwrite)
+
+To force the installation and overwrite the conflicting files, you
+can use the option B<-f> (or B<--force>).  Example:
+
+  # pkgadd -f bash#5.0.18-1.pkg.tar.gz
+
+The package system allows a file to be owned by exactly one package.
+When forcing an installation the ownership of the conflicting files
+will be transferred to the package that is currently being installed.
+Directories can however be owned by more than one package.
+
+=begin man
+
+.TS
+center, box, tab (|) ;
+c
+c.
+<WARNING>
+_
+.SP
+It is often not a good idea to force the installation unless you
+really know what you are doing.  If a package conflicts with already
+installed files it could be a sign that the package is broken and
+installs unexpected files.  Use this option with extreme care,
+preferably not at all.
+.TE
+
+=end man
+
+=begin html
+
+  <table>
+    <tr>
+      <th>WARNING</th>
+    </tr>
+    <tr>
+      <td>It is often not a good idea to force the installation unless
+      you really know what you are doing.  If a package conflicts with
+      already installed files it could be a sign that the package is
+      broken and installs unexpected files.  Use this option with
+      extreme care, preferably not at all.
+      </td>
+    </tr>
+  </table>
+
+=end html
+
+As earlier, the package file itself does not contain any metadata.
+Instead, the L<pkgadd(8)> uses the package filename to determine the
+package name and version.  Thus, when installing a package file named
+I<bash#5.0.18-1.pkg.tar.gz>, L<pkgadd(8)> will interpret this as a
+package named I<bash> at version I<5.0.18-1>.  If L<pkgadd(8)> is
+unable to interpret the filename (e.g. B<#> is missing or the filename
+does not end with .pkg.tar.gz) an error message will be printed and
+L<pkgadd(8)> will abort without installing the package.
+
+=head3 Upgrading a package
+
+Upgrading a package is done using L<pkgadd(8)> with the B<-u> option.
+Example:
+
+  # pkgadd -u bash#5.0.18-1.pkg.tar.gz
+
+This will replace the previously installed bash package with the new
+one.  If you have not previously installed bash, L<pkgadd(8)> will
+print an error message.  L<pkgadd(8)> does not care about the version
+number of the package in that you can "upgrade" version 2.05-1 with
+version 2.04-1 (or even with version 2.05-1 itself).  The installed
+package will be replaced with the specified package.
+
+Upgrading a package is equivalent to executing L<pkgrm(8)> followed by
+L<pkgadd(8)> with one (big) exception.  When upgrading a package (with
+C<pkgadd -u>) you have the option to prevent some of the already
+installed files from getting replaced.  This is typically useful when
+you want to preserve configuration and log files.
+
+When executing L<pkgadd(8)> the file F</etc/pkgadd.conf> will be read.
+This file can contain rules describing how L<pkgadd(8)> should behave
+when doing upgrades.  A rule is built out of three fragments:
+I<event>, I<pattern>, and I<action>.  The I<event> describes in what
+kind of situation this rule applies.  Currently, only one type of
+event is supported, that is UPGRADE.  The I<pattern> is a filename
+pattern expressed as a regular expression and the I<action> applicable
+to the UPGRADE event is YES or NO.  More than one rule of the same
+event type is allowed, in which case the first rule will have the
+lowest priority and the last rule will have the highest priority.
+Example:
+
+  #
+  # /etc/pkgadd.conf: pkgadd(8) configuration
+  #
+
+  UPGRADE         ^etc/.*$                NO
+  UPGRADE         ^var/log/.*$            NO
+  UPGRADE         ^etc/X11/.*$            YES
+  UPGRADE         ^etc/X11/xorg.conf$     NO
+
+  # End of file.
+
+The above example will cause L<pkgadd(8)> to never upgrade anything in
+F</etc/> or F</var/log/> (subdirectories included), except files in
+F</etc/X11/> (subdirectories included), unless it's the file
+F</etc/X11/xorg.conf>.  The default rule is to upgrade everything,
+rules in this file are exceptions to that rule.
+
+B<NOTE:> A pattern should never contain an initial "/" since you are
+referring to the files in the package, not the files on the disk.
+
+See L<pkgadd.conf(5)> for more information.
+
+=head4 rejmerge
+
+If L<pkgadd(8)> finds that a specific file should not be upgraded, it
+will install it under F</var/lib/pkg/rejected/>.  Files in this
+directory are never added to the package database.  The user is then
+free to examine, use and/or remove that file manually.  Another option
+is to use L<rejmerge(8)>.  For each rejected file found in
+F</var/lib/pkg/rejected/>, L<rejmerge(8)> will display the difference
+between the installed version and the rejected version.  The user can
+then choose to keep the installed version, upgrade to the rejected
+version or perform a merge of the two.  Example (using the above
+F</etc/pkgadd.conf>):
+
+  # pkgadd -u bash#5.0.18-1.pkg.tar.gz
+  pkgadd: rejecting etc/profile, keeping existing version
+  # ls /var/lib/pkg/rejected/
+  etc/
+  # ls /var/lib/pkg/rejected/etc/
+  profile
+
+=head3 Removing a package
+
+Removing a package is done by using L<pkgrm(8)>.  This utility
+requires one argument, the name of the package you want to remove.
+Example:
+
+  # pkgrm bash
+
+=begin man
+
+.TS
+center, box, tab (|) ;
+c
+c.
+<WARNING>
+_
+.SP
+This will remove all files owned by the package, no questions asked.
+Think twice before doing it and make sure that you did not misspell
+the package name since that could remove something completely
+different (e.g. think about what could happen if you misspelled glib
+as glibc).
+.TE
+
+=end man
+
+=begin html
+
+  <table>
+    <tr>
+      <th>WARNING</th>
+    </tr>
+    <tr>
+      <td>
+      This will remove all files owned by the package, no questions
+      asked.  Think twice before doing it and make sure that you did
+      not misspell the package name since that could remove something
+      completely different (e.g. think about what could happen if you
+      misspelled glib as glibc).
+      </td>
+    </tr>
+  </table>
+
+=end html
+
+=head3 Querying the package database
+
+Querying the package database is done using L<pkginfo(1)>.  This
+utility has a few options to answer different queries.
+
+=begin man
+
+.TS
+center, box, tab (@) ;
+l | l
+l | l.
+Option @ Description
+_
+-i, --installed @ List installed packages and their version.
+-l, --list=PACKAGE|FILE @ List files in PACKAGE or FILE.
+-o, --owner=PATTERN @ List owner(s) of file(s) matching PATTERN.
+-f, --footprint=FILE @ Print footprint for FILE.
+-r, --root=PATH @ Specify alternative installation root.
+-v, --version @ Print version and exit.
+-h, --help @ Print help and exit.
+.TE
+
+=end man
+
+=begin html
+
+  <table>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>-i, --installed</td>
+      <td>List installed packages and their version.</td>
+    </tr>
+    <tr>
+      <td>-l, --list=PACKAGE|FILE</td>
+      <td>List files in PACKAGE or FILE.</td>
+    </tr>
+    <tr>
+      <td>-o, --owner=PATTERN</td>
+      <td>List owner(s) of file(s) matching PATTERN.</td>
+    </tr>
+    <tr>
+      <td>-f, --footprint=FILE</td>
+      <td>Print footprint for FILE.</td>
+    </tr>
+    <tr>
+      <td>-r, --root=PATH</td>
+      <td>Specify alternative installation root.</td>
+    </tr>
+    <tr>
+      <td>-v, --version</td>
+      <td>Print version and exit.</td>
+    </tr>
+    <tr>
+      <td>-h, --help</td>
+      <td>Print help and exit.</td>
+    </tr>
+  </table>
+
+=end html
+
+=head4 List installed packages and their version
+
+  $ pkginfo -i
+  audiofile 0.2.3-1
+  autoconf 2.52-1
+  automake 1.5-1
+  <...>
+  xmms 1.2.7-1
+  zip 2.3-1
+  zlib 1.1.4-1
+
+=head4 List files in PACKAGE or FILE
+
+  $ pkginfo -l bash
+  bin/
+  bin/bash
+  etc/
+  etc/profile
+  usr/
+  usr/share/man/
+  usr/share/man/man1/
+  usr/share/man/man1/bash.1.gz
+  $ pkginfo -l grep#2.5-1.pkg.tar.gz
+  usr/
+  usr/bin/
+  usr/bin/egrep
+  usr/bin/fgrep
+  usr/bin/grep
+  usr/share/man/
+  usr/share/man/man1/
+  usr/share/man/man1/egrep.1.gz
+  usr/share/man/man1/fgrep.1.gz
+  usr/share/man/man1/grep.1.gz
+
+=head4 List owners of files matching F<bin/ls>
+
+  $ pkginfo -o bin/ls
+  e2fsprogs  usr/bin/lsattr
+  fileutils  bin/ls
+  modutils   sbin/lsmod
+
+=head4 Print footprint for file
+
+  $ pkginfo -f xorg-xkill#1.0.5-1.pkg.tar.gz
+  drwxr-xr-x      root/root       usr/
+  drwxr-xr-x      root/root       usr/share/
+  drwxr-xr-x      root/root       usr/bin/
+  -rwxr-xr-x      root/root       usr/bin/xkill
+  drwxr-xr-x      root/root       usr/share/man/
+  drwxr-xr-x      root/root       usr/share/man/man1/
+  -rw-r--r--      root/root       usr/share/man/man1/xkill.1.gz
+
+This feature is mainly used by L<pkgmk(8)> for creating and comparing
+footprints.
+
+The B<-r> (B<--root>) option should be used if you want to display
+information about a package that is installed on a temporarily mounted
+partition, which is "owned" by another system.  By using this option
+you specify which database to use.
+
+=head2 Package Management Frontend: pkgman
+
+In its current form B<pkgutils> does not have a concept of dependency
+handling.  To address this, a front-end utility called L<pkgman(1)>
+exists.
+
+L<pkgman(1)> supports dependency handling (with the caveat mentioned
+below) as well as some overlap with B<pkgutils> features.
+
+=head3 Functionality
+
+Some examples of pkgman's functionality and use are as follows:
+
+=head4 Listing installed packages
+
+  $ pkgman list
+  acl
+  attr
+  autoconf
+  [...]
+
+  $ pkgman list -v
+  acl 2.3.1-1
+  attr 2.5.1-1
+  autoconf 2.71-1
+  [...]
+
+  $ pkgman list -vv
+  acl 2.3.1-1: Access Control List filesystem support
+  attr 2.5.1-1: Extended attribute support library for ACL support
+  autoconf 2.71-1: Generates automatic source code configuration scripts
+  [...]
+
+=head4 Querying information about a package source
+
+  $ pkgman info acl
+  Name:         acl
+  Path:         /usr/src/pkgsrc-core
+  Version:      2.3.1
+  Release:      1
+  Description:  Access Control List filesystem support
+  URL:          http://savannah.nongnu.org/projects/acl
+  Dependencies: attr
+
+=head4 Searching for packages sources by name
+
+  $ pkgman search -vv glibc
+  -- search ([i] = installed)
+  [i] glibc 2.32-5: GNU C Library
+  [i] glibc-32 2.32-5: GNU C Library (32bit)
+
+  $ pkgman search -vv --regex '^(glib)c?$'
+  -- search ([i] = installed)
+  [i] glib 2.70.1-1: Common C routines used by Gtk+ and other libs
+  [i] glibc 2.32-5: GNU C Library
+
+=head4 Searching for packages sources by words in their description
+
+  $ pkgman dsearch -vv archive
+  -- search ([i] = installed)
+  [i] cpio 2.13-2: Copy files into or out of a cpio or tar archive
+  [i] libarchive 3.5.2-1: Multi-format archive and compression library
+  [ ] unrar 6.0.7-1: Extracts RAR archives
+  [ ] zip 3.0-1: Compression and file packaging/archive utility
+
+=head4 Viewing dependency lists
+
+  $ pkgman dep bash
+  readline
+
+  $ pkgman dep bash --recursive
+  readline
+   ncurses
+
+  $ pkgman dep bash --recursive --tree -vv
+  -- dependencies ([i] = installed, --> seen before)
+  [i] bash 5.1.8-1: GNU Bourne Again Shell
+  [i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
+  [i]     ncurses 6.3-1: System V Release 4.0 curses emulation library
+
+=head4 Installing packages
+
+  $ pkgman install --deps xterm
+
+Note, that the C<install> command B<DOES NOT> process dependencies
+without B<--deps> option, and it's usually recommended to use
+B<--deps> with C<install>.  It is also worth noting that L<pkgman(1)>
+by default tries to install all the packages specified in the
+dependencies, and if one of the dependencies does not build, it will
+skip it, and go further.  In the end, it will show the C<build-failed
+packages> in the report.  This behavior can have unexpected
+consequences if you install many programs with many dependencies at a
+time.  Because, one dependency may not build, and affect the building
+of another dependency, and thereby affect the third, etc.
+
+We can tell L<pkgman(1)> not to skip the fails, but to stop.  Then
+we can fix the package build and start installation further.
+
+There is an option B<--group> for this.  In this handbook, it is
+recommended to use it always, unless you know what you are doing.
+
+  $ pkgman install --deps --group xterm
+
+In case one of the dependency builds has failed, just fix it and
+retry:
+
+  $ pkgman install --deps --group --force xterm
+
+The option B<--force> tell to L<pkgman(1)> to skip installation of
+already installed package(s).  It just ignores the package and
+installs next in the listed order.  At the end of the installation
+procedure, all skipped packages will be in the report.
+
+=head4 Viewing and updating outdated packages
+
+Since the packages sources for Zeppe-Lin are distributed via
+L<git(1)>, the first thing to do is to update the C<pkgsrc>
+collections:
+
+  $ git -C /usr/src/pkgsrc-core    pull
+  $ git -C /usr/src/pkgsrc-system  pull
+  $ git -C /usr/src/pkgsrc-xorg    pull
+  $ git -C /usr/src/pkgsrc-desktop pull
+
+It's maybe annoying to do these few steps every time you want to
+synchronize C<pkgsrc> repositories.  If so, just add these steps to
+your L<crond(8)> daemon and synchronize your local repos once a week,
+for example.
+
+Listing installed packages that are out of date
+(including their new dependencies):
+
+  $ pkgman diff --deps --full
+  -- Differences between installed packages and packages' sources
+  Package                         Installed           Available
+
+  bind                            9.16.7-1            9.16.8-1
+  bindutils                                           9.16.8-1
+
+  --
+  1 update, 1 install
+
+Updating an individual package:
+
+  $ pkgman update --deps --group bind
+
+Updating all installed packages:
+
+  $ pkgman sysup --deps --depsort --group
+
+=head3 Configuration
+
+pkgman's main configuration file, F</etc/pkgman.conf>, contains
+options that can be used to change pkgman's behavior.  Notably in
+this file, the following options can be configured:
+
+=over 4
+
+=item B<pkgsrcdir>
+
+This option can occur multiple times and specifies a directory with a
+packages' sources "collection" which L<pkgman(1)> should check in its
+operation.  By default, the I<core> collection is enabled, but
+I<system>, I<xorg>, I<desktop>, and I<stuff> collections are
+commented.
+
+=item B<runscripts>
+
+This option configures L<pkgman(1)> to run C<pre-install>,
+C<post-install>, C<pre-remove>, and C<post-remove> scripts if they
+exist in the package source directory.  These scripts are run during
+F<install>, F<update>, F<sysup>, and F<remove> operations.
+
+It is recommended that this be enabled as in many cases if these
+scripts exist in a package source directory, it is required to be
+run for proper operation.
+
+=item B<logfile>
+
+This option configures a file for pkgman to log its operation if
+desired.
+
+=back
+
+This is B<NOT> an exhaustive list of all of pkgman's commands,
+features, and configuration options, merely a starting point.  More
+information can be found in L<pkgman(1)> and L<pkgman.conf(5)>.
+
+=head2 Creating Packages
+
+Creating a package is done using L<pkgmk(8)>.  This utility uses a
+file called F<Pkgfile> (see L<Pkgfile(5)> for more info), which
+contains information about the package (such as name, version, etc)
+and the commands that should be executed in order to compile the
+package in question.  To be more specific, the F<Pkgfile> file is
+actually a POSIX L<sh(1p)> script, which defines a number of variables
+(name, version, release, and source) and a function (build).  Below is
+an example of what a F<Pkgfile> file might look like.  The example
+shows how to package the L<grep(1)> utility.  Some comments are
+inserted for explanation.
+
+  # Specify the name of the package.
+  name=grep
+
+  # Specify the version of the package.
+  version=2.4.2
+
+  # Specify the package release.
+  release=1
+
+  # The source(s) used to build this package.
+  source=ftp://ftp.ibiblio.org/pub/gnu/$name/$name-$version.tar.gz
+
+  # The build() function below will be called by pkgmk when
+  # the listed source files have been unpacked.
+  build() {
+          # The first thing we do is to cd into the source directory.
+          cd $name-$version
+
+          # Run the configure script with desired arguments.
+          # In this case we want to put grep under /usr/bin and
+          # disable national language support.
+          ./configure --prefix=/usr --disable-nls
+
+          # Compile.  Use the verbose flag (V=1) to see/log the
+          # compilation flags at build time.
+          make V=1
+
+          # Install the files, BUT do not install it under /usr,
+          # instead we redirect all the files to $PKG/usr by setting
+          # the DESTDIR variable.  The $PKG variable points to a
+          # temporary directory which will later be made into a
+          # tar.gz-file.  Note that the DESTDIR variable is not used
+          # by all Makefiles, some use prefix and others use ROOT,
+          # etc.  You have to inspect the Makefile in question to
+          # find out.  Some Makefiles do not support redirection at
+          # all.  In those cases, you will have to create a patch for
+          # it.
+          make DESTDIR=$PKG install
+
+          # Remove unwanted files, in this case, the info-pages.
+          rm -rf $PKG/usr/info
+  }
+
+In reality, you do not include all those comments, so the real Pkgfile
+for L<grep(1)> looks like this:
+
+  # Description: GNU grep, egrep, and fgrep
+  # URL:         http://www.gnu.org/software/grep/grep.html
+
+  name=grep
+  version=2.4.2
+  release=1
+  source=ftp://ftp.ibiblio.org/pub/gnu/$name/$name-$version.tar.gz
+
+  build() {
+          cd $name-$version
+
+          ./configure --prefix=/usr --disable-nls
+
+          make V=1
+          make DESTDIR=$PKG install
+
+          rm -rf $PKG/usr/info
+  }
+
+Note that the build() function in the example above is just an example
+of how grep is built.  The contents of the function can differ
+significantly if the program is built in some other way, e.g. does not
+use B<autoconf>.
+
+When the build() function has been executed, the C<$PKG> directory
+will be made into a package named I<name#version-release.pkg.tar.gz>.
+Before the package creation is completed, L<pkgmk(8)> will check the
+content of the package against the F<.footprint> file.  If this file
+does not exist, it will be created and the test will be skipped.  The
+F<.footprint> file will contain a list of all files that should be in
+the package if the build was successful or a list of all the files
+that were installed in C<$PKG> (if the F<.footprint> did not already
+exist).  If there is a mismatch the test will fail and an error
+message will be printed.  You should NOT write the F<.footprint> file
+by hand.  Instead, when a package has been upgraded and you need to
+update the contents of the F<.footprint> file you simply do C<pkgmk
+-uf>.  This test ensures that a rebuild of the package turned out as
+expected.
+
+If the package is built without errors it's time to install it by
+using L<pkgadd(8)> and try it out.  It's highly recommended to look at
+the F<Pkgfile> in another package(s) since looking at examples is a
+great way to learn.
+
+See L<Pkgfile(5)> for additional information.
+
+=head2 Adjusting/Configuring the Package Build Process
+
+Many settings of the package build process can be adjusted by
+editing the L<pkgmk(8)> configuration file F</etc/pkgmk.conf>.  Some
+of these configurable settings include:
+
+=over 4
+
+=item CFLAGS, CXXFLAGS
+
+These settings control optimization and architecture options for
+package compilation.  It is best B<NOT> to change these unless you
+absolutely know what you're doing!
+
+=item PKGMK_SOURCE_MIRRORS
+
+This setting defines locations from which pkgmk will attempt to fetch
+source archives.
+
+=item PKGMK_SOURCE_DIR
+
+This setting defines where pkgmk will store (if downloading) and
+use source archives when building.
+
+=item PKGMK_PACKAGE_DIR
+
+This setting defines where pkgmk will create package files once
+the build process is complete.
+
+=item PKGMK_WORK_DIR
+
+This setting defines a work area that pkgmk will use to build
+the package.
+
+=back
+
+Here are some examples:
+
+  PKGMK_SOURCE_MIRRORS="http://fileserver.intranet/crux/sources/"
+
+This setting instructs pkgmk to attempt to fetch all source
+archives from I<http://fileserver.intranet/zeppe-lin/sources/> before
+falling back to the source URL specified in the Pkgfile.  Multiple
+URLs can be separated by spaces (the spaces in the URL itself replace
+by C<%20>!).
+
+  PKGMK_SOURCE_DIR="/var/cache/pkgmk/sources"
+
+This setting instructs pkgmk to store and find source archives
+in C</var/cache/pkgmk/sources>.  An example benefit of this setup
+would be the ability to store C</var/cache/pkgmk/sources> on an NFS
+server on your local network for use by multiple Zeppe-Lin
+installations.  C<PKGMK_PACKAGE_DIR> can be set and used the same way.
+
+  PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name"
+
+This setting instructs pkgmk to use
+C</var/cache/pkgmk/work/$name> as a work area for building the
+specified package.  Building the B<grep> package would result in the
+work area being C</var/cache/pkgmk/work/grep>.  An alternative would
+be to use a L<tmpfs(5)> as your work directory.
+
+There are a few more settings that can be found on the
+L<pkgmk.conf(5)> manual page.
+
+=head2 Package Guidelines
+
+A detailed guideline is described in L<Pkgfile(5)> manual page.
+
+=cut
