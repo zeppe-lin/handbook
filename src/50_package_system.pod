@@ -254,10 +254,10 @@ l | l
 l | l.
 Option @ Description
 _
+-f, --footprint=FILE @ print footprint for FILE
 -i, --installed @ list installed packages and their version
 -l, --list=PACKAGE|FILE @ list files in PACKAGE or FILE
 -o, --owner=PATTERN @ list owner(s) of file(s) matching PATTERN
--f, --footprint=FILE @ print footprint for FILE
 -r, --root=DIR @ specify an alternate root directory
 -v, --version @ print version and exit
 -h, --help @ print help and exit
@@ -273,6 +273,10 @@ _
       <th>Description</th>
     </tr>
     <tr>
+      <td>-f, --footprint=FILE</td>
+      <td>print footprint for FILE</td>
+    </tr>
+    <tr>
       <td>-i, --installed</td>
       <td>list installed packages and their version</td>
     </tr>
@@ -283,10 +287,6 @@ _
     <tr>
       <td>-o, --owner=PATTERN</td>
       <td>list owner(s) of file(s) matching PATTERN</td>
-    </tr>
-    <tr>
-      <td>-f, --footprint=FILE</td>
-      <td>print footprint for FILE</td>
     </tr>
     <tr>
       <td>-r, --root=DIR</td>
