@@ -13,7 +13,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Check PODs for syntax errors
+    - name: Make POD file
+      run: make pod
+
+    - name: Check POD file for syntax errors
       run: make -f Makefile.lint podchecker
 
 # End of file.
