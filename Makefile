@@ -4,8 +4,8 @@ include config.mk
 
 POD = handbook.7.pod
 MAN = handbook.7
-TXT = Zeppe-Lin-Handbook.txt
-PDF = Zeppe-Lin-Handbook.pdf
+TXT = handbook.7.txt
+PDF = handbook.7.pdf
 
 all: help
 help:
