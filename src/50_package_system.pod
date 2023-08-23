@@ -191,10 +191,10 @@ F</etc/pkgadd.conf>):
 
   # pkgadd -u bash#5.0.18-1.pkg.tar.gz
   pkgadd: rejecting etc/profile, keeping existing version
-  # ls /var/lib/pkg/rejected/
-  etc/
-  # ls /var/lib/pkg/rejected/etc/
-  profile
+  # tree --charset=ascii /var/lib/pkg/rejected
+  /var/lib/pkg/rejected
+  `-- etc
+      `-- profile
 
 =head3 Removing a package
 
