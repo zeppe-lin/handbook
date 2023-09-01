@@ -367,11 +367,9 @@ you specify which database to use.
 =head2 Package Management Frontend: pkgman
 
 In its current form B<pkgutils> does not have a concept of dependency
-handling.  To address this, a front-end utility called L<pkgman(1)>
-exists.
-
-L<pkgman(1)> supports dependency handling (with the caveat mentioned
-below) as well as some overlap with B<pkgutils> features.
+handling.  To address this, a front-end utility called B<pkgman>
+exists.  L<pkgman(1)> supports dependency handling (with the caveat
+mentioned below) as well as some overlap with B<pkgutils> features.
 
 =head3 Functionality
 
