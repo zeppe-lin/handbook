@@ -6,7 +6,7 @@
 
 The package system (B<pkgutils>) is a fork of CRUX's pkgutils.
 It is made with simplicity in mind, where all packages are plain
-I<tar.gz files> (i.e. without any kind of metadata).
+I<tar.gz> files (i.e. without any kind of metadata).
 
 Packages follow the naming convention
 I<name#version-release.pkg.tar.gz>, where I<name> is the name of the
@@ -68,7 +68,7 @@ the conflicting files.  Example:
   pkgadd error: listed files already installed (use -f to ignore and overwrite)
 
 To force the installation and overwrite the conflicting files, you
-can use the option B<-f> (or B<--force>).  Example:
+can use the option B<-f>/B<--force>.  Example:
 
   # pkgadd -f bash#5.0.18-1.pkg.tar.gz
 
@@ -360,7 +360,7 @@ _
 This feature is mainly used by L<pkgmk(8)> for creating and comparing
 footprints.
 
-The B<-r> (B<--root>) option should be used if you want to display
+The B<-r>/B<--root> option should be used if you want to display
 information about a package that is installed on a temporarily mounted
 partition, which is "owned" by another system.  By using this option
 you specify which database to use.
