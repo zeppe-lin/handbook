@@ -177,7 +177,7 @@ referring to the files in the package, not the files on the disk.
 
 See L<pkgadd.conf(5)> for more information.
 
-=head4 rejmerge
+=head4 Rejected files
 
 If L<pkgadd(8)> finds that a specific file should not be upgraded, it
 will install it under F</var/lib/pkg/rejected/>.  Files in this
