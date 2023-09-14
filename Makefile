@@ -5,13 +5,11 @@ PDF = handbook.7.pdf
 POD = handbook.7.pod
 TXT = handbook.7.txt
 
-SRC = $(wildcard src/*.pod)
-
 all: help
 help:
 
-pod: ${SRC}
-	perl -0pe 's/\R?$$/\n\n/' $^ > ${POD}
+pod:
+	perl -0pe 's/\R?$$/\n\n/' $(wildcard src/*.pod) > ${POD}
 
 man: pod
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
