@@ -27,14 +27,14 @@ _
 
 =begin html
 
-  <table>
-    <tr> <th>Runlevel</th> <th>Description</th>      </tr>
-    <tr> <td>0</td>        <td>Halt</td>             </tr>
-    <tr> <td>1 (S)</td>    <td>Single-User Mode</td> </tr>
-    <tr> <td>2</td>        <td>Multi-User Mode</td>  </tr>
-    <tr> <td>3-5</td>      <td>(Not Used)</td>       </tr>
-    <tr> <td>6</td>        <td>Reboot</td>           </tr>
-  </table>
+    <table>
+        <tr>    <th>Runlevel</th>   <th>Description</th>        </tr>
+        <tr>    <td>0</td>          <td>Halt</td>               </tr>
+        <tr>    <td>1 (S)</td>      <td>Single-User Mode</td>   </tr>
+        <tr>    <td>2</td>          <td>Multi-User Mode</td>    </tr>
+        <tr>    <td>3-5</td>        <td>(Not Used)</td>         </tr>
+        <tr>    <td>6</td>          <td>Reboot</td>             </tr>
+    </table>
 
 =end html
 
@@ -68,44 +68,44 @@ _
 
 =begin html
 
- <table>
-  <tr>
-    <th>File</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>/etc/rc</td>
-    <td>System boot script</td>
-  </tr>
-  <tr>
-    <td>/etc/rc.single</td>
-    <td>Single-User startup script</td>
-  </tr>
-  <tr>
-    <td>/etc/rc.multi</td>
-    <td>Multi-User startup script</td>
-  </tr>
-  <tr>
-    <td>/etc/rc.modules</td>
-    <td>Module initialization script</td>
-  </tr>
-  <tr>
-    <td>/etc/rc.local</td>
-    <td>Local multi-user startup script</td>
-  </tr>
-  <tr>
-    <td>/etc/rc.shutdown</td>
-    <td>System shutdown script</td>
-  </tr>
-  <tr>
-    <td>/etc/rc.conf</td>
-    <td>System configuration</td>
-  </tr>
-  <tr>
-    <td>/etc/rc.d/</td>
-    <td>Service start/stop directory</td>
-  </tr>
- </table>
+    <table>
+        <tr>
+            <th>File</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>/etc/rc</td>
+            <td>System boot script</td>
+        </tr>
+        <tr>
+            <td>/etc/rc.single</td>
+            <td>Single-User startup script</td>
+        </tr>
+        <tr>
+            <td>/etc/rc.multi</td>
+            <td>Multi-User startup script</td>
+        </tr>
+        <tr>
+            <td>/etc/rc.modules</td>
+            <td>Module initialization script</td>
+        </tr>
+        <tr>
+            <td>/etc/rc.local</td>
+            <td>Local multi-user startup script</td>
+        </tr>
+        <tr>
+            <td>/etc/rc.shutdown</td>
+            <td>System shutdown script</td>
+        </tr>
+        <tr>
+            <td>/etc/rc.conf</td>
+            <td>System configuration</td>
+        </tr>
+        <tr>
+            <td>/etc/rc.d/</td>
+            <td>Service start/stop directory</td>
+       </tr>
+   </table>
 
 =end html
 
@@ -122,7 +122,7 @@ B<glibc> does not contain all possible locales, thus you'll have to
 generate the locales you need/use.  The following example is a typical
 setup for US users, replace C<en_US*> with the locale you want:
 
-  # localedef -i en_US -f UTF-8 en_US.UTF-8
+    # localedef -i en_US -f UTF-8 en_US.UTF-8
 
 You may wish to add C<export LANG=en_US.UTF-8> to F</etc/profile>.
 
@@ -135,50 +135,50 @@ To enable this service you need to add C<net> to the C<SERVICES>
 string in  F</etc/rc.conf>.  By default, this RC script configures a
 static IP address.  Example:
 
-  #!/bin/sh -e
-  #
-  # /etc/rc.d/net: start/stop network interface
-  #
+    #!/bin/sh -e
+    #
+    # /etc/rc.d/net: start/stop network interface
+    #
 
-  DEV=enp11s0
+    DEV=enp11s0
 
-  ADDR=192.168.1.100
-  MASK=24
-  GW=192.168.1.1
+    ADDR=192.168.1.100
+    MASK=24
+    GW=192.168.1.1
 
-  case $1 in
-  start)
-          /sbin/ip addr add $ADDR/$MASK dev $DEV broadcast +
-          /sbin/ip link set $DEV up
-          /sbin/ip route add default via $GW
-          ;;
-  stop)
-          /sbin/ip route del default
-          /sbin/ip link set $DEV down
-          /sbin/ip addr del $ADDR/$MASK dev $DEV
-          ;;
-  restart)
-          $0 stop
-          $0 start
-          ;;
-  *)
-          echo "Usage: $0 [start|stop|restart]"
-          ;;
-  esac
+    case $1 in
+    start)
+            /sbin/ip addr add $ADDR/$MASK dev $DEV broadcast +
+            /sbin/ip link set $DEV up
+            /sbin/ip route add default via $GW
+            ;;
+    stop)
+            /sbin/ip route del default
+            /sbin/ip link set $DEV down
+            /sbin/ip addr del $ADDR/$MASK dev $DEV
+            ;;
+    restart)
+            $0 stop
+            $0 start
+            ;;
+    *)
+            echo "Usage: $0 [start|stop|restart]"
+            ;;
+    esac
 
-  # End of file.
+    # End of file.
 
 You will also need to configure DNS settings in C</etc/resolv.conf>.
 Example:
 
-  #
-  # /etc/resolv.conf: resolver configuration file
-  #
+    #
+    # /etc/resolv.conf: resolver configuration file
+    #
 
-  search <your internal domain>
-  nameserver <your DNS server>
+    search <your internal domain>
+    nameserver <your DNS server>
 
-  # End of file.
+    # End of file.
 
 =head4 Dynamic address
 
@@ -190,8 +190,8 @@ install the C<dhcpcd> package and run F</etc/rc.d/dhcpcd> service.
 Before using wireless networking, use L<rfkill(8)> to check whether
 the relevant interfaces are soft- or hard-blocked:
 
-  rfkill list
-  rfkill unblock <ID|TYPE>
+    rfkill list
+    rfkill unblock <ID|TYPE>
 
 Next, install the C<wpa-supplicant> package.  It includes utilities to
 configure wireless interfaces and handle wireless security protocols.
@@ -201,28 +201,28 @@ F</etc/rc.d/wpa_supplicant> service.
 To use B<WPA-PSK>, generate a pre-shared key with L<wpa_passphrase(8)>
 and append the output to the F</etc/wpa_supplicant.conf> file:
 
-  # wpa_passphrase <MYSSID> <passphrase> >> /etc/wpa_supplicant.conf
+    # wpa_passphrase <MYSSID> <passphrase> >> /etc/wpa_supplicant.conf
 
 Then, run F</etc/rc.d/wpa_supplicant> and F</etc/rc.d/dhcpcd>
 services.
 
-  # /etc/rc.d/wpa_supplicant start
-  # /etc/rc.d/dhcpcd start
+    # /etc/rc.d/wpa_supplicant start
+    # /etc/rc.d/dhcpcd start
 
 To use B<WPA-EAP> generate the password hash like this:
 
-  # echo -n <passphrase> | iconv -t utf16le | openssl md4
+    # echo -n <passphrase> | iconv -t utf16le | openssl md4
 
 For B<WEP> configuration, add the following lines to your
 F</etc/wpa_supplicant.conf>:
 
-  network={
-      ssid="MYSSID"
-      key_mgmt=NONE
-      wep_key0="YOUR AP WEP KEY"
-      wep_tx_keyidx=0
-      auth_alg=SHARED
-  }
+    network={
+        ssid="MYSSID"
+        key_mgmt=NONE
+        wep_key0="YOUR AP WEP KEY"
+        wep_tx_keyidx=0
+        auth_alg=SHARED
+    }
 
 =head2 Passwords
 
@@ -238,3 +238,5 @@ linking) which contains the C<SHA512> version of the crypt function
 as well).
 
 =cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70
