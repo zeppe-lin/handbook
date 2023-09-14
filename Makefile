@@ -9,8 +9,8 @@ all: help
 help:
 
 pod:
-	perl -0pe 's/\R?$$/\n\n/' $(wildcard src/*.pod) > ${POD}
-	sed -i '/^# vim: .*/d' ${POD}
+	perl -0pe 's/\R?$$/\n\n/' $(wildcard src/*.pod) | \
+		sed '/^# vim: .*/d' > ${POD}
 
 man: pod
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
