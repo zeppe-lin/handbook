@@ -1,0 +1,19 @@
+=head2 Generating locales
+
+B<glibc> does not contain all possible locales, thus you'll have to
+generate the locales you need/use.  To ensure the proper operation of
+L<pkgmk(8)>, the locale C<C.UTF-8> is generated as part of the
+B<glibc> package.  Any other desired locales must be created by the
+administrator.
+
+The following example is a typical setup for US users, replace
+C<en_US*> with the locale you want:
+
+    # localedef -i en_US -f UTF-8 en_US.UTF-8
+
+To use this locale system-wide, add C<export LANG=en_US.UTF-8> to
+F</etc/profile>.
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

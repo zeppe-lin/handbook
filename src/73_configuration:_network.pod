@@ -1,0 +1,101 @@
+=head2 Network configuration
+
+=head3 Static address
+
+The network configuration is found in the RC script F</etc/rc.d/net>.
+To enable this service you need to add C<net> to the C<SERVICES>
+string in  F</etc/rc.conf>.  By default, this RC script configures a
+static IP address.  Example:
+
+    #!/bin/sh -e
+    #
+    # /etc/rc.d/net: start/stop network interface
+    #
+
+    DEV=enp11s0
+
+    ADDR=192.168.1.100
+    MASK=24
+    GW=192.168.1.1
+
+    case $1 in
+    start)
+            /sbin/ip addr add $ADDR/$MASK dev $DEV broadcast +
+            /sbin/ip link set $DEV up
+            /sbin/ip route add default via $GW
+            ;;
+    stop)
+            /sbin/ip route del default
+            /sbin/ip link set $DEV down
+            /sbin/ip addr del $ADDR/$MASK dev $DEV
+            ;;
+    restart)
+            $0 stop
+            $0 start
+            ;;
+    *)
+            echo "Usage: $0 [start|stop|restart]"
+            ;;
+    esac
+
+    # End of file.
+
+You will also need to configure DNS settings in C</etc/resolv.conf>.
+Example:
+
+    #
+    # /etc/resolv.conf: resolver configuration file
+    #
+
+    search <your internal domain>
+    nameserver <your DNS server>
+
+    # End of file.
+
+=head3 Dynamic address
+
+If you want to configure your system to use a dynamic IP address,
+install the C<dhcpcd> package and run F</etc/rc.d/dhcpcd> service.
+
+=head3 Wireless network
+
+Before using wireless networking, use L<rfkill(8)> to check whether
+the relevant interfaces are soft- or hard-blocked:
+
+    rfkill list
+    rfkill unblock <ID|TYPE>
+
+Next, install the C<wpa-supplicant> package.  It includes utilities to
+configure wireless interfaces and handle wireless security protocols.
+To use C<wpa_supplicant>, you will need to enable
+F</etc/rc.d/wpa_supplicant> service.
+
+To use B<WPA-PSK>, generate a pre-shared key with L<wpa_passphrase(8)>
+and append the output to the F</etc/wpa_supplicant.conf> file:
+
+    # wpa_passphrase <MYSSID> <passphrase> >> /etc/wpa_supplicant.conf
+
+Then, run F</etc/rc.d/wpa_supplicant> and F</etc/rc.d/dhcpcd>
+services.
+
+    # /etc/rc.d/wpa_supplicant start
+    # /etc/rc.d/dhcpcd start
+
+To use B<WPA-EAP> generate the password hash like this:
+
+    # echo -n <passphrase> | iconv -t utf16le | openssl md4
+
+For B<WEP> configuration, add the following lines to your
+F</etc/wpa_supplicant.conf>:
+
+    network={
+        ssid="MYSSID"
+        key_mgmt=NONE
+        wep_key0="YOUR AP WEP KEY"
+        wep_tx_keyidx=0
+        auth_alg=SHARED
+    }
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70
