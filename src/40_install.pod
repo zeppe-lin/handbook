@@ -246,7 +246,7 @@ locale you need):
 
     (chrooted) # localedef -i en_US -f UTF-8 en_US.UTF-8
 
-Then add C<LANG=en_US.UTF-8> to F</etc/profile> to make it
+Then add C<export LANG=en_US.UTF-8> to F</etc/profile> to make it
 system-wide.
 
 Edit F</etc/fstab> (see L<fstab(5)> for more information) to configure
