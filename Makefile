@@ -10,6 +10,7 @@ help:
 
 pod:
 	perl -0pe 's/\R?$$/\n\n/' $(wildcard src/*.pod) > ${POD}
+	sed -i '/^# vim: .*/d' ${POD}
 
 man: pod
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
