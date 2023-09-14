@@ -11,70 +11,70 @@ an example of what a F<Pkgfile> file might look like.  The example
 shows how to package the L<grep(1)> utility.  Some comments are
 inserted for explanation.
 
-  # Specify the name of the package.
-  name=grep
+    # Specify the name of the package.
+    name=grep
 
-  # Specify the version of the package.
-  version=2.4.2
+    # Specify the version of the package.
+    version=2.4.2
 
-  # Specify the package release.
-  release=1
+    # Specify the package release.
+    release=1
 
-  # The source(s) used to build this package.
-  source=ftp://ftp.ibiblio.org/pub/gnu/$name/$name-$version.tar.gz
+    # The source(s) used to build this package.
+    source=ftp://ftp.ibiblio.org/pub/gnu/$name/$name-$version.tar.gz
 
-  # The build() function below will be called by pkgmk when
-  # the listed source files have been unpacked.
-  build() {
-          # The first thing we do is to cd into the source directory.
-          cd $name-$version
+    # The build() function below will be called by pkgmk when
+    # the listed source files have been unpacked.
+    build() {
+            # The first thing we do is to cd into the source directory.
+            cd $name-$version
 
-          # Run the configure script with desired arguments.
-          # In this case we want to put grep under /usr/bin and
-          # disable national language support.
-          ./configure --prefix=/usr --disable-nls
+            # Run the configure script with desired arguments.
+            # In this case we want to put grep under /usr/bin and
+            # disable national language support.
+            ./configure --prefix=/usr --disable-nls
 
-          # Compile.  Use the verbose flag (V=1) to see/log the
-          # compilation flags at build time.
-          make V=1
+            # Compile.  Use the verbose flag (V=1) to see/log the
+            # compilation flags at build time.
+            make V=1
 
-          # Install the files, BUT do not install it under /usr,
-          # instead we redirect all the files to $PKG/usr by setting
-          # the DESTDIR variable.  The $PKG variable points to a
-          # temporary directory which will later be made into a
-          # tar.gz-file.  Note that the DESTDIR variable is not used
-          # by all Makefiles, some use prefix and others use ROOT,
-          # etc.  You have to inspect the Makefile in question to
-          # find out.  Some Makefiles do not support redirection at
-          # all.  In those cases, you will have to create a patch for
-          # it.
-          make DESTDIR=$PKG install
+            # Install the files, BUT do not install it under /usr,
+            # instead we redirect all the files to $PKG/usr by setting
+            # the DESTDIR variable.  The $PKG variable points to a
+            # temporary directory which will later be made into a
+            # tar.gz-file.  Note that the DESTDIR variable is not used
+            # by all Makefiles, some use prefix and others use ROOT,
+            # etc.  You have to inspect the Makefile in question to
+            # find out.  Some Makefiles do not support redirection at
+            # all.  In those cases, you will have to create a patch for
+            # it.
+            make DESTDIR=$PKG install
 
-          # Remove unwanted files, in this case, the info-pages.
-          rm -rf $PKG/usr/info
-  }
+            # Remove unwanted files, in this case, the info-pages.
+            rm -rf $PKG/usr/info
+    }
 
 In reality, you do not include all those comments, so the real Pkgfile
 for L<grep(1)> looks like this:
 
-  # Description: GNU grep, egrep, and fgrep
-  # URL:         http://www.gnu.org/software/grep/grep.html
+    # Description: Pattern matching utilities
+    # URL:         https://www.gnu.org/software/grep/grep.html
 
-  name=grep
-  version=2.4.2
-  release=1
-  source=ftp://ftp.ibiblio.org/pub/gnu/$name/$name-$version.tar.gz
+    name=grep
+    version=2.4.2
+    release=1
+    source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
 
-  build() {
-          cd $name-$version
+    build() {
+            cd $name-$version
 
-          ./configure --prefix=/usr --disable-nls
+            ./configure --prefix=/usr --disable-nls
 
-          make V=1
-          make DESTDIR=$PKG install
+            make V=1
+            make DESTDIR=$PKG install
 
-          rm -rf $PKG/usr/info
-  }
+            rm -rf $PKG/usr/info
+    }
 
 Note that the build() function in the example above is just an example
 of how grep is built.  The contents of the function can differ
@@ -105,4 +105,4 @@ A detailed guideline is described in L<Pkgfile(5)> manual page.
 
 =cut
 
-# vim: cc=72 tw=70
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

@@ -6,7 +6,7 @@ Installing a package is done by using L<pkgadd(8)>.  This utility
 requires at least one argument, the package you want to install.
 Example:
 
-  # pkgadd bash#5.0.18-1.pkg.tar.gz
+    # pkgadd bash#5.0.18-1.pkg.tar.gz
 
 When installing a package the package manager will ensure that no
 previously installed files are overwritten.  If conflicts are found,
@@ -14,16 +14,16 @@ an error message will be printed and L<pkgadd(8)> will abort without
 installing the package.  The error message will contain the names of
 the conflicting files.  Example:
 
-  # pkgadd bash#5.0.18-1.pkg.tar.gz
-  bin/sh
-  usr/share/man/man1/sh.1.gz
-  pkgadd error: listed files already installed
-      (use -f to ignore and overwrite)
+    # pkgadd bash#5.0.18-1.pkg.tar.gz
+    bin/sh
+    usr/share/man/man1/sh.1.gz
+    pkgadd error: listed files already installed
+        (use -f to ignore and overwrite)
 
 To force the installation and overwrite the conflicting files, you
 can use the option B<-f>/B<--force>.  Example:
 
-  # pkgadd -f bash#5.0.18-1.pkg.tar.gz
+    # pkgadd -f bash#5.0.18-1.pkg.tar.gz
 
 The package system allows a file to be owned by exactly one package.
 When forcing an installation the ownership of the conflicting files
@@ -39,31 +39,33 @@ c.
 <WARNING>
 _
 .SP
-It is often not a good idea to force the installation unless
-you really know what you are doing.  If a package conflicts
-with already installed files it could be a sign that the
-package is broken and installs unexpected files.  Use this
-option with extreme care, preferably not at all.
+It is often not a good idea to force the installation
+unless you really know what you are doing.  If a package
+conflicts with already installed files it could be a sign
+that the package is broken and installs unexpected files.
+Use this option with extreme care, preferably not at all.
 .TE
 
 =end man
 
 =begin html
 
-  <table>
-    <tr>
-      <th>WARNING</th>
-    </tr>
-    <tr>
-      <td>
-      It is often not a good idea to force the installation unless you
-      really know what you are doing.  If a package conflicts with
-      already installed files it could be a sign that the package is
-      broken and installs unexpected files.  Use this option with
-      extreme care, preferably not at all.
-      </td>
-    </tr>
-  </table>
+    <table>
+        <tr>
+            <th>WARNING</th>
+        </tr>
+
+        <tr>
+            <td>
+                It is often not a good idea to force the installation
+                unless you really know what you are doing.  If a
+                package conflicts with already installed files it
+                could be a sign that the package is broken and
+                installs unexpected files.  Use this option with
+                extreme care, preferably not at all.
+            </td>
+        </tr>
+    </table>
 
 =end html
 
@@ -81,7 +83,7 @@ L<pkgadd(8)> will abort without installing the package.
 Upgrading a package is done using L<pkgadd(8)> with the B<-u> option.
 Example:
 
-  # pkgadd -u bash#5.0.18-1.pkg.tar.gz
+    # pkgadd -u bash#5.0.18-1.pkg.tar.gz
 
 This will replace the previously installed bash package with the new
 one.  If you have not previously installed bash, L<pkgadd(8)> will
@@ -108,16 +110,16 @@ event type is allowed, in which case the first rule will have the
 lowest priority and the last rule will have the highest priority.
 Example:
 
-  #
-  # /etc/pkgadd.conf: pkgadd(8) configuration
-  #
+    #
+    # /etc/pkgadd.conf: pkgadd(8) configuration
+    #
 
-  UPGRADE         ^etc/.*$                NO
-  UPGRADE         ^var/log/.*$            NO
-  UPGRADE         ^etc/X11/.*$            YES
-  UPGRADE         ^etc/X11/xorg.conf$     NO
+    UPGRADE       ^etc/.*$                NO
+    UPGRADE       ^var/log/.*$            NO
+    UPGRADE       ^etc/X11/.*$           YES
+    UPGRADE       ^etc/X11/xorg.conf$     NO
 
-  # End of file.
+    # End of file.
 
 The above example will cause L<pkgadd(8)> to never upgrade anything in
 F</etc/> or F</var/log/> (subdirectories included), except files in
@@ -143,12 +145,13 @@ then choose to keep the installed version, upgrade to the rejected
 version or perform a merge of the two.  Example (using the above
 F</etc/pkgadd.conf>):
 
-  # pkgadd -u bash#5.0.18-1.pkg.tar.gz
-  pkgadd: rejecting etc/profile, keeping existing version
-  # tree --charset=ascii /var/lib/pkg/rejected
-  /var/lib/pkg/rejected
-  `-- etc
-      `-- profile
+    # pkgadd -u bash#5.0.18-1.pkg.tar.gz
+    pkgadd: rejecting etc/profile, keeping existing version
+
+    # tree --charset=ascii /var/lib/pkg/rejected
+    /var/lib/pkg/rejected
+    `-- etc
+        `-- profile
 
 =head3 Removing a package
 
@@ -156,7 +159,7 @@ Removing a package is done by using L<pkgrm(8)>.  This utility
 requires one argument, the name of the package you want to remove.
 Example:
 
-  # pkgrm bash
+    # pkgrm bash
 
 =begin man
 
@@ -178,20 +181,22 @@ you misspelled glib as glibc).
 
 =begin html
 
-  <table>
-    <tr>
-      <th>WARNING</th>
-    </tr>
-    <tr>
-      <td>
-      This will remove all files owned by the package, no questions
-      asked.  Think twice before doing it and make sure that you did
-      not misspell the package name since that could remove something
-      completely different (e.g. think about what could happen if you
-      misspelled glib as glibc).
-      </td>
-    </tr>
-  </table>
+    <table>
+        <tr>
+            <th>WARNING</th>
+        </tr>
+
+        <tr>
+            <td>
+                This will remove all files owned by the package, no
+                questions asked.  Think twice before doing it and make
+                sure that you did not misspell the package name since
+                that could remove something completely different (e.g.
+                think about what could happen if you misspelled glib
+                as glibc).
+            </td>
+        </tr>
+    </table>
 
 =end html
 
@@ -221,94 +226,95 @@ _
 
 =begin html
 
-  <table>
-    <tr>
-      <th>Option</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <td>-f, --footprint=FILE</td>
-      <td>print footprint for FILE</td>
-    </tr>
-    <tr>
-      <td>-i, --installed</td>
-      <td>list installed packages and their version</td>
-    </tr>
-    <tr>
-      <td>-l, --list=PACKAGE|FILE</td>
-      <td>list files in PACKAGE or FILE</td>
-    </tr>
-    <tr>
-      <td>-o, --owner=PATTERN</td>
-      <td>list owner(s) of file(s) matching PATTERN</td>
-    </tr>
-    <tr>
-      <td>-r, --root=DIR</td>
-      <td>specify an alternate root directory</td>
-    </tr>
-    <tr>
-      <td>-v, --version</td>
-      <td>print version and exit</td>
-    </tr>
-    <tr>
-      <td>-h, --help</td>
-      <td>print help and exit</td>
-    </tr>
-  </table>
+    <table>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>-f, --footprint=FILE</td>
+            <td>print footprint for FILE</td>
+        </tr>
+        <tr>
+            <td>-i, --installed</td>
+            <td>list installed packages and their version</td>
+        </tr>
+        <tr>
+            <td>-l, --list=PACKAGE|FILE</td>
+            <td>list files in PACKAGE or FILE</td>
+        </tr>
+        <tr>
+            <td>-o, --owner=PATTERN</td>
+            <td>list owner(s) of file(s) matching PATTERN</td>
+        </tr>
+        <tr>
+            <td>-r, --root=DIR</td>
+            <td>specify an alternate root directory</td>
+        </tr>
+        <tr>
+            <td>-v, --version</td>
+            <td>print version and exit</td>
+        </tr>
+        <tr>
+            <td>-h, --help</td>
+            <td>print help and exit</td>
+        </tr>
+    </table>
 
 =end html
 
 =head4 List installed packages and their version
 
-  $ pkginfo -i
-  audiofile 0.2.3-1
-  autoconf 2.52-1
-  automake 1.5-1
-  <...>
-  xmms 1.2.7-1
-  zip 2.3-1
-  zlib 1.1.4-1
+    $ pkginfo -i
+    audiofile 0.2.3-1
+    autoconf 2.52-1
+    automake 1.5-1
+    [...]
+    xmms 1.2.7-1
+    zip 2.3-1
+    zlib 1.1.4-1
 
 =head4 List files in PACKAGE or FILE
 
-  $ pkginfo -l bash
-  bin/
-  bin/bash
-  etc/
-  etc/profile
-  usr/
-  usr/share/man/
-  usr/share/man/man1/
-  usr/share/man/man1/bash.1.gz
-  $ pkginfo -l grep#2.5-1.pkg.tar.gz
-  usr/
-  usr/bin/
-  usr/bin/egrep
-  usr/bin/fgrep
-  usr/bin/grep
-  usr/share/man/
-  usr/share/man/man1/
-  usr/share/man/man1/egrep.1.gz
-  usr/share/man/man1/fgrep.1.gz
-  usr/share/man/man1/grep.1.gz
+    $ pkginfo -l bash
+    bin/
+    bin/bash
+    etc/
+    etc/profile
+    usr/
+    usr/share/man/
+    usr/share/man/man1/
+    usr/share/man/man1/bash.1.gz
+
+    $ pkginfo -l grep#2.5-1.pkg.tar.gz
+    usr/
+    usr/bin/
+    usr/bin/egrep
+    usr/bin/fgrep
+    usr/bin/grep
+    usr/share/man/
+    usr/share/man/man1/
+    usr/share/man/man1/egrep.1.gz
+    usr/share/man/man1/fgrep.1.gz
+    usr/share/man/man1/grep.1.gz
 
 =head4 List owners of files matching F<bin/ls>
 
-  $ pkginfo -o bin/ls
-  e2fsprogs  usr/bin/lsattr
-  fileutils  bin/ls
-  modutils   sbin/lsmod
+    $ pkginfo -o bin/ls
+    e2fsprogs  usr/bin/lsattr
+    fileutils  bin/ls
+    modutils   sbin/lsmod
 
 =head4 Print footprint for file
 
-  $ pkginfo -f xorg-xkill#1.0.5-1.pkg.tar.gz
-  drwxr-xr-x      root/root       usr/
-  drwxr-xr-x      root/root       usr/share/
-  drwxr-xr-x      root/root       usr/bin/
-  -rwxr-xr-x      root/root       usr/bin/xkill
-  drwxr-xr-x      root/root       usr/share/man/
-  drwxr-xr-x      root/root       usr/share/man/man1/
-  -rw-r--r--      root/root       usr/share/man/man1/xkill.1.gz
+    $ pkginfo -f xorg-xkill#1.0.5-1.pkg.tar.gz
+    drwxr-xr-x      root/root       usr/
+    drwxr-xr-x      root/root       usr/share/
+    drwxr-xr-x      root/root       usr/bin/
+    -rwxr-xr-x      root/root       usr/bin/xkill
+    drwxr-xr-x      root/root       usr/share/man/
+    drwxr-xr-x      root/root       usr/share/man/man1/
+    -rw-r--r--      root/root       usr/share/man/man1/xkill.1.gz
 
 This feature is mainly used by L<pkgmk(8)> for creating and comparing
 footprints.
@@ -320,4 +326,4 @@ you specify which database to use.
 
 =cut
 
-# vim: cc=72 tw=70
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

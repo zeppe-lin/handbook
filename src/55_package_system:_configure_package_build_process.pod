@@ -10,86 +10,85 @@ of these configurable settings include:
 center, box, tab (|) ;
 l | l
 l | l.
-Setting | Description
+Setting|Description
 _
 .SP
-CFLAGS               | Define optimization and architecture
-CXXFLAGS             | options for package compilation.
-                     | It's best NOT change these settings
-                     | unless you absolutely know what you're
-                     | doing!
+CFLAGS|Define optimization and
+CXXFLAGS|architecture options for package
+|compilation.
+|
+|It's best NOT change these settings
+|unless you absolutely know what
+|you're doing!
 _
-PKGMK_SOURCE_MIRRORS | Define location(s) from which pkgmk
-                     | will attempt to fetch source archives.
+PKGMK_SOURCE_MIRRORS|Define location(s) from which pkgmk
+|will attempt to fetch source
+|archives.
 _
-PKGMK_SOURCE_DIR     | Define location where pkgmk will store
-                     | (if downloading) and use source archives
-                     | when building.
+PKGMK_SOURCE_DIR|Define location where pkgmk will
+|store (if downloading) and use
+|source archives when building.
 _
-PKGMK_PACKAGE_DIR    | Define location where pkgmk will create
-                     | package files once the build process is
-                     | is complete.
+PKGMK_PACKAGE_DIR|Define location where pkgmk will
+|create package files once the
+|build process is complete.
 _
-PKGMK_WORK_DIR       | Define a work area that pkgmk will use
-                     | to build the package.
+PKGMK_WORK_DIR|Define a work area that pkgmk will
+|use to build the package.
 .TE
 
 =end man
 
 =begin html
 
-  <table>
-    <tr>
-      <th>Setting</th>
-      <th>Description</th>
-    </tr>
-
-    <tr>
-      <td>CFLAGS CXXFLAGS</td>
-      <td>
-        Define optimization and architecture options for package
-        compilation.  It's best NOT change these settings unless
-        you absolutely know what you're doing!
-      </td>
-    </tr>
-
-    <tr>
-      <td>PKGMK_SOURCE_MIRRORS</td>
-      <td>
-        Define location(s) from which pkgmk will attempt to fetch
-        source archives.
-      </td>
-    </tr>
-
-    <tr>
-      <td>PKGMK_SOURCE_DIR</td>
-      <td>
-        Define location where pkgmk will store (if downloading) and
-        use source archives when building.
-      </td>
-    </tr>
-
-    <tr>
-      <td>PKGMK_PACKAGE_DIR</td>
-      <td>
-        Define location where pkgmk will create package files once
-        the build process is complete.
-      </td>
-    </tr>
-
-    <tr>
-      <td>PKGMK_WORK_DIR</td>
-      <td>
-        Define a work area that pkgmk will use to build the package.
-      </td>
-    </tr>
-  </table>
+    <table>
+        <tr>
+            <th>Setting</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>CFLAGS CXXFLAGS</td>
+            <td>
+                Define optimization and architecture options for
+                package compilation.  It's best NOT change these
+                settings unless you absolutely know what you're doing!
+            </td>
+        </tr>
+        <tr>
+            <td>PKGMK_SOURCE_MIRRORS</td>
+            <td>
+                Define location(s) from which pkgmk will attempt to
+                fetch source archives.
+            </td>
+        </tr>
+        <tr>
+            <td>PKGMK_SOURCE_DIR</td>
+            <td>
+                Define location where pkgmk will store (if
+                downloading) and use source archives when building.
+            </td>
+        </tr>
+        <tr>
+            <td>PKGMK_PACKAGE_DIR</td>
+            <td>
+                Define location where pkgmk will create package files
+                once the build process is complete.
+            </td>
+        </tr>
+        <tr>
+            <td>PKGMK_WORK_DIR</td>
+            <td>
+                Define a work area that pkgmk will use to build the
+                package.
+            </td>
+        </tr>
+    </table>
 
 =end html
 
 Here are some examples:
 
-  PKGMK_SOURCE_MIRRORS="http://fileserver.intranet/dist/sources/"
+    PKGMK_SOURCE_MIRRORS="http://fileserver.intranet/dist/sources/"
 
 This setting instructs pkgmk to attempt to fetch all source
 archives from I<http://fileserver.intranet/dist/sources/> before
@@ -97,7 +96,7 @@ falling back to the source URL specified in the Pkgfile.  Multiple
 URLs can be separated by spaces (the spaces in the URL itself replace
 by C<%20>!).
 
-  PKGMK_SOURCE_DIR="/var/cache/pkgmk/sources"
+    PKGMK_SOURCE_DIR="/var/cache/pkgmk/sources"
 
 This setting instructs pkgmk to store and find source archives
 in C</var/cache/pkgmk/sources>.  An example benefit of this setup
@@ -105,7 +104,7 @@ would be the ability to store C</var/cache/pkgmk/sources> on an NFS
 server on your local network for use by multiple Zeppe-Lin
 installations.  C<PKGMK_PACKAGE_DIR> can be set and used the same way.
 
-  PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name"
+    PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name"
 
 This setting instructs pkgmk to use
 C</var/cache/pkgmk/work/$name> as a work area for building the
@@ -118,4 +117,4 @@ L<pkgmk.conf(5)> manual page.
 
 =cut
 
-# vim: sw=2 ts=2 sts=2 et cc=72 tw=70
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

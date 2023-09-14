@@ -11,74 +11,71 @@ Some examples of pkgman's functionality and use are as follows:
 
 =head4 Listing installed packages
 
-  $ pkgman list
-  acl
-  attr
-  autoconf
-  [...]
+    $ pkgman list
+    acl
+    attr
+    [...]
 
-  $ pkgman list -v
-  acl 2.3.1-1
-  attr 2.5.1-1
-  autoconf 2.71-1
-  [...]
+    $ pkgman list -v
+    acl 2.3.1-1
+    attr 2.5.1-1
+    [...]
 
-  $ pkgman list -vv
-  acl 2.3.1-1: Access Control List filesystem support
-  attr 2.5.1-1: Extended attribute support library for ACL support
-  autoconf 2.71-1: Generates automatic source code configuration scripts
-  [...]
+    $ pkgman list -vv
+    acl 2.3.1-1: Access Control List filesystem support
+    attr 2.5.1-1: Extended attribute support library for ACL support
+    [...]
 
 =head4 Querying information about a package source
 
-  $ pkgman info acl
-  Name:         acl
-  Path:         /usr/src/pkgsrc-core
-  Version:      2.3.1
-  Release:      1
-  Description:  Access Control List filesystem support
-  URL:          http://savannah.nongnu.org/projects/acl
-  Dependencies: attr
+    $ pkgman info acl
+    Name:         acl
+    Path:         /usr/src/pkgsrc-core
+    Version:      2.3.1
+    Release:      1
+    Description:  Access Control List filesystem support
+    URL:          http://savannah.nongnu.org/projects/acl
+    Dependencies: attr
 
 =head4 Searching for packages sources by name
 
-  $ pkgman search -vv glibc
-  -- search ([i] = installed)
-  [i] glibc 2.32-5: GNU C Library
-  [i] glibc-32 2.32-5: GNU C Library (32bit)
+    $ pkgman search -vv glibc
+    -- search ([i] = installed)
+    [i] glibc 2.32-5: GNU C Library
+    [i] glibc-32 2.32-5: GNU C Library (32bit)
 
-  $ pkgman search -vv --regex '^(glib)c?$'
-  -- search ([i] = installed)
-  [i] glib 2.70.1-1: Common C routines used by Gtk+ and other libs
-  [i] glibc 2.32-5: GNU C Library
+    $ pkgman search -vv --regex '^(glib)c?$'
+    -- search ([i] = installed)
+    [i] glib 2.70.1-1: Common C routines used by Gtk+ and other libs
+    [i] glibc 2.32-5: GNU C Library
 
 =head4 Searching for packages sources by words in their description
 
-  $ pkgman dsearch -vv archive
-  -- search ([i] = installed)
-  [i] cpio 2.13-2: Copy files into or out of a cpio or tar archive
-  [i] libarchive 3.5.2-1: Multi-format archive and compression library
-  [ ] unrar 6.0.7-1: Extracts RAR archives
-  [ ] zip 3.0-1: Compression and file packaging/archive utility
+    $ pkgman dsearch -vv archive
+    -- search ([i] = installed)
+    [i] cpio 2.13-2: Copy files into or out of a cpio or tar archive
+    [i] libarchive 3.5.2-1: Multi-format archive and compression library
+    [ ] unrar 6.0.7-1: Extracts RAR archives
+    [ ] zip 3.0-1: Compression and file packaging/archive utility
 
 =head4 Viewing dependency lists
 
-  $ pkgman dep bash
-  readline
+    $ pkgman dep bash
+    readline
 
-  $ pkgman dep bash --recursive
-  readline
-   ncurses
+    $ pkgman dep bash --recursive
+    readline
+     ncurses
 
-  $ pkgman dep bash --recursive --tree -vv
-  -- dependencies ([i] = installed, --> seen before)
-  [i] bash 5.1.8-1: GNU Bourne Again Shell
-  [i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
-  [i]     ncurses 6.3-1: System V Release 4.0 curses emulation library
+    $ pkgman dep bash --recursive --tree -vv
+    -- dependencies ([i] = installed, --> seen before)
+    [i] bash 5.1.8-1: GNU Bourne Again Shell
+    [i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
+    [i]     ncurses 6.3-1: System V Release 4.0 curses emulation library
 
 =head4 Installing packages
 
-  $ pkgman install --deps xterm
+    $ pkgman install --deps xterm
 
 Note, that the C<install> command B<DOES NOT> process dependencies
 without B<--deps> option, and it's usually recommended to use
@@ -97,12 +94,12 @@ we can fix the package build and start installation further.
 There is an option B<--group> for this.  In this handbook, it is
 recommended to use it always, unless you know what you are doing.
 
-  $ pkgman install --deps --group xterm
+    $ pkgman install --deps --group xterm
 
 In case one of the dependency builds has failed, just fix it and
 retry:
 
-  $ pkgman install --deps --group --force xterm
+    $ pkgman install --deps --group --force xterm
 
 The option B<--force> tell to L<pkgman(1)> to skip installation of
 already installed package(s).  It just ignores the package and
@@ -115,10 +112,10 @@ Since the packages sources for Zeppe-Lin are distributed via
 L<git(1)>, the first thing to do is to update the C<pkgsrc>
 collections:
 
-  $ git -C /usr/src/pkgsrc-core    pull
-  $ git -C /usr/src/pkgsrc-system  pull
-  $ git -C /usr/src/pkgsrc-xorg    pull
-  $ git -C /usr/src/pkgsrc-desktop pull
+    $ git -C /usr/src/pkgsrc-core    pull
+    $ git -C /usr/src/pkgsrc-system  pull
+    $ git -C /usr/src/pkgsrc-xorg    pull
+    $ git -C /usr/src/pkgsrc-desktop pull
 
 It's maybe annoying to do these few steps every time you want to
 synchronize C<pkgsrc> repositories.  If so, just add these steps to
@@ -128,23 +125,23 @@ for example.
 Listing installed packages that are out of date
 (including their new dependencies):
 
-  $ pkgman diff --deps --full
-  -- Differences between installed packages and packages' sources
-  Package                         Installed           Available
+    $ pkgman diff --deps --full
+    -- Differences between installed packages and packages' sources
+    Package                         Installed           Available
 
-  bind                            9.16.7-1            9.16.8-1
-  bindutils                                           9.16.8-1
+    bind                            9.16.7-1            9.16.8-1
+    bindutils                                           9.16.8-1
 
-  --
-  1 update, 1 install
+    --
+    1 update, 1 install
 
 Updating an individual package:
 
-  $ pkgman update --deps --group bind
+    $ pkgman update --deps --group bind
 
 Updating all installed packages:
 
-  $ pkgman sysup --deps --depsort --group
+    $ pkgman sysup --deps --depsort --group
 
 =head3 Configuration
 
@@ -186,4 +183,4 @@ information can be found in L<pkgman(1)> and L<pkgman.conf(5)>.
 
 =cut
 
-# vim: cc=72 tw=70
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70
