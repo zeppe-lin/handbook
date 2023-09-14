@@ -1,0 +1,108 @@
+=head2 Creating Packages
+
+Creating a package is done using L<pkgmk(8)>.  This utility uses a
+file called F<Pkgfile> (see L<Pkgfile(5)> for more info), which
+contains information about the package (such as name, version, etc)
+and the commands that should be executed in order to compile the
+package in question.  To be more specific, the F<Pkgfile> file is
+actually a POSIX L<sh(1p)> script, which defines a number of variables
+(name, version, release, and source) and a function (build).  Below is
+an example of what a F<Pkgfile> file might look like.  The example
+shows how to package the L<grep(1)> utility.  Some comments are
+inserted for explanation.
+
+  # Specify the name of the package.
+  name=grep
+
+  # Specify the version of the package.
+  version=2.4.2
+
+  # Specify the package release.
+  release=1
+
+  # The source(s) used to build this package.
+  source=ftp://ftp.ibiblio.org/pub/gnu/$name/$name-$version.tar.gz
+
+  # The build() function below will be called by pkgmk when
+  # the listed source files have been unpacked.
+  build() {
+          # The first thing we do is to cd into the source directory.
+          cd $name-$version
+
+          # Run the configure script with desired arguments.
+          # In this case we want to put grep under /usr/bin and
+          # disable national language support.
+          ./configure --prefix=/usr --disable-nls
+
+          # Compile.  Use the verbose flag (V=1) to see/log the
+          # compilation flags at build time.
+          make V=1
+
+          # Install the files, BUT do not install it under /usr,
+          # instead we redirect all the files to $PKG/usr by setting
+          # the DESTDIR variable.  The $PKG variable points to a
+          # temporary directory which will later be made into a
+          # tar.gz-file.  Note that the DESTDIR variable is not used
+          # by all Makefiles, some use prefix and others use ROOT,
+          # etc.  You have to inspect the Makefile in question to
+          # find out.  Some Makefiles do not support redirection at
+          # all.  In those cases, you will have to create a patch for
+          # it.
+          make DESTDIR=$PKG install
+
+          # Remove unwanted files, in this case, the info-pages.
+          rm -rf $PKG/usr/info
+  }
+
+In reality, you do not include all those comments, so the real Pkgfile
+for L<grep(1)> looks like this:
+
+  # Description: GNU grep, egrep, and fgrep
+  # URL:         http://www.gnu.org/software/grep/grep.html
+
+  name=grep
+  version=2.4.2
+  release=1
+  source=ftp://ftp.ibiblio.org/pub/gnu/$name/$name-$version.tar.gz
+
+  build() {
+          cd $name-$version
+
+          ./configure --prefix=/usr --disable-nls
+
+          make V=1
+          make DESTDIR=$PKG install
+
+          rm -rf $PKG/usr/info
+  }
+
+Note that the build() function in the example above is just an example
+of how grep is built.  The contents of the function can differ
+significantly if the program is built in some other way, e.g. does not
+use B<autoconf>.
+
+When the build() function has been executed, the C<$PKG> directory
+will be made into a package named I<name#version-release.pkg.tar.gz>.
+Before the package creation is completed, L<pkgmk(8)> will check the
+content of the package against the F<.footprint> file.  If this file
+does not exist, it will be created and the test will be skipped.  The
+F<.footprint> file will contain a list of all files that should be in
+the package if the build was successful or a list of all the files
+that were installed in C<$PKG> (if the F<.footprint> did not already
+exist).  If there is a mismatch the test will fail and an error
+message will be printed.  You should NOT write the F<.footprint> file
+by hand.  Instead, when a package has been upgraded and you need to
+update the contents of the F<.footprint> file you simply do C<pkgmk
+-uf>.  This test ensures that a rebuild of the package turned out as
+expected.
+
+If the package is built without errors it's time to install it by
+using L<pkgadd(8)> and try it out.  It's highly recommended to look at
+the F<Pkgfile> in another package(s) since looking at examples is a
+great way to learn.
+
+A detailed guideline is described in L<Pkgfile(5)> manual page.
+
+=cut
+
+# vim: cc=72 tw=70

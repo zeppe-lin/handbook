@@ -6,7 +6,7 @@
 
 =end html
 
-This handbook (as a whole Zeppe-Lin) is inspired and based on the
+This handbook (and Zeppe-Lin itself) is inspired and based on the
 L<CRUX Handbook|http://crux.nu/Main/Documentation>.
 
 =begin html
@@ -27,9 +27,9 @@ Zeppe-Lin is a lightweight GNU/Linux distribution for the x86-64
 architecture targeted at experienced users.  It is forked from CRUX
 and the primary focus of this distribution is "keep it simple" too.
 
-The KISS principle reflects in a simple tar.gz-based package system,
-BSD-style init scripts, and a relatively small collection of trimmed
-packages.
+The KISS principle reflects in a simple I<tar.gz>-based package
+system, BSD-style init scripts, and a relatively small collection of
+trimmed packages.
 
 The secondary focus is the utilization of new GNU/Linux features and
 recent tools and libraries.

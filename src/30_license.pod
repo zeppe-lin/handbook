@@ -11,10 +11,10 @@ particular package is licensed, have a look at its source code.
 
 =head2 Build Scripts
 
-All package build scripts in Zeppe-Lin are Copyright (C) 2000-2021
-by Per Lidén and the CRUX development team and CRUX contrib team and
-are released under the GPLv3+: GNU General Public License version 3 or
-later L<https://gnu.org/licenses/gpl.html>.
+All package build scripts in Zeppe-Lin are Copyright (C) 2000-2021 by
+Per Lidén L<mailto:per@fukt.bth.se> and CRUX team L<http://crux.nu>
+and are released under the GPLv3+: GNU General Public License version
+3 or later L<https://gnu.org/licenses/gpl.html>.
 
 =head2 NO WARRANTY
 
