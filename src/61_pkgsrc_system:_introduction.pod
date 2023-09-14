@@ -1,0 +1,81 @@
+=head2 Introduction
+
+=head3 What is a package source?
+
+A package source is a directory containing the files needed for
+building a package using L<pkgmk(8)>.  This means that this directory
+at least has the files F<Pkgfile> (which is the package build
+description) and F<.footprint> (which is used for regression testing
+and contains a list of files this package is expected to contain once
+it is built).  Further, a package source directory can contain patches
+and/or other files needed for building the package, even software
+sources.  It is important to understand that the actual source code
+for the package is not necessarily present in the package source
+directory.  Instead, the F<Pkgfile> contains an URL that points to a
+location where the source can be downloaded.
+
+The use of the words "package source" in this context is borrowed
+from the NetBSD world, where a package refers to a set of files and
+building instructions that describe what's necessary to build a
+certain piece of software.
+
+=head3 What is the pkgsrc repository?
+
+The term I<pkgsrc repository> refers to a remote repository
+containing packages' sources: build scripts and files for building
+binary packages.
+
+=head3 The pkgsrc collections
+
+Packages' sources are organized in so-called collections.  There are
+five different layers (or five categories) of packages.
+
+=head4 L<core|https://github.com/zeppe-lin/pkgsrc-core>
+
+This collection contains build scripts and files for the packages
+required to create a basic system, on the basis of which you can build
+your installation.  The official rootfs images are built based on this
+collection.
+
+Of course, this collection shouldn't have dependencies outside itself.
+To enforce this rule during maintenance see
+L<Makefile|https://github.com/zeppe-lin/pkgsrc-core/blob/master/Makefile>
+in the collection root directory.  This F<Makefile> checks collection
+files for typical errors, including misconfigured dependencies, and is
+included in the other collections too.  Also, see
+L<pkgmaint|https://github.com/zeppe-lin/pkgmaint> and corresponding
+B<system/pkgmaint> package for various package maintaining utilities.
+It will not be superfluous to mention L<revdep(1)>.
+
+=head4 L<system|https://github.com/zeppe-lin/pkgsrc-system>
+
+This collection contains build scripts and files for the packages
+required for minimal installation on real hardware: boot loader,
+filesystem utilities, hw-monitors, servers, and so on.  Packages in
+this collection depend B<only> on the C<core> pkgsrc collection.
+
+=head4 L<xorg|https://github.com/zeppe-lin/pkgsrc-xorg>
+
+This collection contains build scripts and files for the packages
+required for X Window System applications.  Packages in this
+collection depend on the C<system> collection.
+
+=head4 L<desktop|https://github.com/zeppe-lin/pkgsrc-desktop>
+
+This collection contains build scripts and files for the packages
+typically used on a desktop: web browser, music/video player, file
+manager, chat messenger, etc.  Packages in this collection depend on
+the C<xorg> collection.
+
+=head4 L<stuff|https://github.com/zeppe-lin/pkgsrc-stuff>
+
+This collection contains build scripts and files for the packages that
+do not fit into the above categories.  Packages in this collection may
+depend on any of the collections listed above.  Since this collection
+contains packages of different (often dubious) quality and purpose, we
+will not use it in the examples and warn you that if you can live
+without it - it's better to do so.
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70
