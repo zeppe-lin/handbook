@@ -258,7 +258,10 @@ your filesystems and add the prepared partitions:
 
 B<Note>: you can use C</dev/disk/by-uuid/*> or C<UUID=xxx> instead of
 C</dev/*> used above to prevent boot failures on machines with
-multiple disks.  Use L<blkid(8)> to verify the disk's UUID.
+multiple disks.  Use L<blkid(8)> to verify the disk's UUID:
+
+    (chrooted) # blkid -o value -s UUID /dev/zpln/root
+    ...
 
 Uncomment F</var/cache/pkgmk/work> if you want to build packages in
 RAM.
