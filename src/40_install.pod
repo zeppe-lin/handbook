@@ -292,10 +292,26 @@ id because the following installation of packages creates its own
 users and they may occupy your id:
 
     (chrooted) # useradd --shell /bin/bash --create-home  \
-    --groups wheel,audio,video,scanner,cdrom,input,users  \
+    --groups audio,video,scanner,cdrom,input,users  \
     --uid 1000 --user-group $USERNAME
 
     (chrooted) # passwd $USERNAME
+
+To make this user privileged (e.g. as Ubuntu does), first, you need to
+add the C<$USERNAME> to the C<wheel> group:
+
+    (chrooted) # usermod -aG wheel $USERNAME
+
+And second, grant the users in the C<whell> group to be root:
+
+    #
+    # /etc/sudoers.d/20_wheel: grant users in the wheel group to be root
+    #
+
+    %wheel ALL=(ALL:ALL) ALL
+
+    # End of file.
+
 
 =head3 Prepare the package sources
 
