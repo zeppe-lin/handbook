@@ -478,7 +478,10 @@ See L<mkinitramfs.config(5)> for more information.
 B<Note>: As in case of F</etc/fstab>, you can use
 C</dev/disk/by-uuid/*> or C<UUID=[...]> instead of C</dev/*> to
 prevent boot failures on machines with multiple disks.  Use
-L<blkid(8)> to verify the disk's C<UUID>.
+L<blkid(8)> to verify the disk's C<UUID>:
+
+    (chrooted) # blkid -o value -s UUID /dev/zpln/root
+    ...
 
 Now, prepare an initramfs.  If you installed the C<linux> kernel
 manually, you have already set C<KV> variable to kernel version.
