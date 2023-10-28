@@ -334,8 +334,14 @@ collection is enabled.  Also, you may like to edit F</etc/pkgmk.conf>
 
 =head4 Update the core packages and configuration files
 
-It's highly recommended to update C<core> packages and configuration
-files before the next step:
+B<Note>: Starting from version C<6.0>, C<pkgutils> has broken backward
+compatibility when generating footprint files.  So, at the beginning
+it is recommended to update C<pkgmk> and C<pkgutils>:
+
+    (chrooted) # pkgman update -f pkgmk pkgutils
+
+Now, it's highly recommended to update C<core> packages and
+configuration files before the next step:
 
     (chrooted) # pkgman sysup --deps --depsort --group
     (chrooted) # rejmerge
