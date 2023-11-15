@@ -1,6 +1,6 @@
 =head2 Using the Package System
 
-=head3 Installing a package
+=head3 B<Installing a package>
 
 Installing a package is done by using L<pkgadd(8)>.  This utility
 requires at least one argument, the package you want to install.
@@ -78,7 +78,7 @@ unable to interpret the filename (e.g. B<#> is missing or the filename
 does not end with .pkg.tar.gz) an error message will be printed and
 L<pkgadd(8)> will abort without installing the package.
 
-=head3 Upgrading a package
+=head3 B<Upgrading a package>
 
 Upgrading a package is done using L<pkgadd(8)> with the B<-u> option.
 Example:
@@ -153,7 +153,7 @@ F</etc/pkgadd.conf>):
     `-- etc
         `-- profile
 
-=head3 Removing a package
+=head3 B<Removing a package>
 
 Removing a package is done by using L<pkgrm(8)>.  This utility
 requires one argument, the name of the package you want to remove.
@@ -200,7 +200,7 @@ you misspelled glib as glibc).
 
 =end html
 
-=head3 Querying the package database
+=head3 B<Querying the package database>
 
 Querying the package database is done using L<pkginfo(1)>.  This
 utility has a few options to answer different queries.

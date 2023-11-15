@@ -5,7 +5,7 @@ handling.  To address this, a front-end utility called B<pkgman>
 exists.  L<pkgman(1)> supports dependency handling (with the caveat
 mentioned below) as well as some overlap with B<pkgutils> features.
 
-=head3 Functionality
+=head3 B<Functionality>
 
 Some examples of pkgman's functionality and use are as follows:
 
@@ -143,7 +143,7 @@ Updating all installed packages:
 
     $ pkgman sysup --deps --depsort --group
 
-=head3 Configuration
+=head3 B<Configuration>
 
 pkgman's main configuration file, F</etc/pkgman.conf>, contains
 options that can be used to change pkgman's behavior.  Notably in

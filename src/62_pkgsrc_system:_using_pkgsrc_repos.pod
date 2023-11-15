@@ -1,6 +1,6 @@
 =head2 Using The Pkgsrc
 
-=head3 Synchronizing your local pkgsrc repository
+=head3 B<Synchronizing your local pkgsrc repository>
 
 When Zeppe-Lin is installed for the first time there are no local
 pkgsrc collections (F<usr/src/pkgsrc*>).  To obtain the collection
@@ -37,7 +37,7 @@ TODO: add example!
 
 =end comment
 
-=head3 Listing local pkgsrc repositories
+=head3 B<Listing local pkgsrc repositories>
 
 When the local pkgsrc repositories have been cloned/updated the
 directory C</usr/src/> will contain some C<pkgsrc-???> directories.
@@ -117,7 +117,7 @@ to use B<search> command instead of C<list | grep>:
     [ ] /usr/src/pkgsrc/system/alsa-ucm-conf
     [i] /usr/src/pkgsrc/system/alsa-utils
 
-=head3 Listing version differences
+=head3 B<Listing version differences>
 
 To find out if the B<pkgsrc> repository carries packages that are
 different (likely newer) compared to the versions currently installed
@@ -160,7 +160,7 @@ the packages sources structure, the output will simply be:
     $ pkgman diff
     No differences found
 
-=head3 Building and installing packages
+=head3 B<Building and installing packages>
 
 B<Note>: The recommended way is to use L<pkgman-install(8)>.  Here
 we will only describe the steps to better understand the build
@@ -229,7 +229,7 @@ install or upgrade it.  Example:
 
     # pkgadd gawk#3.1.5-3.pkg.tar.gz
 
-=head3 Build packages as an unprivileged user
+=head3 B<Build packages as an unprivileged user>
 
 It is already done in the default Zeppe-Lin distribution.  The
 packages C<core/filesystem>, C<core/pkgmk>, and C<core/pkgman> have
@@ -265,7 +265,7 @@ F</etc/pkgman.conf> file as the following:
 
     makecommand sudo -H -u pkgmk fakeroot pkgmk
 
-=head3 Renice pkgmk's child process
+=head3 B<Renice pkgmk's child process>
 
 If you keep using your computer while compiling packages you will
 notice that your box is much less responsive than usual.  This is
@@ -282,7 +282,7 @@ like this:
 
     makecommand sudo -H -u pkgmk nice -n10 ionice -c2 -n6 fakeroot pkgmk
 
-=head3 Build in ram
+=head3 B<Build in ram>
 
 By default, Zeppe-Lin already has C<pkgmk> user and F</etc/fstab>'s
 entry for this.  Just edit F</etc/fstab>'s C<pkgmk> entry, remove

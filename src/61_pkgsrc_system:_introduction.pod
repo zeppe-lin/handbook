@@ -1,6 +1,6 @@
 =head2 Introduction
 
-=head3 What is a package source?
+=head3 B<What is a package source?>
 
 A package source is a directory containing the files needed for
 building a package using L<pkgmk(8)>.  This means that this directory
@@ -19,13 +19,13 @@ from the NetBSD world, where a package refers to a set of files and
 building instructions that describe what's necessary to build a
 certain piece of software.
 
-=head3 What is the pkgsrc repository?
+=head3 B<What is the pkgsrc repository?>
 
 The term I<pkgsrc repository> refers to a remote repository
 containing packages' sources: build scripts and files for building
 binary packages.
 
-=head3 The pkgsrc collections
+=head3 B<The pkgsrc collections>
 
 Packages' sources are organized in so-called collections.  There are
 five different layers (or five categories) of packages.
