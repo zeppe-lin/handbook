@@ -305,7 +305,7 @@ add the C<$USERNAME> to the C<wheel> group:
 And second, grant the users in the C<whell> group to be root:
 
     #
-    # /etc/sudoers.d/20_wheel: grant users in the wheel group to be root
+    # /etc/sudoers.d/00wheel: grant users in the wheel group to be root
     #
 
     %wheel ALL=(ALL:ALL) ALL
