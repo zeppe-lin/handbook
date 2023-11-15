@@ -23,7 +23,7 @@ Let's go.
 Boot from the LiveCD, open a terminal and get root privileges
 (e.g. C<sudo su>).
 
-=head3 Disk partitions and filesystems
+=head3 B<Disk partitions and filesystems>
 
 This is a quite simple partition scheme used in this handbook.  There
 is a SCSI disk C</dev/sda>, but if you have an NVME disk
@@ -95,7 +95,7 @@ device:
     # cryptsetup luksFormat /dev/sda2
     # cryptsetup luksOpen /dev/sda2 crypt
 
-=head3 LVM inside LUKS device
+=head3 B<LVM inside LUKS device>
 
 =head4 Create the physical volume
 
@@ -159,13 +159,13 @@ the aforementioned two logical volumes:
     # lvcreate -L 8G -n swap zpln
     # lvcreate -l 100%FREE -n root zpln
 
-=head3 Create root filesystem and setup swap area
+=head3 B<Create root filesystem and setup swap area>
 
     # mkfs.ext4 /dev/zpln/root
     # mkswap /dev/zpln/swap
     # swapon /dev/zpln/swap
 
-=head3 Mount prepared partitions
+=head3 B<Mount prepared partitions>
 
 In this handbook, the C</mnt> directory is used as a default
 mountpoint.
@@ -174,7 +174,7 @@ mountpoint.
     # mkdir /mnt/boot
     # mount /dev/sda1 /mnt/boot
 
-=head3 Download rootfs tarball
+=head3 B<Download rootfs tarball>
 
 As mentioned before, the C</mnt> directory is the default mountpoint
 for our system.  Let's download the rootfs into this directory so we
@@ -190,13 +190,13 @@ It's optional but highly recommended to verify rootfs signature:
     # gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
     # gpg --verify rootfs-v0.99-x86_64.tar.xz.sig rootfs-v0.99-x86_64.tar.xz
 
-=head3 Extract rootfs tarball
+=head3 B<Extract rootfs tarball>
 
 If everything is OK, let's unpack the tarball:
 
     # tar -xvf rootfs-v0.99-x86_64.tar.xz -C .
 
-=head3 Chroot
+=head3 B<Chroot>
 
 Copy DNS configuration to have the availability to use the network
 from the chrooted root:
@@ -226,7 +226,7 @@ chroot environment:
 
     (chrooted) # export SHELL=/bin/bash
 
-=head3 Configure the base system
+=head3 B<Configure the base system>
 
 Set the root password:
 
@@ -313,7 +313,7 @@ And second, grant the users in the C<whell> group to be root:
     # End of file.
 
 
-=head3 Prepare the package sources
+=head3 B<Prepare the package sources>
 
 Packages' sources are organized in so-called collections, see
 L</"The pkgsrc collections"> for more information about that.
@@ -346,7 +346,7 @@ configuration files before the next step:
     (chrooted) # pkgman sysup --deps --depsort --group
     (chrooted) # rejmerge
 
-=head3 Install bare metal packages
+=head3 B<Install bare metal packages>
 
 Let's install all the necessary packages for the so-called
 workstation:
@@ -360,7 +360,7 @@ your network interfaces.  B<Note>: If you configured the networking
 bridge, don't forget to specify the bridge interface to B<dhcpcd>
 and/or B<wpa_supplicant> RC scripts.
 
-=head3 Install the linux kernel
+=head3 B<Install the linux kernel>
 
 There is at least two ways to install the kernel: as a package and
 manually.  Let's look at each method.
@@ -447,7 +447,7 @@ You may still need to install the kernel non-free firmwares:
 
 Next, we need to prepare the initramfs and update our bootloader.
 
-=head3 Prepare initramfs image
+=head3 B<Prepare initramfs image>
 
 Install B<mkinitramfs> package:
 
@@ -494,7 +494,7 @@ Now, generate an initramfs image:
 
     (chrooted) # mkinitramfs -o /boot/initramfs-$KV.img -k $KV
 
-=head3 Configure GRUB
+=head3 B<Configure GRUB>
 
 Create F</etc/default/grub> file with the following content:
 
@@ -511,7 +511,7 @@ Update B<GRUB> configuration file:
 
     (chrooted) # grub-mkconfig -o /boot/grub/grub.cfg
 
-=head3 Exit from chroot and umount /mnt and reboot
+=head3 B<Exit from chroot and umount /mnt and reboot>
 
     (chrooted) # exit
     # cd /
@@ -520,7 +520,7 @@ Update B<GRUB> configuration file:
 
 =head2 Post Installation Notes
 
-=head3 Install xorg
+=head3 B<Install xorg>
 
 See the available Xorg video and input drivers, and choose the right
 one:
