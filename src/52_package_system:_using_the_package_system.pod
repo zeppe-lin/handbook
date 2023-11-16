@@ -132,7 +132,7 @@ referring to the files in the package, not the files on the disk.
 
 See L<pkgadd.conf(5)> for more information.
 
-=head4 Rejected files
+=head4 I<Rejected files>
 
 If L<pkgadd(8)> finds that a specific file should not be upgraded, it
 will install it under F</var/lib/pkg/rejected/>.  Files in this
@@ -263,7 +263,7 @@ _
 
 =end html
 
-=head4 List installed packages and their version
+=head4 I<List installed packages and their version>
 
     $ pkginfo -i
     audiofile 0.2.3-1
@@ -274,7 +274,7 @@ _
     zip 2.3-1
     zlib 1.1.4-1
 
-=head4 List files in PACKAGE or FILE
+=head4 I<List files in PACKAGE or FILE>
 
     $ pkginfo -l bash
     bin/
@@ -298,14 +298,14 @@ _
     usr/share/man/man1/fgrep.1.gz
     usr/share/man/man1/grep.1.gz
 
-=head4 List owners of files matching F<bin/ls>
+=head4 I<List owners of files matching F<bin/ls>>
 
     $ pkginfo -o bin/ls
     e2fsprogs  usr/bin/lsattr
     fileutils  bin/ls
     modutils   sbin/lsmod
 
-=head4 Print footprint for file
+=head4 I<Print footprint for file>
 
     $ pkginfo -f xorg-xkill#1.0.5-1.pkg.tar.gz
     drwxr-xr-x      root/root       usr/
