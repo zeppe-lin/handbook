@@ -12,6 +12,8 @@ help:
 
 pod:
 	perl -0pe 's/\R?$$/\n\n/' ${SRC} | sed '/^# vim: .*/d' > ${POD}
+
+podchecker: pod
 	podchecker ${POD}
 
 man: pod
