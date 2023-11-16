@@ -13,9 +13,6 @@ help:
 pod:
 	perl -0pe 's/\R?$$/\n\n/' ${SRC} | sed '/^# vim: .*/d' > ${POD}
 
-podchecker: pod
-	podchecker ${POD}
-
 man: pod
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
 		-n handbook -s 7 ${POD} > ${MAN}
@@ -33,7 +30,7 @@ install-man: man
 	chmod 0644   ${DESTDIR}${MANPREFIX}/man7/${MAN}
 
 uninstall-man:
-	rm -f ${DESTDIR}${MANPREFIX}/man7/handbook.7
+	rm -f ${DESTDIR}${MANPREFIX}/man7/${MAN}
 
 clean:
 	rm -f ${POD} ${MAN} ${TXT} ${PDF}
