@@ -1,5 +1,7 @@
 include config.mk
 
+SRC = $(wildcard src/*.pod)
+
 MAN = handbook.7
 PDF = handbook.7.pdf
 POD = handbook.7.pod
@@ -9,8 +11,8 @@ all: help
 help:
 
 pod:
-	perl -0pe 's/\R?$$/\n\n/' $(wildcard src/*.pod) | \
-		sed '/^# vim: .*/d' > ${POD}
+	perl -0pe 's/\R?$$/\n\n/' ${SRC} | sed '/^# vim: .*/d' > ${POD}
+	podchecker ${POD}
 
 man: pod
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \
