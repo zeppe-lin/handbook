@@ -3,7 +3,7 @@
 =head3 B<Runlevels>
 
 The following runlevels are used in Zeppe-Lin (defined in
-F</etc/inittab>).
+F</etc/inittab>):
 
 =begin man
 
@@ -41,7 +41,7 @@ See L<inittab(5)> for more information about runlevels.
 =head3 B<Layout>
 
 The initialization scripts used in Zeppe-Lin follow the BSD-style
-(as opposed to the SysV-style) and have the following layout.
+(as opposed to the SysV-style) and have the following layout:
 
 =begin man
 
