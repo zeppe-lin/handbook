@@ -58,7 +58,7 @@ _
 /etc/rc.modules  | Module initialization script
 /etc/rc.local    | Local multi-user startup script
 /etc/rc.shutdown | System shutdown script
-/etc/rc.conf     | System configuration
+/etc/rc.conf     | System configuration file
 /etc/rc.d/       | Service start/stop directory
 .TE
 
@@ -97,7 +97,7 @@ _
         </tr>
         <tr>
             <td>/etc/rc.conf</td>
-            <td>System configuration</td>
+            <td>System configuration file</td>
         </tr>
         <tr>
             <td>/etc/rc.d/</td>
