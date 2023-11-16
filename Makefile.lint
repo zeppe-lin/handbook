@@ -10,7 +10,7 @@ all:	deadlinks podchecker shellcheck cppcheck flawfinder longlines
 ######################################################################
 
 greplinks:
-	@grep -EIihor "https?://[^\"\\'> ]+" --exclude-dir=.git*
+	@grep -EIihor "https?://[^\"\\'> ]+" --exclude-dir=.git* | sort -u
 
 curllinks:
 	@$(CURMAKE) greplinks | xargs -I{} -r -P10 \
