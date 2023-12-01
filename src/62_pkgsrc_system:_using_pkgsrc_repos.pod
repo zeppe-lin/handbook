@@ -103,19 +103,19 @@ Add the B<--path> option to see the package source location:
 
     $ pkgman list --all --path
     -- list ([i] = installed)
-    [i] /usr/src/pkgsrc/core/acl
-    [i] /usr/src/pkgsrc/system/alsa-lib
-    [ ] /usr/src/pkgsrc/system/alsa-ucm-conf
-    [i] /usr/src/pkgsrc/system/alsa-utils
+    [i] /usr/src/pkgsrc-core/acl
+    [i] /usr/src/pkgsrc-system/alsa-lib
+    [ ] /usr/src/pkgsrc-system/alsa-ucm-conf
+    [i] /usr/src/pkgsrc-system/alsa-utils
 
 If you are looking for a specific package source, it might be easier
 to use B<search> command instead of C<list | grep>:
 
     $ pkgman search --path alsa
     -- search ([i] = installed)
-    [i] /usr/src/pkgsrc/system/alsa-lib
-    [ ] /usr/src/pkgsrc/system/alsa-ucm-conf
-    [i] /usr/src/pkgsrc/system/alsa-utils
+    [i] /usr/src/pkgsrc-system/alsa-lib
+    [ ] /usr/src/pkgsrc-system/alsa-ucm-conf
+    [i] /usr/src/pkgsrc-system/alsa-utils
 
 =head3 B<Listing version differences>
 
