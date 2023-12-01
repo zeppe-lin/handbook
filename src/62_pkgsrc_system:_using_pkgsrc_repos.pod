@@ -95,7 +95,7 @@ to list all local packages' sources.  Example:
     [i] alsa-utils
     ...
 
-Note, that B<pkgman> will list the packages' sources from all
+B<Note>: B<pkgman> will list the packages' sources from all
 C<pkgsrc> collections indicated in F</etc/pkgman.conf> as
 C<pkgsrcdir>.
 
