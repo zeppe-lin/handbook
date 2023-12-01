@@ -13,8 +13,8 @@ you need the first time, use C<git clone>.  Example:
     # git clone https://github.com/zeppe-lin/pkgsrc-desktop
 
 Edit F</etc/pkgman.conf> and enable the collections you cloned.  By
-default, only C<core> collection is enabled.  See L<pkgman.conf(5)> for
-more information.
+default, only C<core> collection is enabled.  See L<pkgman.conf(5)>
+for more information.
 
 To bring your local C<core> collection up to date use C<git pull>.
 Example:
