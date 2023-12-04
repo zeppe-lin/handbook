@@ -34,7 +34,7 @@ static IP address.  Example:
             $0 start
             ;;
     *)
-            echo "Usage: $0 [start|stop|restart]"
+            echo "usage: $0 [start|stop|restart]"
             ;;
     esac
 
