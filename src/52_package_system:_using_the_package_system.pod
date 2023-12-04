@@ -173,8 +173,8 @@ _
 This will remove all files owned by the package, no questions
 asked.  Think twice before doing it and make sure that you did
 not misspell the package name since that could remove something
-completely different (e.g., think about what could happen if
-you misspelled glib as glibc).
+completely different (e.g. think about what could happen if you
+misspelled glib as glibc).
 .TE
 
 =end man
