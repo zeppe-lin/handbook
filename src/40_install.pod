@@ -292,8 +292,8 @@ id because the following installation of packages creates its own
 users and they may occupy your id:
 
     (chrooted) # useradd --shell /bin/bash --create-home  \
-    --groups audio,video,scanner,cdrom,input,users  \
-    --uid 1000 --user-group $USERNAME
+        --groups audio,video,scanner,cdrom,input,users    \
+        --uid 1000 --user-group $USERNAME
 
     (chrooted) # passwd $USERNAME
 
@@ -352,8 +352,8 @@ Let's install all the necessary packages for the so-called
 workstation:
 
     (chrooted) # pkgman install --deps --group \
-    cryptsetup e2fsprogs dosfstools grub2 grub2-efi iw gnupg lvm2 \
-    pinentry wireless-tools wpa-supplicant dhcpcd iputils
+        cryptsetup e2fsprogs dosfstools grub2 grub2-efi iw gnupg \
+        lvm2 pinentry wireless-tools wpa-supplicant dhcpcd iputils
 
 Edit F</etc/rc.d/dhcpcd> and F</etc/rc.d/wpa_supplicant> and setup
 your network interfaces.  B<Note>: If you configured the networking
@@ -371,7 +371,7 @@ C<system> pkgsrc collection provides a package with the kernel and
 non-free firmware:
 
     (chrooted) # pkgman install --deps --group \
-    --config-append="runscripts no" linux linux-firmware
+        --config-append="runscripts no" linux linux-firmware
 
 The B<linux> package has a B<post-install> script that executes
 L<mkinitramfs(8)> and updates the B<grub> config.  We turn off the
@@ -407,14 +407,13 @@ to F</var/cache/pkgmk/sources> if you have not changed the
 B<PKGMK_SOURCE_DIR> location in F</etc/pkgmk.conf>.  Unpack it:
 
     (chrooted) # tar -xvf \
-    /var/cache/pkgmk/sources/linux-5.4.X.tar.?z \
-    -C /usr/src/
+        /var/cache/pkgmk/sources/linux-5.4.X.tar.?z -C /usr/src/
 
 You may want to enable Zeppe-Lin's patches:
 
     (chrooted) # cd linux-5.4.X
     (chrooted) # for p in $(pkgman path linux)/*.patch; \
-    do patch -Np1 -i $p; done
+        do patch -Np1 -i $p; done
 
 If you have downloaded a non-packaged kernel, you can print the
 results of applying the patches without actually changing any files.
@@ -481,7 +480,7 @@ prevent boot failures on machines with multiple disks.  Use
 L<blkid(8)> to verify the disk's C<UUID>:
 
     (chrooted) # blkid -o value -s UUID /dev/zpln/root
-    ...
+    [...]
 
 Now, prepare an initramfs.  If you installed the C<linux> kernel
 manually, you have already set C<KV> variable to kernel version.
@@ -505,7 +504,7 @@ Create F</etc/default/grub> file with the following content:
 Next, install B<GRUB> on C</dev/sda> (your case may differ) drive:
 
     (chrooted) # grub-install --target=x86_64-efi \
-    --efi-directory=/boot /dev/sda
+        --efi-directory=/boot /dev/sda
 
 Update B<GRUB> configuration file:
 
