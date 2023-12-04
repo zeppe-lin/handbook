@@ -56,7 +56,10 @@ Example:
 
 If you want to configure your system to use a dynamic IP address,
 install the C<dhcpcd> package, edit and run F</etc/rc.d/dhcpcd>
-service.
+service:
+
+    # $EDITOR /etc/rc.d/dhcpcd
+    # /etc/rc.d/dhcpcd start
 
 =head3 B<Wireless network>
 
@@ -76,9 +79,11 @@ and append the output to the F</etc/wpa_supplicant.conf> file:
 
     # wpa_passphrase <MYSSID> <passphrase> >> /etc/wpa_supplicant.conf
 
-Then, run F</etc/rc.d/wpa_supplicant> and F</etc/rc.d/dhcpcd>
-services.
+Then, edit and run the following service files:
+F</etc/rc.d/wpa_supplicant>, F</etc/rc.d/dhcpcd>.
 
+    # $EDITOR /etc/rc.d/wpa_supplicant
+    # $EDITOR /etc/rc.d/dhcpcd
     # /etc/rc.d/wpa_supplicant start
     # /etc/rc.d/dhcpcd start
 
