@@ -77,7 +77,7 @@ F</etc/rc.d/wpa_supplicant> service.
 To use B<WPA-PSK>, generate a pre-shared key with L<wpa_passphrase(8)>
 and append the output to the F</etc/wpa_supplicant.conf> file:
 
-    # wpa_passphrase <MYSSID> <passphrase> >> /etc/wpa_supplicant.conf
+    # wpa_passphrase <MYSSID> <PASSPHRASE> >> /etc/wpa_supplicant.conf
 
 Then, edit and run the following service files:
 F</etc/rc.d/wpa_supplicant>, F</etc/rc.d/dhcpcd>.
@@ -89,7 +89,7 @@ F</etc/rc.d/wpa_supplicant>, F</etc/rc.d/dhcpcd>.
 
 To use B<WPA-EAP> generate the password hash like this:
 
-    # echo -n <passphrase> | iconv -t utf16le | openssl md4
+    # echo -n <PASSPHRASE> | iconv -t utf16le | openssl md4
 
 For B<WEP> configuration, add the following lines to your
 F</etc/wpa_supplicant.conf>:
