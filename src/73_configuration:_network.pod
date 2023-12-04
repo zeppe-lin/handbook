@@ -55,7 +55,8 @@ Example:
 =head3 B<Dynamic address>
 
 If you want to configure your system to use a dynamic IP address,
-install the C<dhcpcd> package and run F</etc/rc.d/dhcpcd> service.
+install the C<dhcpcd> package, edit and run F</etc/rc.d/dhcpcd>
+service.
 
 =head3 B<Wireless network>
 
