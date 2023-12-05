@@ -2,7 +2,7 @@
 
 =begin html
 
-<img alt="Zeppe-Lin" class="logo" src="https://github.com/zeppe-lin/artwork/blob/master/logo-small.png?raw=true">
+    <img alt="Zeppe-Lin" class="logo" src="https://github.com/zeppe-lin/artwork/blob/master/logo-small.png?raw=true" />
 
 =end html
 
