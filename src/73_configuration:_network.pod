@@ -66,8 +66,8 @@ service:
 Before using wireless networking, use L<rfkill(8)> to check whether
 the relevant interfaces are soft- or hard-blocked:
 
-    rfkill list
-    rfkill unblock <ID|TYPE>
+    $ rfkill list
+    # rfkill unblock <ID|TYPE>
 
 Next, install the C<wpa-supplicant> package.  It includes utilities to
 configure wireless interfaces and handle wireless security protocols.
