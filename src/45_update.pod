@@ -56,7 +56,7 @@ dependencies for a packages.  The B<--depsort> option will tell
 B<pkgman> to sort by dependencies during update.  This option must be
 enabled since you need first to update B<openssl> for example, and
 only then all dependent packages.  The same for Perl, or Python, etc:
-first update the interpretators and then the modules.
+first update the interpreters and then the modules.
 
 =head2 Binary Packages
 

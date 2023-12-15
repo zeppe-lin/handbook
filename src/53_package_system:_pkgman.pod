@@ -1,4 +1,4 @@
-=head2 Package Management Frontend: pkgman
+=head2 Package Management Front-end: pkgman
 
 In its current form B<pkgutils> does not have a concept of dependency
 handling.  To address this, a front-end utility called B<pkgman>
