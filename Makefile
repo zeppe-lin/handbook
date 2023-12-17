@@ -22,7 +22,7 @@ txt: pod
 
 pdf: pod
 	pod2pdf --footer-text "${NAME} ${VERSION}" \
-		--title "${DESCRIPTION}" ${POD} > ${PDF}
+		--outlines --title "${DESCRIPTION}" ${POD} > ${PDF}
 
 install-man: man
 	mkdir -p     ${DESTDIR}${MANPREFIX}/man7
