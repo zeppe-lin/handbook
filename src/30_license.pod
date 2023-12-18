@@ -1,4 +1,4 @@
-=encoding utf8
+=ff
 
 =head1 LICENSE
 
