@@ -1,4 +1,10 @@
+=begin pdf
+
 =ff
+
+=end pdf
+
+=encoding UTF-8
 
 =head1 LICENSE
 
