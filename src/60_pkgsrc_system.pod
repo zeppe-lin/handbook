@@ -1,3 +1,7 @@
+=begin pdf
+
 =ff
 
-=head1 THE PKGSRC SYSTEM
+=end pdf
+
+=head1 6.0. THE PKGSRC SYSTEM

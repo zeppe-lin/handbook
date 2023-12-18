@@ -1,8 +1,12 @@
+=begin pdf
+
 =ff
 
-=head1 INSTALL ZEPPE-LIN
+=end pdf
 
-=head2 Supported Hardware / Requirements
+=head1 4. INSTALL ZEPPE-LIN
+
+=head2 4.1. Supported Hardware / Requirements
 
 Packages on the official B<rootfs> image are compiled with
 optimization for x86-64 (AMD Athlon 64, Intel Core, Intel Atom) or
@@ -13,7 +17,7 @@ Since Zeppe-Lin is distributed in the form of a compiled tarball
 containing a root filesystem, the installation requires a live
 CD/DVD/USB with any GNU/Linux.
 
-=head2 Install From RootFS Image
+=head2 4.2. Install From RootFS Image
 
 This chapter describes how to install Zeppe-Lin on the UEFI LUKS
 partition and LVM volume group, so make sure you have the following
@@ -25,7 +29,7 @@ Let's go.
 Boot from the live CD/DVD/USB, open a terminal and get root privileges
 (e.g. C<sudo su>).
 
-=head3 B<Disk partitions and filesystems>
+=head3 B<4.2.1. Disk partitions and filesystems>
 
 This is a quite simple partition scheme used in this handbook.  There
 is a SCSI disk C</dev/sda>, but if you have an NVME disk
@@ -97,7 +101,7 @@ device:
     # cryptsetup luksFormat /dev/sda2
     # cryptsetup luksOpen /dev/sda2 crypt
 
-=head3 B<LVM inside LUKS device>
+=head3 B<4.2.2. LVM inside LUKS device>
 
 =head4 I<Create the physical volume>
 

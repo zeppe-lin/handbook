@@ -1,6 +1,10 @@
+=begin pdf
+
 =ff
 
-=head1 REPORTING BUGS
+=end pdf
+
+=head1 8. REPORTING BUGS
 
 For bug reports, use the issue tracker at:
 L<https://github.com/zeppe-lin/handbook/issues>.

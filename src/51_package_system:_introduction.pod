@@ -1,6 +1,6 @@
-=head2 Introduction
+=head2 5.1. Introduction
 
-=head3 B<Basic package management tools>
+=head3 B<5.1.1. Basic package management tools>
 
 The package system (B<pkgutils>) is a fork of CRUX's pkgutils.
 It is made with simplicity in mind, where all packages are plain

@@ -1,4 +1,4 @@
-=head2 Creating Packages
+=head2 5.4. Creating Packages
 
 Creating a package is done using L<pkgmk(8)>.  This utility uses a
 file called F<Pkgfile> (see L<Pkgfile(5)> for more info), which

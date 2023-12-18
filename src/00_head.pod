@@ -1,17 +1,3 @@
 =pod
 
-=begin comment
-
-======================================================================
-= AFTER EDITING THIS HANDBOOK, DO NOT FORGET TO UPDATE THE HANDBOOK  =
-= PACKAGE IN PKGSRC TREE.  ALSO, UPDATE THE ZEPPE-LIN WEBSITE, SINCE =
-= IT IS GENERATED FROM THIS HANDBOOK:                                =
-=                                                                    =
-=   $ git clone git@github.com:zeppe-lin/zeppe-lin.github.io         =
-=   $ cd zeppe-lin.github.io                                         =
-=   $ make update                                                    =
-======================================================================
-
-=end comment
-
-=encoding utf8
+=encoding UTF-8

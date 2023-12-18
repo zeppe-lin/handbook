@@ -1,6 +1,6 @@
 =begin man
 
-=head1 NAME
+=head1 1. NAME
 
 handbook - Zeppe-Lin Handbook
 

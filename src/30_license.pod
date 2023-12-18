@@ -6,23 +6,23 @@
 
 =encoding UTF-8
 
-=head1 LICENSE
+=head1 3. LICENSE
 
-=head2 Packages
+=head2 3.1. Packages
 
 Since Zeppe-Lin is a GNU/Linux distribution, it contains software
 written by a lot of different people.  Each software package comes
 with its own license, chosen by its author(s).  To find out how a
 particular package is licensed, have a look at its source code.
 
-=head2 Build Scripts
+=head2 3.2. Build Scripts
 
 All package build scripts in Zeppe-Lin are Copyright (C) 2000-2021 by
 Per Lidén L<mailto:per@fukt.bth.se> and CRUX team L<http://crux.nu>
 and are released under the GPLv3+: GNU General Public License version
 3 or later L<https://gnu.org/licenses/gpl.html>.
 
-=head2 NO WARRANTY
+=head2 3.3. NO WARRANTY
 
 Zeppe-Lin is distributed in the hope that it will be useful, but
 WITHOUT ANY WARRANTY; without even the implied warranty of

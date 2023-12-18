@@ -1,1 +1,7 @@
-=head1 CONFIGURATION
+=begin pdf
+
+=ff
+
+=end pdf
+
+=head1 7. CONFIGURATION

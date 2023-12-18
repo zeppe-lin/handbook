@@ -1,4 +1,4 @@
-=head1 INTRODUCTION
+=head1 2. INTRODUCTION
 
 =begin html
 
@@ -19,7 +19,7 @@ manual page.
 
 =begin comment
 
-=head2 What is Zeppe-Lin?
+=head2 2.1. What is Zeppe-Lin?
 
 =end comment
 
@@ -36,7 +36,7 @@ recent tools and libraries.
 
 =begin comment
 
-=head2 Why use Zeppe-Lin?
+=head2 2.2. Why use Zeppe-Lin?
 
 In short, B<Zeppe-Lin> might suit you very well if you are:
 

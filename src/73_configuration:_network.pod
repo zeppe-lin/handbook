@@ -1,6 +1,6 @@
-=head2 Network configuration
+=head2 7.3. Network configuration
 
-=head3 B<Static address>
+=head3 7.3.1. B<Static address>
 
 The network configuration is found in the RC script F</etc/rc.d/net>.
 To enable this service you need to add C<net> to the C<SERVICES>
@@ -52,7 +52,7 @@ Example:
 
     # End of file.
 
-=head3 B<Dynamic address>
+=head3 7.3.2. B<Dynamic address>
 
 If you want to configure your system to use a dynamic IP address,
 install the C<dhcpcd> package, edit and run F</etc/rc.d/dhcpcd>
@@ -61,7 +61,7 @@ service:
     # $EDITOR /etc/rc.d/dhcpcd
     # /etc/rc.d/dhcpcd start
 
-=head3 B<Wireless network>
+=head3 7.3.3. B<Wireless network>
 
 Before using wireless networking, use L<rfkill(8)> to check whether
 the relevant interfaces are soft- or hard-blocked:

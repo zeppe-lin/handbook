@@ -1,6 +1,6 @@
-=head2 Using the Package System
+=head2 5.2. Using the Package System
 
-=head3 B<Installing a package>
+=head3 B<5.2.1. Installing a package>
 
 Installing a package is done by using L<pkgadd(8)>.  This utility
 requires at least one argument, the package you want to install.
@@ -78,7 +78,7 @@ unable to interpret the filename (e.g. B<#> is missing or the filename
 does not end with .pkg.tar.gz) an error message will be printed and
 L<pkgadd(8)> will abort without installing the package.
 
-=head3 B<Upgrading a package>
+=head3 B<5.2.2. Upgrading a package>
 
 Upgrading a package is done using L<pkgadd(8)> with the B<-u> option.
 Example:
@@ -132,7 +132,7 @@ referring to the files in the package, not the files on the disk.
 
 See L<pkgadd.conf(5)> for more information.
 
-=head4 I<Rejected files>
+=head4 I<5.2.2.1. Rejected files>
 
 If L<pkgadd(8)> finds that a specific file should not be upgraded, it
 will install it under F</var/lib/pkg/rejected/>.  Files in this
@@ -153,7 +153,7 @@ F</etc/pkgadd.conf>):
     `-- etc
         `-- profile
 
-=head3 B<Removing a package>
+=head3 B<5.2.3. Removing a package>
 
 Removing a package is done by using L<pkgrm(8)>.  This utility
 requires one argument, the name of the package you want to remove.
@@ -200,7 +200,7 @@ misspelled glib as glibc).
 
 =end html
 
-=head3 B<Querying the package database>
+=head3 B<5.2.4. Querying the package database>
 
 Querying the package database is done using L<pkginfo(1)>.  This
 utility has a few options to answer different queries.
