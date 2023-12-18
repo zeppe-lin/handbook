@@ -1,0 +1,29 @@
+=head2 2.2. Why use Zeppe-Lin?
+
+In short, B<Zeppe-Lin> might suit you very well if you are:
+
+=over 3
+
+=item *
+
+an experienced user who wants a clean and simple GNU/Linux
+distribution as a foundation of your installation;
+
+=item *
+
+a person who prefers editing configuration files with an editor to
+using GUI;
+
+=item *
+
+someone who does not hesitate to download and compile programs from
+the source;
+
+=item *
+
+someone who wants a KISS GNU/Linux distribution as a foundation of
+your own distro;
+
+=back
+
+=cut

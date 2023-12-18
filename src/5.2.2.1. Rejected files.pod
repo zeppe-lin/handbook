@@ -1,4 +1,4 @@
-=head4 I<5.2.2.1. Rejected files>
+=head4 B<5.2.2.1. Rejected files>
 
 If L<pkgadd(8)> finds that a specific file should not be upgraded, it
 will install it under F</var/lib/pkg/rejected/>.  Files in this

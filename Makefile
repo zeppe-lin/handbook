@@ -11,7 +11,7 @@ all: help
 help:
 
 pod:
-	perl -0pe 's/\R?$$/\n\n/' ${SRC} | sed '/^# vim: .*/d' > ${POD}
+	perl -0pe 's/\R?$$/\n\n/' src/*.pod | sed '/^# vim: .*/d' > ${POD}
 
 man: pod
 	pod2man -r "${NAME} ${VERSION}" -c "${DESCRIPTION}" \

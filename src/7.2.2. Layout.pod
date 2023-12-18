@@ -3,69 +3,18 @@
 The initialization scripts used in Zeppe-Lin follow the BSD-style
 (as opposed to the SysV-style) and have the following layout:
 
-=begin man
-
-.TS
-center, box, tab (|) ;
-l | l
-l | l.
-File | Description
-_
-.SP
-/etc/rc          | System boot script
-/etc/rc.single   | Single-user startup script
-/etc/rc.multi    | Multi-user startup script
-/etc/rc.modules  | Module initialization script
-/etc/rc.local    | Local multi-user startup script
-/etc/rc.shutdown | System shutdown script
-/etc/rc.conf     | System configuration file
-/etc/rc.d/       | Service start/stop directory
-.TE
-
-=end man
-
-=begin html
-
-    <table>
-        <tr>
-            <th>File</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>/etc/rc</td>
-            <td>System boot script</td>
-        </tr>
-        <tr>
-            <td>/etc/rc.single</td>
-            <td>Single-User startup script</td>
-        </tr>
-        <tr>
-            <td>/etc/rc.multi</td>
-            <td>Multi-User startup script</td>
-        </tr>
-        <tr>
-            <td>/etc/rc.modules</td>
-            <td>Module initialization script</td>
-        </tr>
-        <tr>
-            <td>/etc/rc.local</td>
-            <td>Local multi-user startup script</td>
-        </tr>
-        <tr>
-            <td>/etc/rc.shutdown</td>
-            <td>System shutdown script</td>
-        </tr>
-        <tr>
-            <td>/etc/rc.conf</td>
-            <td>System configuration file</td>
-        </tr>
-        <tr>
-            <td>/etc/rc.d/</td>
-            <td>Service start/stop directory</td>
-       </tr>
-   </table>
-
-=end html
+    +------------------+---------------------------------+
+    | File             | Description                     |
+    +------------------+---------------------------------+
+    | /etc/rc          | System boot script              |
+    | /etc/rc.single   | Single-user startup script      |
+    | /etc/rc.multi    | Multi-user startup script       |
+    | /etc/rc.modules  | Module initialization script    |
+    | /etc/rc.local    | Local multi-user startup script |
+    | /etc/rc.shutdown | System shutdown script          |
+    | /etc/rc.conf     | System configuration file       |
+    | /etc/rc.d/       | Service start/stop directory    |
+    +------------------+---------------------------------+
 
 C</etc/rc.local> is empty by default.
 

@@ -76,8 +76,8 @@ for L<grep(1)> looks like this:
             rm -rf $PKG/usr/info
     }
 
-Note that the build() function in the example above is just an example
-of how grep is built.  The contents of the function can differ
+Note that the C<build()> function in the example above is just an
+example of how grep is built.  The contents of the function can differ
 significantly if the program is built in some other way, e.g. does not
 use B<autoconf>.
 

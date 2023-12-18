@@ -47,8 +47,14 @@ F</etc/X11/> (subdirectories included), unless it's the file
 F</etc/X11/xorg.conf>.  The default rule is to upgrade everything,
 rules in this file are exceptions to that rule.
 
-B<Note>: A pattern should never contain an initial "/" since you are
+=over
+
+=item B<Caution>:
+
+A pattern should never contain an initial "/" since you are
 referring to the files in the package, not the files on the disk.
+
+=back
 
 See L<pkgadd.conf(5)> for more information.
 

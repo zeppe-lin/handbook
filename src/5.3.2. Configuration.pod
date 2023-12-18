@@ -4,7 +4,7 @@ pkgman's main configuration file, F</etc/pkgman.conf>, contains
 options that can be used to change pkgman's behavior.  Notably in
 this file, the following options can be configured:
 
-=over 4
+=over 12
 
 =item B<pkgsrcdir>
 

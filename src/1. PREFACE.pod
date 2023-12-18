@@ -1,0 +1,6 @@
+=head1 1. PREFACE
+
+This handbook (and Zeppe-Lin itself) is inspired and based on the
+L<CRUX Handbook|http://crux.nu/Main/Documentation>.
+
+=cut

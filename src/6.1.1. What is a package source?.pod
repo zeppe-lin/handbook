@@ -1,0 +1,22 @@
+=head3 B<6.1.1. What is a package source?>
+
+A package source is a directory containing the files needed for
+building a package using L<pkgmk(8)>.  This means that this directory
+at least has the files F<Pkgfile> (which is the package build
+description) and F<.footprint> (which is used for regression testing
+and contains a list of files this package is expected to contain once
+it is built).  Further, a package source directory can contain patches
+and/or other files needed for building the package, even software
+sources.  It is important to understand that the actual source code
+for the package is not necessarily present in the package source
+directory.  Instead, the F<Pkgfile> contains an URL that points to a
+location where the source can be downloaded.
+
+The use of the words "package source" in this context is borrowed
+from the NetBSD world, where a package refers to a set of files and
+building instructions that describe what's necessary to build a
+certain piece of software.
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

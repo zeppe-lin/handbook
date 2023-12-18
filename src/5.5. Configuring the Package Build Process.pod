@@ -4,87 +4,35 @@ Many settings of the package build process can be adjusted by
 editing the L<pkgmk(8)> configuration file F</etc/pkgmk.conf>.  Some
 of these configurable settings include:
 
-=begin man
+=over 24
 
-.TS
-center, box, tab (|) ;
-l | l
-l | l.
-Setting|Description
-_
-.SP
-CFLAGS|Define optimization and
-CXXFLAGS|architecture options for package
-|compilation.
-|
-|It's best NOT change these settings
-|unless you absolutely know what
-|you're doing!
-_
-PKGMK_SOURCE_MIRRORS|Define location(s) from which pkgmk
-|will attempt to fetch source
-|archives.
-_
-PKGMK_SOURCE_DIR|Define location where pkgmk will
-|store (if downloading) and use
-|source archives when building.
-_
-PKGMK_PACKAGE_DIR|Define location where pkgmk will
-|create package files once the
-|build process is complete.
-_
-PKGMK_WORK_DIR|Define a work area that pkgmk will
-|use to build the package.
-.TE
+=item B<CFLAGS>, B<CXXFLAGS>
 
-=end man
+Define optimization and architecture options for package compilation.
 
-=begin html
+It's best NOT change these settings unless you absolutely know what
+you're doing!
 
-    <table>
-        <tr>
-            <th>Setting</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>CFLAGS CXXFLAGS</td>
-            <td>
-                Define optimization and architecture options for
-                package compilation.  It's best NOT change these
-                settings unless you absolutely know what you're doing!
-            </td>
-        </tr>
-        <tr>
-            <td>PKGMK_SOURCE_MIRRORS</td>
-            <td>
-                Define location(s) from which pkgmk will attempt to
-                fetch source archives.
-            </td>
-        </tr>
-        <tr>
-            <td>PKGMK_SOURCE_DIR</td>
-            <td>
-                Define location where pkgmk will store (if
-                downloading) and use source archives when building.
-            </td>
-        </tr>
-        <tr>
-            <td>PKGMK_PACKAGE_DIR</td>
-            <td>
-                Define location where pkgmk will create package files
-                once the build process is complete.
-            </td>
-        </tr>
-        <tr>
-            <td>PKGMK_WORK_DIR</td>
-            <td>
-                Define a work area that pkgmk will use to build the
-                package.
-            </td>
-        </tr>
-    </table>
+=item B<PKGMK_SOURCE_MIRRORS>
 
-=end html
+Define location(s) from which pkgmk will attempt to fetch source
+archives.
+
+=item B<PKGMK_SOURCE_DIR>
+
+Define location where pkgmk will store (if downloading) and use source
+archives when building.
+
+=item B<PKGMK_PACKAGE_DIR>
+
+Define location where pkgmk will create package files once the build
+process is complete.
+
+=item B<PKGMK_WORK_DIR>
+
+Define a work area that pkgmk will use to build the package.
+
+=back
 
 Here are some examples:
 
