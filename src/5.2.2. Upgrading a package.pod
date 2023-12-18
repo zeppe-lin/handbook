@@ -1,0 +1,55 @@
+=head3 B<5.2.2. Upgrading a package>
+
+Upgrading a package is done using L<pkgadd(8)> with the B<-u> option.
+Example:
+
+    # pkgadd -u bash#5.0.18-1.pkg.tar.gz
+
+This will replace the previously installed bash package with the new
+one.  If you have not previously installed bash, L<pkgadd(8)> will
+print an error message.  L<pkgadd(8)> does not care about the version
+number of the package in that you can "upgrade" version 2.05-1 with
+version 2.04-1 (or even with version 2.05-1 itself).  The installed
+package will be replaced with the specified package.
+
+Upgrading a package is equivalent to executing L<pkgrm(8)> followed by
+L<pkgadd(8)> with one (big) exception.  When upgrading a package (with
+C<pkgadd -u>) you have the option to prevent some of the already
+installed files from getting replaced.  This is typically useful when
+you want to preserve configuration and log files.
+
+When executing L<pkgadd(8)> the file F</etc/pkgadd.conf> will be read.
+This file can contain rules describing how L<pkgadd(8)> should behave
+when doing upgrades.  A rule is built out of three fragments:
+I<event>, I<pattern>, and I<action>.  The I<event> describes in what
+kind of situation this rule applies.  Currently, only one type of
+event is supported, that is UPGRADE.  The I<pattern> is a filename
+pattern expressed as a regular expression and the I<action> applicable
+to the UPGRADE event is YES or NO.  More than one rule of the same
+event type is allowed, in which case the first rule will have the
+lowest priority and the last rule will have the highest priority.
+Example:
+
+    #
+    # /etc/pkgadd.conf: pkgadd(8) configuration
+    #
+
+    UPGRADE       ^etc/.*$                NO
+    UPGRADE       ^var/log/.*$            NO
+    UPGRADE       ^etc/X11/.*$           YES
+    UPGRADE       ^etc/X11/xorg.conf$     NO
+
+    # End of file.
+
+The above example will cause L<pkgadd(8)> to never upgrade anything in
+F</etc/> or F</var/log/> (subdirectories included), except files in
+F</etc/X11/> (subdirectories included), unless it's the file
+F</etc/X11/xorg.conf>.  The default rule is to upgrade everything,
+rules in this file are exceptions to that rule.
+
+B<Note>: A pattern should never contain an initial "/" since you are
+referring to the files in the package, not the files on the disk.
+
+See L<pkgadd.conf(5)> for more information.
+
+=cut

@@ -1,0 +1,79 @@
+=head3 B<5.2.1. Installing a package>
+
+Installing a package is done by using L<pkgadd(8)>.  This utility
+requires at least one argument, the package you want to install.
+Example:
+
+    # pkgadd bash#5.0.18-1.pkg.tar.gz
+
+When installing a package the package manager will ensure that no
+previously installed files are overwritten.  If conflicts are found,
+an error message will be printed and L<pkgadd(8)> will abort without
+installing the package.  The error message will contain the names of
+the conflicting files.  Example:
+
+    # pkgadd bash#5.0.18-1.pkg.tar.gz
+    bin/sh
+    usr/share/man/man1/sh.1.gz
+    pkgadd error: listed files already installed
+        (use -f to ignore and overwrite)
+
+To force the installation and overwrite the conflicting files, you
+can use the option B<-f>/B<--force>.  Example:
+
+    # pkgadd -f bash#5.0.18-1.pkg.tar.gz
+
+The package system allows a file to be owned by exactly one package.
+When forcing an installation the ownership of the conflicting files
+will be transferred to the package that is currently being installed.
+Directories can however be owned by more than one package.
+
+=begin man
+
+.TS
+center, box, tab (|) ;
+c
+c.
+<WARNING>
+_
+.SP
+It is often not a good idea to force the installation
+unless you really know what you are doing.  If a package
+conflicts with already installed files it could be a sign
+that the package is broken and installs unexpected files.
+Use this option with extreme care, preferably not at all.
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>
+            <th>WARNING</th>
+        </tr>
+
+        <tr>
+            <td>
+                It is often not a good idea to force the installation
+                unless you really know what you are doing.  If a
+                package conflicts with already installed files it
+                could be a sign that the package is broken and
+                installs unexpected files.  Use this option with
+                extreme care, preferably not at all.
+            </td>
+        </tr>
+    </table>
+
+=end html
+
+As earlier, the package file itself does not contain any metadata.
+Instead, the L<pkgadd(8)> uses the package filename to determine the
+package name and version.  Thus, when installing a package file named
+I<bash#5.0.18-1.pkg.tar.gz>, L<pkgadd(8)> will interpret this as a
+package named I<bash> at version I<5.0.18-1>.  If L<pkgadd(8)> is
+unable to interpret the filename (e.g. B<#> is missing or the filename
+does not end with .pkg.tar.gz) an error message will be printed and
+L<pkgadd(8)> will abort without installing the package.
+
+=cut

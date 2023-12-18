@@ -1,0 +1,22 @@
+=head4 I<5.2.2.1. Rejected files>
+
+If L<pkgadd(8)> finds that a specific file should not be upgraded, it
+will install it under F</var/lib/pkg/rejected/>.  Files in this
+directory are never added to the package database.  The user is then
+free to examine, use and/or remove that file manually.  Another option
+is to use L<rejmerge(8)>.  For each rejected file found in
+F</var/lib/pkg/rejected/>, L<rejmerge(8)> will display the difference
+between the installed version and the rejected version.  The user can
+then choose to keep the installed version, upgrade to the rejected
+version or perform a merge of the two.  Example (using the above
+F</etc/pkgadd.conf>):
+
+    # pkgadd -u bash#5.0.18-1.pkg.tar.gz
+    pkgadd: rejecting etc/profile, keeping existing version
+
+    # tree --charset=ascii /var/lib/pkg/rejected
+    /var/lib/pkg/rejected
+    `-- etc
+        `-- profile
+
+=cut

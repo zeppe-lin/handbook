@@ -1,0 +1,41 @@
+=head3 B<5.3.2. Configuration>
+
+pkgman's main configuration file, F</etc/pkgman.conf>, contains
+options that can be used to change pkgman's behavior.  Notably in
+this file, the following options can be configured:
+
+=over 4
+
+=item B<pkgsrcdir>
+
+This option can occur multiple times and specifies a directory with a
+packages' sources "collection" which L<pkgman(1)> should check in its
+operation.  By default, the I<core> collection is enabled, but
+I<system>, I<xorg>, I<desktop>, and I<stuff> collections are
+commented.
+
+=item B<runscripts>
+
+This option configures L<pkgman(1)> to run C<pre-install>,
+C<post-install>, C<pre-remove>, and C<post-remove> scripts if they
+exist in the package source directory.  These scripts are run during
+F<install>, F<update>, F<sysup>, and F<remove> operations.
+
+It is recommended that this be enabled as in many cases if these
+scripts exist in a package source directory, it is required to be
+run for proper operation.
+
+=item B<logfile>
+
+This option configures a file for pkgman to log its operation if
+desired.
+
+=back
+
+This is B<NOT> an exhaustive list of all of pkgman's commands,
+features, and configuration options, merely a starting point.  More
+information can be found in L<pkgman(1)> and L<pkgman.conf(5)>.
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

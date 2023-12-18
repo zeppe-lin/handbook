@@ -1,0 +1,127 @@
+=head3 B<5.2.4. Querying the package database>
+
+Querying the package database is done using L<pkginfo(1)>.  This
+utility has a few options to answer different queries.
+
+=begin man
+
+.TS
+center, box, tab (@) ;
+l | l
+l | l.
+Option @ Description
+_
+-f, --footprint=FILE@print footprint for FILE
+-i, --installed@list installed packages and their version
+-l, --list=PACKAGE|FILE@list files in PACKAGE or FILE
+-o, --owner=PATTERN@list owner(s) of file(s) matching PATTERN
+-r, --root=DIR@specify an alternate root directory
+-v, --version@print version and exit
+-h, --help@print help and exit
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>-f, --footprint=FILE</td>
+            <td>print footprint for FILE</td>
+        </tr>
+        <tr>
+            <td>-i, --installed</td>
+            <td>list installed packages and their version</td>
+        </tr>
+        <tr>
+            <td>-l, --list=PACKAGE|FILE</td>
+            <td>list files in PACKAGE or FILE</td>
+        </tr>
+        <tr>
+            <td>-o, --owner=PATTERN</td>
+            <td>list owner(s) of file(s) matching PATTERN</td>
+        </tr>
+        <tr>
+            <td>-r, --root=DIR</td>
+            <td>specify an alternate root directory</td>
+        </tr>
+        <tr>
+            <td>-v, --version</td>
+            <td>print version and exit</td>
+        </tr>
+        <tr>
+            <td>-h, --help</td>
+            <td>print help and exit</td>
+        </tr>
+    </table>
+
+=end html
+
+=head4 I<List installed packages and their version>
+
+    $ pkginfo -i
+    audiofile 0.2.3-1
+    autoconf 2.52-1
+    automake 1.5-1
+    [...]
+    xmms 1.2.7-1
+    zip 2.3-1
+    zlib 1.1.4-1
+
+=head4 I<List files in PACKAGE or FILE>
+
+    $ pkginfo -l bash
+    bin/
+    bin/bash
+    etc/
+    etc/profile
+    usr/
+    usr/share/man/
+    usr/share/man/man1/
+    usr/share/man/man1/bash.1.gz
+
+    $ pkginfo -l grep#2.5-1.pkg.tar.gz
+    usr/
+    usr/bin/
+    usr/bin/egrep
+    usr/bin/fgrep
+    usr/bin/grep
+    usr/share/man/
+    usr/share/man/man1/
+    usr/share/man/man1/egrep.1.gz
+    usr/share/man/man1/fgrep.1.gz
+    usr/share/man/man1/grep.1.gz
+
+=head4 I<List owners of files matching F<bin/ls>>
+
+    $ pkginfo -o bin/ls
+    e2fsprogs  usr/bin/lsattr
+    fileutils  bin/ls
+    modutils   sbin/lsmod
+
+=head4 I<Print footprint for file>
+
+    $ pkginfo -f xorg-xkill#1.0.5-1.pkg.tar.gz
+    drwxr-xr-x      root/root       usr/
+    drwxr-xr-x      root/root       usr/share/
+    drwxr-xr-x      root/root       usr/bin/
+    -rwxr-xr-x      root/root       usr/bin/xkill
+    drwxr-xr-x      root/root       usr/share/man/
+    drwxr-xr-x      root/root       usr/share/man/man1/
+    -rw-r--r--      root/root       usr/share/man/man1/xkill.1.gz
+
+This feature is mainly used by L<pkgmk(8)> for creating and comparing
+footprints.
+
+The B<-r>/B<--root> option should be used if you want to display
+information about a package that is installed on a temporarily mounted
+partition, which is "owned" by another system.  By using this option
+you specify which database to use.
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

@@ -1,0 +1,10 @@
+=head3 7.3.2. B<Dynamic address>
+
+If you want to configure your system to use a dynamic IP address,
+install the C<dhcpcd> package, edit and run F</etc/rc.d/dhcpcd>
+service:
+
+    # $EDITOR /etc/rc.d/dhcpcd
+    # /etc/rc.d/dhcpcd start
+
+=cut

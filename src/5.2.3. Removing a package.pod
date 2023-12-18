@@ -1,0 +1,48 @@
+=head3 B<5.2.3. Removing a package>
+
+Removing a package is done by using L<pkgrm(8)>.  This utility
+requires one argument, the name of the package you want to remove.
+Example:
+
+    # pkgrm bash
+
+=begin man
+
+.TS
+center, box, tab (|) ;
+c
+c.
+<WARNING>
+_
+.SP
+This will remove all files owned by the package, no questions
+asked.  Think twice before doing it and make sure that you did
+not misspell the package name since that could remove something
+completely different (e.g. think about what could happen if you
+misspelled glib as glibc).
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>
+            <th>WARNING</th>
+        </tr>
+
+        <tr>
+            <td>
+                This will remove all files owned by the package, no
+                questions asked.  Think twice before doing it and make
+                sure that you did not misspell the package name since
+                that could remove something completely different (e.g.
+                think about what could happen if you misspelled glib
+                as glibc).
+            </td>
+        </tr>
+    </table>
+
+=end html
+
+=cut

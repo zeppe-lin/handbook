@@ -1,0 +1,10 @@
+=head2 4.1. Supported Hardware / Requirements
+
+Packages on the official B<rootfs> image are compiled with
+optimization for x86-64 (AMD Athlon 64, Intel Core, Intel Atom) or
+newer processors.  Do not try to install it on an i686 (Pentium Pro,
+Celeron, Pentium-III) or lower processor, it simply will not work.
+
+Since Zeppe-Lin is distributed in the form of a compiled tarball
+containing a root filesystem, the installation requires a live
+CD/DVD/USB with any GNU/Linux.
