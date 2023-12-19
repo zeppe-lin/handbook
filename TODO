@@ -1,12 +1,19 @@
 TODO handbook
 
-	[x] Rewrite pkgsrc documentation.
-	Reflect latest changes in pkgsrc system (separate repositories).
-	Done: Thu Apr 13 07:57:58 AM EEST 2023
+	- [ ] fix handbook in text variant
 
-	[ ] Add development section:
+	- [ ] move some instructions from INSTALL section to CONFIGURATION,
+		and make references
+
+	- [ ] Add development section?
 	    1. Developer documentation:
 	       a) how to contribute
-	       b) pkgsrc guidelines? Pkgfile(5)?
+	       b) pkgsrc guidelines? Pkgfile(5)? Already done?
+
+DONE:
+
+	- [x] Rewrite pkgsrc documentation.
+	Reflect latest changes in pkgsrc system (separate repositories).
+	Done: Thu Apr 13 07:57:58 AM EEST 2023
 
 End of file.
