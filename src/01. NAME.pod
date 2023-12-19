@@ -6,4 +6,12 @@ handbook - Zeppe-Lin Handbook
 
 =end man
 
+=begin pdf
+
+C< >
+
+O<handbook-cover.png>
+
+=end pdf
+
 =cut
