@@ -1,0 +1,68 @@
+=head2 4.4. Install Base System
+
+=head3 B<4.4.1. Download rootfs tarball>
+
+As mentioned before, the C</mnt> directory is the default mountpoint
+for our system.  Let's download the rootfs tarball into this directory
+so we won't pollute live CD/DVD/USB RAM:
+
+    # cd /mnt
+    # wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz{,.sig}
+
+=head3 B<4.4.2. Verify downloaded tarball>
+
+Zeppe-Lin rootfs tarball is signed using GPG.
+It's a good practice to verify authenticity and integrity of
+downloaded files when possible.
+
+    # gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
+    # gpg --verify rootfs-v0.99.1-x86_64.tar.xz{.sig,}
+
+=head3 B<4.4.3. Extract rootfs tarball>
+
+Once the rootfs tarball is downloaded and verified, extract the
+contents with the following command:
+
+    # tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
+        rootfs-v0.99.1-x86_64.tar.xz
+
+=over
+
+=item B<Important>:
+
+It is very important to use all the options included above.  See below
+for details.
+
+=back
+
+Here are what the options to L<tar(1)> do:
+
+=over
+
+=item B<--numeric-owner>
+
+Without this option, L<tar(1)> will map ownership and group ownership
+based on the UID to user and GID to group mappings as defined on the
+Live CD/DVD/USB.  By specifying B<--numeric-owner> we tell that we
+want the I<numeric values> of the UIDs and GIDs in the tarball to be
+preserved on disk, so when your Zeppe-Lin system boots, the UIDs and
+GIDs are set correctly for Zeppe-Lin.
+
+=item B<--xattrs --xattrs-include='*'>
+
+Zeppe-Lin uses filesystem extended attributes to set Linux
+capabilities, which allow for certain programs such as ping to have
+enhanced privileges without having to be fully 'suid root'.  Even with
+the B<-p> option, L<tar(1)> will not restore extended attributes we
+need unless these two options are specified.
+
+=item B<-xpf>
+
+Extract (B<x>), preserve regular permissions and ownership (B<p>), and
+use the filename (B<f>) specified.
+
+=back
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

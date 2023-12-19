@@ -1,0 +1,32 @@
+=head3 B<4.10.1. Install kernel package>
+
+The C<pkgsrc-system> collection provides a package with the kernel and
+non-free firmware:
+
+    (chrooted) # pkgman install --deps --group \
+        --config-append="runscripts no" linux linux-firmware
+
+This B<linux> package has a B<post-install> script that executes
+L<mkinitramfs(8)> and updates the B<grub> config.  We turn off the
+execution of this script because we'll do it manually.  It is useful
+when regularly updating the system but now it's unnecessary.
+
+=over
+
+=item B<Note>:
+
+You may like to lock the B<linux> package and not update it during
+regular system updates, since the update will remove the current
+working kernel and its modules.  If you plan not to turn off the
+computer for a long time, it is better to do this and update the
+kernel separately, through L<pkgman-update(8)>.  See L<pkgman-lock(8)>
+for more information about package locking.
+
+=back
+
+If you installed the kernel package through a package manager, you can
+jump over the next paragraph, to the L</"Prepare initramfs image">.
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

@@ -1,0 +1,22 @@
+=head2 4.7. Prepare The PKGSRC Repos
+
+Packages' sources are organized in so-called collections, see
+L</"The pkgsrc collections"> for more information about that.
+
+Clone the collections you need, but keep in mind that each subsequent
+collection depends on the previous ones.
+
+    (chrooted) # cd /usr/src/
+    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core
+    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-system
+    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-xorg
+    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop
+
+Edit F</etc/pkgman.conf> (see L<pkgman.conf(5)> for more information)
+and enable the collections you cloned.  By default, only C<core>
+collection is enabled.  Also, you may like to edit F</etc/pkgmk.conf>
+(see L<pkgmk.conf(5)> for more information).
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

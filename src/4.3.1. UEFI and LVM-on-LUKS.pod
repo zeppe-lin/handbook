@@ -1,0 +1,115 @@
+=head3 B<4.3.1. UEFI and LVM-on-LUKS>
+
+This section describes how to set up Zeppe-Lin on a fully encrypted
+disk (apart from the bootloader partition).  We will have an LVM
+container installed inside an encrypted partition.  To encrypt the
+partition containing the LVM volume group, B<dm-crypt> (which is
+managed by the L<cryptsetup(8)> command) and its LUKS subsystem is
+used.
+
+=over
+
+=item B<Important>:
+
+Make sure you have the following packages installed on your live
+system: B<parted>, B<dosfstools>, B<cryptsetup>, and B<lvm2>.
+
+=back
+
+=head4 B<4.3.1.1. Partition scheme>
+
+This is a quite simple partition scheme used in this section.  There
+is a SCSI disk C</dev/sda>, but if you have an NVME disk (like
+C</dev/nvme0n1>) or another SCSI disk (like C</dev/sdb>), it's simple
+as run C<sed 's/sda/sdb/g'>.
+
+    +-----------+------------+------------------+----------------+
+    | Partition | Filesystem | Size             | Description    |
+    +-----------+------------+------------------+----------------+
+    | /dev/sda1 | fat32      | 512MB            | boot partition |
+    | /dev/sda2 | luks       | rest of the disk | luks partition |
+    +-----------+------------+------------------+----------------+
+
+=over
+
+=item B<Important>:
+
+On UEFI systems with a GPT-partitioned disk, there must be an EFI
+system partition (ESP).  The suggested size is around 512 MiB.
+
+=back
+
+=head4 B<4.3.1.2. Create the partitions>
+
+Using L<parted(8)> utility we can create all required partitions.
+
+    # parted /dev/sda
+    (parted) mklabel gpt
+    (parted) mkpart ESP fat32 1MiB 513MiB
+    (parted) set 1 boot on
+    (parted) name 1 efiboot
+    (parted) mkpart primary 513MiB 100%
+    (parted) name 2 luks
+    (parted) quit
+
+Encrypt the second (luks) partition with LUKS and open the LUKS
+device (for example, as C<crypt> mapped name):
+
+    # cryptsetup luksFormat /dev/sda2
+    # cryptsetup luksOpen /dev/sda2 crypt
+
+=head4 B<4.3.1.3. Create LVM inside LUKS device>
+
+Create a physical volume and a new volume group (named C<zpln> for
+example):
+
+    # pvcreate /dev/mapper/crypt
+    # vgcreate zpln /dev/mapper/crypt
+
+Before creating the logical volumes, this is a quite simple logical
+volumes scheme used in this section:
+
+    +-------------+------------+------------------+-------------+
+    | Volume name | Filesystem | Size             | Description |
+    +-------------+------------+------------------+-------------+
+    | swap        | swap       | 2 * RAM          | swap area   |
+    | root        | ext4       | rest of the disk | root fs     |
+    +-------------+------------+------------------+-------------+
+
+To see the actual amount of RAM, type the following command:
+
+    # free -m
+
+For example, we have 4GB RAM.  The swap will have 8GB.  Let's create
+the aforementioned two logical volumes:
+
+    # lvcreate -L 8G -n swap zpln
+    # lvcreate -l 100%FREE -n root zpln
+
+=head3 B<4.3.1.4. Create the filesystems>
+
+Create a FAT32 filesystem for the first (boot) partition:
+
+    # mkfs.vfat -F32 /dev/sda1
+
+Create root filesystem:
+
+    # mkfs.ext4 /dev/zpln/root
+
+Format swap logical volume as swap area and activate it:
+
+    # mkswap /dev/zpln/swap
+    # swapon /dev/zpln/swap
+
+=head4 B<4.3.1.5. Mount prepared partitions>
+
+In this handbook, the C</mnt> directory is used as a default
+mountpoint.
+
+    # mount /dev/zpln/root /mnt
+    # mkdir /mnt/boot
+    # mount /dev/sda1 /mnt/boot
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

@@ -1,4 +1,4 @@
-=head2 7.1. Generating locales
+=head2 7.1. Generating Locales
 
 B<glibc> does not contain all possible locales, thus you'll have to
 generate the locales you need/use.  To ensure the proper operation of

@@ -1,0 +1,25 @@
+=head2 4.13. Post-installation Tasks
+
+=head3 B<4.13.1. Install X11>
+
+See the available X11 video and input drivers, and choose the right
+one:
+
+    # pkgman search -vv xf86-
+
+Next, install the B<xorg> package and the drivers you wish:
+
+    # pkgman install --deps --group xorg ...
+
+=head3 B<4.13.2. Reboot>
+
+Exit from chroot and umount F</mnt> and reboot:
+
+    (chrooted) # exit
+    # cd /
+    # umount -R /mnt
+    # shutdown -r now
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

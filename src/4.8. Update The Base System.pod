@@ -1,0 +1,31 @@
+=head2 4.8. Update The Base System
+
+Before installing any package you need, it's highly recommended to
+update the system which you just installed.
+
+=over
+
+=item B<Warning>:
+
+Starting from version C<6.0>, C<pkgutils> has broken backward
+compatibility when generating footprint files.  So, at the beginning
+it is recommended to update C<pkgmk> and C<pkgutils>:
+
+    (chrooted) # pkgman update -f pkgmk pkgutils
+
+=back
+
+The following command tells to L<pkgman(1)> to run system update (with
+dependency handling/sorting) and to stop if installation of at least
+one package fails:
+
+    (chrooted) # pkgman sysup --deps --depsort --group
+
+It's also recommended to merge the files that were rejected during
+updates:
+
+    (chrooted) # rejmerge
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

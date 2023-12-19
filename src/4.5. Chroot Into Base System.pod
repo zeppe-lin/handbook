@@ -1,0 +1,33 @@
+=head2 4.2. Chroot Into Base System
+
+Copy DNS configuration to have the availability to use the network
+from the chrooted root:
+
+    # cp /etc/resolv.conf etc/resolv.conf
+
+Mount Linux's pseudo-filesystems:
+
+    # mount -B /dev /mnt/dev
+    # mount -B /tmp /mnt/tmp
+    # mount -B /run /mnt/run
+    # mount -t proc proc /mnt/proc
+    # mount -t sysfs none /mnt/sys
+    # mount -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts \
+        /mnt/dev/pts
+
+    (UEFI only)
+    # mount -B /sys/firmware/efi/efivars /mnt/sys/firmware/efi/efivars
+
+    # chroot /mnt /bin/bash
+
+Set the B<SHELL> environment variable to I</bin/bash> in the chrooted
+environment, to be available to call C<:shell> in vim, for example, or
+other tools that relies on C<SHELL>.  This needs if the shell used
+outside chroot is zsh, fish, or something else that is not present in
+chroot environment:
+
+    (chrooted) # export SHELL=/bin/bash
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

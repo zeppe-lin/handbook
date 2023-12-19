@@ -1,0 +1,25 @@
+=head3 B<Install essential packages>
+
+Let's install all the necessary packages for the so-called
+workstation:
+
+    (chrooted) # pkgman install --deps --group \
+        cryptsetup e2fsprogs dosfstools grub2 grub2-efi iw gnupg \
+        lvm2 pinentry wireless-tools wpa-supplicant dhcpcd iputils
+
+Edit F</etc/rc.d/dhcpcd> and F</etc/rc.d/wpa_supplicant> and setup
+your network interfaces.
+
+=over
+
+=item B<Note>:
+
+If you configured the networking
+bridge, don't forget to specify the bridge interface to B<dhcpcd>
+and/or B<wpa_supplicant> RC scripts.
+
+=back
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

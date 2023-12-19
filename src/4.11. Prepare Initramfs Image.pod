@@ -1,0 +1,56 @@
+=head2 4.11 Prepare initramfs image
+
+Install B<mkinitramfs> package:
+
+    (chrooted) # pkgman install --deps mkinitramfs
+
+Add the B<mkinitramfs> configuration file (F</etc/mkinitramfs/config>)
+with the following content:
+
+    #
+    # /etc/mkinitramfs/config: mkinitramfs(8) configuration
+    #
+    # See mkinitramfs.config(5) for more information.
+    #
+
+    hostonly=1 #(optional)
+    compress="gzip --fast"
+    hooks="eudev luks lvm resume"
+    root=/dev/zpln/root
+    root_type=ext4
+    resume=/dev/zpln/swap
+    luks_name=crypt
+    luks_root=/dev/sda2
+
+    # End of file.
+
+See L<mkinitramfs.config(5)> for more information.
+
+=over
+
+=item B<Note>:
+
+As in case of F</etc/fstab>, you can use C</dev/disk/by-uuid/*> or
+C<UUID=[...]> instead of C</dev/*> to prevent boot failures on
+machines with multiple disks.  Use L<blkid(8)> to verify the disk's
+C<UUID>:
+
+    (chrooted) # blkid -o value -s UUID <DEVICE>
+    ...
+
+=back
+
+Now, prepare an initramfs.  If you installed the C<linux> kernel
+manually, you have already set C<KV> variable to kernel version.
+Otherwise, obtain the kernel version from package source like the
+following:
+
+    (chrooted) # KV=$(pkgman printf %v --filter=linux)
+
+Now, generate an initramfs image:
+
+    (chrooted) # mkinitramfs -o /boot/initramfs-$KV.img -k $KV
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

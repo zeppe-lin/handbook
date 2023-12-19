@@ -1,6 +1,12 @@
 =head1 1. PREFACE
 
 This handbook (and Zeppe-Lin itself) is inspired and based on the
-L<CRUX Handbook|http://crux.nu/Main/Documentation>.
+L<CRUX Handbook|http://crux.nu/Main/Documentation>. It's not an
+extensive guide on how to use and configure common Linux software.
+The purpose of the handbook is to explain how to install, configure,
+and maintain Zeppe-Lin systems, and to highlight the differences
+between common Linux distributions and Zeppe-Lin.
 
 =cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

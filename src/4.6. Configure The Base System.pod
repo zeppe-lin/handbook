@@ -1,0 +1,97 @@
+=head2 B<4.6. Configure The Base System>
+
+Set the root password:
+
+    (chrooted) # passwd root
+
+Make sure files have proper ownership and permissions:
+
+    (chrooted) # chown root:root /
+    (chrooted) # chmod 755 /
+
+B<Glibc> does not contain all possible locales, thus you'll have to
+generate the locales you need/use.  To ensure the proper operation of
+L<pkgmk(8)>, the locale C<C.UTF-8> is generated as part of the
+Zeppe-Lin installation.  Any other desired locales must be created by
+the administrator.  Let's prepare C<en_US.UTF-8> (you may choose
+locale you need):
+
+    (chrooted) # localedef -i en_US -f UTF-8 en_US.UTF-8
+
+Then add C<export LANG=en_US.UTF-8> to F</etc/profile> to make it
+system-wide.
+
+Edit F</etc/fstab> (see L<fstab(5)> for more information) to configure
+your filesystems and add the prepared partitions.  For example, for
+L</"4.3.1. UEFI and LVM-on-LUKS"> installation, you may specify the
+following:
+
+    /dev/zpln/root  /      ext4  defaults,noatime,nodiratime  1 2
+    /dev/sda1       /boot  vfat  defaults,noatime,nodiratime  1 2
+    /dev/zpln/swap  swap   swap  defaults                     0 0
+
+=over
+
+=item B<Note>:
+
+You can use C</dev/disk/by-uuid/*> or C<UUID=xxx> instead of
+C</dev/*> used above to prevent boot failures on machines with
+multiple disks.  Use L<blkid(8)> to verify the disk's UUID:
+
+    (chrooted) # blkid -o value -s UUID <DEVICE>
+    ...
+
+=back
+
+Uncomment F</var/cache/pkgmk/work> if you want to build packages in
+RAM.
+
+Mount B<fstab> entries:
+
+    At least python3 won't build without that:
+    (chrooted) # mount /dev/shm
+
+    If you setup UEFI:
+    (chrooted) # mount /sys/firmware/efi/efivars
+
+    If you setup using tmpfs for /tmp:
+    (chrooted) # mount /tmp
+
+    If you setup to build packages in RAM:
+    (chrooted) # mount /var/cache/pkgmk/work
+
+Edit F</etc/rc.conf> (see L<rc.conf(5)> for more information) to
+configure font, keyboard, timezone, hostname, and services.
+
+Edit F</etc/rc.d/net>, F</etc/hosts>, and F</etc/resolv.conf> to
+configure your network (IP address/Gateway/Hostname/Domain/DNS).  If
+you want to configure the networking bridge, see F</etc/rc.d/bridge>.
+
+It's better to add the ordinary user now if you want a specific user
+id because the following installation of packages creates its own
+users and they may occupy your id:
+
+    (chrooted) # useradd --shell /bin/bash --create-home  \
+        --groups audio,video,scanner,cdrom,input,users    \
+        --uid 1000 --user-group $USERNAME
+
+    (chrooted) # passwd $USERNAME
+
+To make this user privileged (e.g. as Ubuntu does), first, you need to
+add the C<$USERNAME> to the C<wheel> group:
+
+    (chrooted) # usermod -aG wheel $USERNAME
+
+And second, grant the users in the C<whell> group to be root:
+
+    #
+    # /etc/sudoers.d/00wheel: grant users in the wheel group to be root
+    #
+
+    %wheel ALL=(ALL:ALL) ALL
+
+    # End of file.
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

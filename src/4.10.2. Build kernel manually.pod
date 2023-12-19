@@ -1,0 +1,61 @@
+=head3 B<4.10.2. Install the kernel manually>
+
+Since the L<pkgman(1)> build the package that contains only the
+binaries (kernel and modules), you may want to build your own kernel.
+For example, you do not need such a fat kernel, which goes by default,
+or you need the sources of the running kernel because you want to
+build the Nvidia driver and/or VirtualBox.
+
+In this case, it is recommended to use the kernel from package sources.
+
+So, let's download the B<linux> source:
+
+    (chrooted) # pkgman install -do linux
+
+The C<-do> option means C<download-only>.  The source is downloaded
+to F</var/cache/pkgmk/sources> if you have not changed the
+B<PKGMK_SOURCE_DIR> location in F</etc/pkgmk.conf>.  Unpack it:
+
+    (chrooted) # tar -xvf \
+        /var/cache/pkgmk/sources/linux-5.4.X.tar.?z -C /usr/src/
+
+You may want to enable Zeppe-Lin's patches:
+
+    (chrooted) # cd linux-5.4.X
+    (chrooted) # for p in $(pkgman path linux)/*.patch; \
+        do patch -Np1 -i $p; done
+
+If you have downloaded a non-packaged kernel, you can print the
+results of applying the patches without actually changing any files.
+Just add C<--dry-run> option.
+
+Next, you can create your own, minimal config and adjust it to your
+system:
+
+    (chrooted) # make menuconfig
+
+Or you can use the C<all-inclusive> config from the package:
+
+    (chrooted) # cp $(pkgman path linux)/x86_64-dotconfig .config
+    (chrooted) # make olddefconfig
+
+Build the kernel and modules:
+
+    (chrooted) # make -j$(nproc) all
+
+Install the kernel and modules:
+
+    (chrooted) # KV=$(make kernelversion)
+    (chrooted) # cp arch/x86/boot/bzImage /boot/vmlinuz-$KV
+    (chrooted) # cp .config /boot/config-$KV
+    (chrooted) # make modules_install
+
+You may still need to install the kernel non-free firmware:
+
+    (chrooted) # pkgman install --deps linux-firmware
+
+Next, we need to prepare the initramfs and update our bootloader.
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70

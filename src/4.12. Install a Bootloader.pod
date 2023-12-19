@@ -1,0 +1,22 @@
+=head2 4.12. Install a Bootloader
+
+=head3 B<4.12.1. GRUB>
+
+Create F</etc/default/grub> file with the following content:
+
+    GRUB_TIMEOUT=3
+    GRUB_DISTRIBUTOR=ZPLN
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
+
+Next, install B<GRUB> on C</dev/sda> (your case may differ) drive:
+
+    (chrooted) # grub-install --target=x86_64-efi \
+        --efi-directory=/boot /dev/sda
+
+Update B<GRUB> configuration file:
+
+    (chrooted) # grub-mkconfig -o /boot/grub/grub.cfg
+
+=cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70
