@@ -10,6 +10,8 @@ TODO handbook
 	       a) how to contribute
 	       b) pkgsrc guidelines? Pkgfile(5)? Already done?
 
+	- [ ] Make EPUB? pod2epub has dependency hell.
+
 DONE:
 
 	- [x] Rewrite pkgsrc documentation.
