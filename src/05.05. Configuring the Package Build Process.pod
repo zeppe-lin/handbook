@@ -88,7 +88,7 @@ PKGMK_WORK_DIR|Define a work area that pkgmk will
 
 =begin text
 
-=over
+=over 2
 
 =item * C<CFLAGS>, C<CXXFLAGS>
 

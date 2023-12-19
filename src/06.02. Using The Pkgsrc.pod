@@ -54,35 +54,7 @@ sources are available.  Let's take C<pkgsrc-core> as an example:
     attr/             gettext-tiny/  libpipeline/      python3/
     autoconf/         git/           libtirpc/         rc/
     automake/         glibc/         libtool/          rdate/
-    bash/             glibc-32/      libunistring/     readline/
-    bash-completion/  gperf/         libusb/           README.md
-    bc/               grep/          libyaml/          rejmerge/
-    binutils/         groff/         linux-pam/        revdep/
-    bison/            gzip/          lz4/              ruby/
-    bzip2/            hdparm/        lzo/              samurai/
-    ca-certificates/  iana-etc/      m4/               sed/
-    capstone/         inetutils/     make/             shadow/
-    cmake/            intltool/      Makefile          sqlite3/
-    COPYING           iproute2/      man-db/           start-stop-daemon/
-    COPYRIGHT         iptables/      man-pages/        sudo/
-    coreutils/        kbd/           man-pages-posix/  sysfsutils/
-    cpio/             kmod/          meson/            sysklogd/
-    curl/             less/          mlocate/          sysvinit/
-    dash/             libarchive/    mpdecimal/        tar/
-    db/               libbsd/        nasm/             tzdata/
-    dcron/            libcap/        ncurses/          usbids/
-    diffutils/        libcap-ng/     openssh/          usbutils/
-    ed/               libdevmapper/  openssl/          util-linux/
-    elfutils/         libffi/        p5-xml-parser/    vim/
-    eudev/            libgmp/        patch/            wget/
-    expat/            libmd/         pciutils/         which/
-    fakeroot/         libmnl/        perl/             xz/
-    file/             libmpc/        pkg-config/       zlib/
-    filesystem/       libmpfr/       pkgman/           zstd/
-    findutils/        libnfnetlink/  pkgmk/
-    flex/             libnftnl/      pkgutils/
-    gawk/             libnsl/        procps/
-    $
+    ...
 
 You can also use L<pkgman(1)> with command B<list> and option B<--all>
 to list all local packages' sources.  Example:

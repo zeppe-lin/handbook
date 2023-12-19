@@ -37,9 +37,8 @@ See L<mkinitramfs.config(5)> for more information.
 =item B<Note>:
 
 As in case of F</etc/fstab>, you can use C</dev/disk/by-uuid/*> or
-C<UUID=[...]> instead of C</dev/*> to prevent boot failures on
-machines with multiple disks.  Use L<blkid(8)> to verify the disk's
-C<UUID>:
+C<UUID=...> instead of C</dev/*> to prevent boot failures on machines
+with multiple disks.  Use L<blkid(8)> to verify the disk's C<UUID>:
 
     (chrooted) # blkid -o value -s UUID <DEVICE>
     ...

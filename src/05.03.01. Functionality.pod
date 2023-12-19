@@ -9,17 +9,17 @@ Some examples of pkgman's functionality and use are as follows:
     $ pkgman list
     acl
     attr
-    [...]
+    ...
 
     $ pkgman list -v
     acl 2.3.1-1
     attr 2.5.1-1
-    [...]
+    ...
 
     $ pkgman list -vv
     acl 2.3.1-1: Access Control List filesystem support
     attr 2.5.1-1: Extended attribute support library for ACL support
-    [...]
+    ...
 
 =item Querying information about a package source:
 

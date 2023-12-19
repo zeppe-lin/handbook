@@ -3,7 +3,7 @@
 Packages' sources are organized in so-called collections.  There are
 five different layers (or five categories) of packages.
 
-=over
+=over 2
 
 =item * I<pkgsrc-core>
 
