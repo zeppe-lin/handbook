@@ -1,3 +1,9 @@
+=begin pdf
+
+=ff
+
+=end pdf
+
 =head2 4.11. Prepare Initramfs Image
 
 Install B<mkinitramfs> package:

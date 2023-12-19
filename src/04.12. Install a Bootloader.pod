@@ -1,3 +1,9 @@
+=begin pdf
+
+=ff
+
+=end pdf
+
 =head2 4.12. Install a Bootloader
 
 =head3 B<4.12.1. GRUB>

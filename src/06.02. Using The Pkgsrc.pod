@@ -37,12 +37,6 @@ synchronize C<pkgsrc> repositories.  If so, just add these steps to
 your L<crond(8)> daemon and sync your local repos once a week, for
 example.
 
-=begin comment
-
-TODO: add example!
-
-=end comment
-
 =head3 B<6.2.2. Listing local pkgsrc repositories>
 
 When the local pkgsrc repositories have been cloned/updated the
