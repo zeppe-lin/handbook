@@ -1,4 +1,4 @@
-=head3 B<Install essential packages>
+=head2 4.9. Install essential packages
 
 Let's install all the necessary packages for the so-called
 workstation:

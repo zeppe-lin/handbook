@@ -95,9 +95,14 @@ to list all local packages' sources.  Example:
     [i] alsa-utils
     ...
 
-B<Note>: B<pkgman> will list the packages' sources from all
-C<pkgsrc> collections indicated in F</etc/pkgman.conf> as
-C<pkgsrcdir>.
+=over
+
+=item B<Note>:
+
+B<pkgman> will list the packages' sources from all C<pkgsrc>
+collections indicated in F</etc/pkgman.conf> as C<pkgsrcdir>.
+
+=back
 
 Add the B<--path> option to see the package source location:
 
@@ -162,9 +167,12 @@ the packages sources structure, the output will simply be:
 
 =head3 B<6.2.4. Building and installing packages>
 
-B<Note>: The recommended way is to use L<pkgman-install(8)>.  Here
-we will only describe the steps to better understand the build
-process.
+=over
+
+=item B<Note>:
+
+The recommended way is to use L<pkgman-install(8)>.  Here we will only
+describe the steps to better understand the build process.
 
 Once you have found a package that you want to build and install you
 simply go into the desired package source directory and use

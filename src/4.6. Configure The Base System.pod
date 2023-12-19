@@ -1,4 +1,4 @@
-=head2 B<4.6. Configure The Base System>
+=head2 4.6. Configure The Base System
 
 Set the root password:
 
