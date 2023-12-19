@@ -11,8 +11,8 @@ REQUIREMENTS
 - POSIX sh(1p) and "mandatory utilities"
 - GNU make(1)
 - Perl
-- pod2man(1pm) to build man page    (optional)
-- pod2pdf(1pm) to build pdf version (optional)
+- pod2man(1pm) to build man page (optional)
+- pdfunite(1)/poppler, pod2pdf(1pm) to build pdf version (optional)
 - pod2txt(1pm) to build txt version (optional)
 
 
