@@ -1,4 +1,4 @@
-=head3 7.3.3. B<Wireless network>
+=head3 B<7.3.3. Wireless network>
 
 Before using wireless networking, use L<rfkill(8)> to check whether
 the relevant interfaces are soft- or hard-blocked:

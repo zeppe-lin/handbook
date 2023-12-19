@@ -1,4 +1,4 @@
-=head3 7.3.1. B<Static address>
+=head3 B<7.3.1. Static address>
 
 The network configuration is found in the RC script F</etc/rc.d/net>.
 To enable this service you need to add C<net> to the C<SERVICES>

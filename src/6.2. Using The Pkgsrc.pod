@@ -174,6 +174,8 @@ the packages sources structure, the output will simply be:
 The recommended way is to use L<pkgman-install(8)>.  Here we will only
 describe the steps to better understand the build process.
 
+=back
+
 Once you have found a package that you want to build and install you
 simply go into the desired package source directory and use
 L<pkgmk(8)> to build it.  Example:
