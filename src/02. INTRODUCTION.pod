@@ -12,24 +12,6 @@ handbook is to explain how to install, configure, and maintain
 Zeppe-Lin systems, and to highlight the differences between common
 Linux distributions and Zeppe-Lin.
 
-=begin html
-
-=over
-
-=item *
-
-The online version of this handbook is placed
-L<here|http://zeppel.ink/handbook.7.html>.
-
-=item *
-
-The pdf version of this handbook can be downloaded
-L<here|http://zeppel.ink/handbook.7.pdf>.
-
-=back
-
-=end html
-
 =over
 
 =item *
