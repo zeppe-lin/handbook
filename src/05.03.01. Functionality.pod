@@ -2,7 +2,9 @@
 
 Some examples of pkgman's functionality and use are as follows:
 
-=head4 I<Listing installed packages>
+=over
+
+=item Listing installed packages:
 
     $ pkgman list
     acl
@@ -19,7 +21,7 @@ Some examples of pkgman's functionality and use are as follows:
     attr 2.5.1-1: Extended attribute support library for ACL support
     [...]
 
-=head4 I<Querying information about a package source>
+=item Querying information about a package source:
 
     $ pkgman info acl
     Name:         acl
@@ -30,7 +32,7 @@ Some examples of pkgman's functionality and use are as follows:
     URL:          http://savannah.nongnu.org/projects/acl
     Dependencies: attr
 
-=head4 I<Searching for packages sources by name>
+=item Searching for packages sources by name:
 
     $ pkgman search -vv glibc
     -- search ([i] = installed)
@@ -42,7 +44,7 @@ Some examples of pkgman's functionality and use are as follows:
     [i] glib 2.70.1-1: Common C routines used by Gtk+ and other libs
     [i] glibc 2.32-5: GNU C Library
 
-=head4 I<Searching for packages sources by words in their description>
+=item Searching for packages sources by words in their description:
 
     $ pkgman dsearch -vv archive
     -- search ([i] = installed)
@@ -51,7 +53,7 @@ Some examples of pkgman's functionality and use are as follows:
     [ ] unrar 6.0.7-1: Extracts RAR archives
     [ ] zip 3.0-1: Compression and file packaging/archive utility
 
-=head4 I<Viewing dependency lists>
+=item Viewing dependency lists:
 
     $ pkgman dep bash
     readline
@@ -66,7 +68,7 @@ Some examples of pkgman's functionality and use are as follows:
     [i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
     [i]     ncurses 6.3-1: System V Release 4.0 curses emulation library
 
-=head4 I<Installing packages>
+=item Installing packages:
 
     $ pkgman install --deps xterm
 
@@ -105,7 +107,7 @@ already installed package(s).  It just ignores the package and
 installs next in the listed order.  At the end of the installation
 procedure, all skipped packages will be in the report.
 
-=head4 I<Viewing and updating outdated packages>
+=item Viewing and updating outdated packages:
 
 Since the packages sources for Zeppe-Lin are distributed via
 L<git(1)>, the first thing to do is to update the C<pkgsrc>
@@ -141,5 +143,7 @@ Updating an individual package:
 Updating all installed packages:
 
     $ pkgman sysup --deps --depsort --group
+
+=back
 
 =cut

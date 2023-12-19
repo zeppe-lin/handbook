@@ -77,7 +77,9 @@ _
 
 =end text
 
-=head4 I<List installed packages and their version>
+=over
+
+=item List installed packages and their version:
 
     $ pkginfo -i
     audiofile 0.2.3-1
@@ -88,7 +90,7 @@ _
     zip 2.3-1
     zlib 1.1.4-1
 
-=head4 I<List files in PACKAGE or FILE>
+=item List files in PACKAGE or FILE:
 
     $ pkginfo -l bash
     bin/
@@ -112,14 +114,14 @@ _
     usr/share/man/man1/fgrep.1.gz
     usr/share/man/man1/grep.1.gz
 
-=head4 I<List owners of files matching F<bin/ls>>
+=item List owners of files matching F<bin/ls>:
 
     $ pkginfo -o bin/ls
     e2fsprogs  usr/bin/lsattr
     fileutils  bin/ls
     modutils   sbin/lsmod
 
-=head4 I<Print footprint for file>
+=item Print footprint for file:
 
     $ pkginfo -f xorg-xkill#1.0.5-1.pkg.tar.gz
     drwxr-xr-x      root/root       usr/
@@ -132,6 +134,8 @@ _
 
 This feature is mainly used by L<pkgmk(8)> for creating and comparing
 footprints.
+
+=back
 
 The B<-r>/B<--root> option should be used if you want to display
 information about a package that is installed on a temporarily mounted
