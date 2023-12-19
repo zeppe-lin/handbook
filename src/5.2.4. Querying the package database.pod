@@ -3,6 +3,66 @@
 Querying the package database is done using L<pkginfo(1)>.  This
 utility has a few options to answer different queries.
 
+=begin man
+
+.TS
+center, box, tab (@) ;
+l | l
+l | l.
+Option @ Description
+_
+-f, --footprint=FILE@print footprint for FILE
+-i, --installed@list installed packages and their version
+-l, --list=PACKAGE|FILE@list files in PACKAGE or FILE
+-o, --owner=PATTERN@list owner(s) of file(s) matching PATTERN
+-r, --root=DIR@specify an alternate root directory
+-v, --version@print version and exit
+-h, --help@print help and exit
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>-f, --footprint=FILE</td>
+            <td>print footprint for FILE</td>
+        </tr>
+        <tr>
+            <td>-i, --installed</td>
+            <td>list installed packages and their version</td>
+        </tr>
+        <tr>
+            <td>-l, --list=PACKAGE|FILE</td>
+            <td>list files in PACKAGE or FILE</td>
+        </tr>
+        <tr>
+            <td>-o, --owner=PATTERN</td>
+            <td>list owner(s) of file(s) matching PATTERN</td>
+        </tr>
+        <tr>
+            <td>-r, --root=DIR</td>
+            <td>specify an alternate root directory</td>
+        </tr>
+        <tr>
+            <td>-v, --version</td>
+            <td>print version and exit</td>
+        </tr>
+        <tr>
+            <td>-h, --help</td>
+            <td>print help and exit</td>
+        </tr>
+    </table>
+
+=end html
+
+=begin text
+
     +-------------------------+-------------------------------------------+
     | Option                  | Description                               |
     +-------------------------+-------------------------------------------+
@@ -14,6 +74,8 @@ utility has a few options to answer different queries.
     | -v, --version           | print version and exit                    |
     | -h, --help              | print help and exit                       |
     +-------------------------+-------------------------------------------+
+
+=end text
 
 =head4 I<List installed packages and their version>
 

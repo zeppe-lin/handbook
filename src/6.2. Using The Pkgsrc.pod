@@ -188,6 +188,44 @@ L<pkgmk(8)> to download the source(s) specified in F<Pkgfile> (in case
 the source files are already downloaded this option is ignored).  When
 the download is completed the package will be built.
 
+=begin man
+
+.TS
+center, box, tab (|) ;
+c
+c.
+<WARNING>
+_
+.SP
+It is often not a good idea to build the packages with
+root privileges.  Some recipes for building programs
+(Makefiles, etc) may not be written correctly, and
+overwrite system files.
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>
+            <th>WARNING</th>
+        </tr>
+
+        <tr>
+            <td>
+                It is often not a good idea to build the packages with
+                root privileges.  Some recipes for building programs
+                (Makefiles, etc) may not be written correctly, and
+                overwrite system files.
+            </td>
+        </tr>
+    </table>
+
+=end html
+
+=begin text
+
 =over
 
 =item B<Warning>:
@@ -197,6 +235,8 @@ privileges.  Some recipes for building programs (Makefiles, etc) may
 not be written correctly, and overwrite system files.
 
 =back
+
+=end text
 
 If you will build packages with non-root privileges, the installed
 files will have user permissions.  This is wrong, both in terms of

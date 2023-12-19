@@ -23,12 +23,56 @@ is a SCSI disk C</dev/sda>, but if you have an NVME disk (like
 C</dev/nvme0n1>) or another SCSI disk (like C</dev/sdb>), it's simple
 as run C<sed 's/sda/sdb/g'>.
 
+=begin man
+
+.TS
+center, box, tab (|) ;
+l | l | l | l
+l | l | l | l.
+Partition|Filesystem|Size|Description
+_
+.SP
+/dev/sda1|fat32|512MB|boot partition
+/dev/sda2|luks|rest of the disk|luks partition
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>
+            <th>Partition</th>
+            <th>Filesystem</th>
+            <th>Size</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>/dev/sda1</td>
+            <td>fat32</td>
+            <td>512MB</td>
+            <td>boot partition</td>
+        </tr>
+        <tr>
+            <td>/dev/sda2</td>
+            <td>luks</td>
+            <td>rest of the disk</td>
+            <td>luks partition</td>
+        </tr>
+    </table>
+
+=end html
+
+=begin text
+
     +-----------+------------+------------------+----------------+
     | Partition | Filesystem | Size             | Description    |
     +-----------+------------+------------------+----------------+
     | /dev/sda1 | fat32      | 512MB            | boot partition |
     | /dev/sda2 | luks       | rest of the disk | luks partition |
     +-----------+------------+------------------+----------------+
+
+=end text
 
 =over
 
@@ -69,12 +113,56 @@ example):
 Before creating the logical volumes, this is a quite simple logical
 volumes scheme used in this section:
 
+=begin man
+
+.TS
+center, box, tab (|) ;
+l | l | l | l
+l | l | l | l.
+Volume name|Filesystem|Size|Description
+_
+.SP
+swap|swap|2 * RAM|swap area
+root|ext4|rest of the disk|root fs
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>
+            <th>Volume name</th>
+            <th>Filesystem</th>
+            <th>Size</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>swap</td>
+            <td>swap</td>
+            <td>2 * RAM</td>
+            <td>swap area</td>
+        </tr>
+        <tr>
+            <td>root</td>
+            <td>ext4</td>
+            <td>rest of the disk</td>
+            <td>root fs</td>
+        </tr>
+    </table>
+
+=end html
+
+=begin text
+
     +-------------+------------+------------------+-------------+
     | Volume name | Filesystem | Size             | Description |
     +-------------+------------+------------------+-------------+
     | swap        | swap       | 2 * RAM          | swap area   |
     | root        | ext4       | rest of the disk | root fs     |
     +-------------+------------+------------------+-------------+
+
+=end text
 
 To see the actual amount of RAM, type the following command:
 

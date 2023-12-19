@@ -3,6 +3,39 @@
 The following runlevels are used in Zeppe-Lin (defined in
 F</etc/inittab>):
 
+=begin man
+
+.TS
+center, box, tab (|) ;
+l | l
+l | l.
+Runlevel | Description
+_
+.SP
+0     | Halt
+1 (S) | Single-User Mode
+2     | Multi-User Mode
+3-5   | (Not Used)
+6     | Reboot
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>    <th>Runlevel</th>   <th>Description</th>        </tr>
+        <tr>    <td>0</td>          <td>Halt</td>               </tr>
+        <tr>    <td>1 (S)</td>      <td>Single-User Mode</td>   </tr>
+        <tr>    <td>2</td>          <td>Multi-User Mode</td>    </tr>
+        <tr>    <td>3-5</td>        <td>(Not Used)</td>         </tr>
+        <tr>    <td>6</td>          <td>Reboot</td>             </tr>
+    </table>
+
+=end html
+
+=begin text
+
     +----------+------------------+
     | Runlevel | Description      |
     +----------+------------------+
@@ -12,6 +45,8 @@ F</etc/inittab>):
     | 3-5      | (Not Used)       |
     | 6        | Reboot           |
     +----------+------------------+
+
+=end text
 
 See L<inittab(5)> for more information about runlevels.
 
