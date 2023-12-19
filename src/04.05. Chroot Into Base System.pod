@@ -1,4 +1,4 @@
-=head2 4.2. Chroot Into Base System
+=head2 4.5. Chroot Into Base System
 
 Copy DNS configuration to have the availability to use the network
 from the chrooted root:
