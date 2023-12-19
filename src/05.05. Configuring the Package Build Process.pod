@@ -88,31 +88,31 @@ PKGMK_WORK_DIR|Define a work area that pkgmk will
 
 =begin text
 
-=over 24
+=over
 
-=item B<CFLAGS>, B<CXXFLAGS>
+=item * C<CFLAGS>, C<CXXFLAGS>
 
 Define optimization and architecture options for package compilation.
 
 It's best NOT change these settings unless you absolutely know what
 you're doing!
 
-=item B<PKGMK_SOURCE_MIRRORS>
+=item * C<PKGMK_SOURCE_MIRRORS>
 
 Define location(s) from which pkgmk will attempt to fetch source
 archives.
 
-=item B<PKGMK_SOURCE_DIR>
+=item * C<PKGMK_SOURCE_DIR>
 
 Define location where pkgmk will store (if downloading) and use source
 archives when building.
 
-=item B<PKGMK_PACKAGE_DIR>
+=item * C<PKGMK_PACKAGE_DIR>
 
 Define location where pkgmk will create package files once the build
 process is complete.
 
-=item B<PKGMK_WORK_DIR>
+=item * C<PKGMK_WORK_DIR>
 
 Define a work area that pkgmk will use to build the package.
 

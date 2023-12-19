@@ -1,0 +1,5 @@
+=head2 4.10. Prepare a Linux Kernel
+
+Follow only one of the two following subsections.
+
+=cut

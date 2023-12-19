@@ -1,1 +1,7 @@
+=begin pdf
+
+=ff
+
+=end pdf
+
 =head2 7.3. Network Configuration

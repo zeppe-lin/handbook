@@ -1,3 +1,9 @@
+=begin pdf
+
+=ff
+
+=end pdf
+
 =head3 B<7.3.2. Dynamic address>
 
 If you want to configure your system to use a dynamic IP address,

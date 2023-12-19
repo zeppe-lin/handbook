@@ -3,9 +3,9 @@
 Packages' sources are organized in so-called collections.  There are
 five different layers (or five categories) of packages.
 
-=over 15
+=over
 
-=item B<pkgsrc-core>
+=item * I<pkgsrc-core>
 
 This collection contains build scripts and files for the packages
 required to create a basic system, on the basis of which you can build
@@ -22,27 +22,27 @@ L<pkgmaint|https://github.com/zeppe-lin/pkgmaint> and corresponding
 B<system/pkgmaint> package for various package maintaining utilities.
 It will not be superfluous to mention L<revdep(1)>.
 
-=item B<pkgsrc-system>
+=item * I<pkgsrc-system>
 
 This collection contains build scripts and files for the packages
 required for minimal installation on real hardware: boot loader,
 filesystem utilities, hw-monitors, servers, and so on.  Packages in
 this collection depend B<only> on the C<pkgsrc-core> collection.
 
-=item B<pkgsrc-xorg>
+=item * I<pkgsrc-xorg>
 
 This collection contains build scripts and files for the packages
 required for X Window System applications.  Packages in this
 collection depend on the C<pkgsrc-system> collection.
 
-=item B<pkgsrc-desktop>
+=item * I<pkgsrc-desktop>
 
 This collection contains build scripts and files for the packages
 typically used on a desktop: web browser, music/video player, file
 manager, chat messenger, etc.  Packages in this collection depend on
 the C<pkgsrc-xorg> collection.
 
-=item B<pkgsrc-stuff>
+=item * I<pkgsrc-stuff>
 
 This collection contains build scripts and files for the packages that
 do not fit into the above categories.  Packages in this collection may

@@ -4,9 +4,9 @@ pkgman's main configuration file, F</etc/pkgman.conf>, contains
 options that can be used to change pkgman's behavior.  Notably in
 this file, the following options can be configured:
 
-=over 12
+=over
 
-=item B<pkgsrcdir>
+=item * C<pkgsrcdir>
 
 This option can occur multiple times and specifies a directory with a
 packages' sources "collection" which L<pkgman(1)> should check in its
@@ -14,7 +14,7 @@ operation.  By default, the I<core> collection is enabled, but
 I<system>, I<xorg>, I<desktop>, and I<stuff> collections are
 commented.
 
-=item B<runscripts>
+=item * C<runscripts>
 
 This option configures L<pkgman(1)> to run C<pre-install>,
 C<post-install>, C<pre-remove>, and C<post-remove> scripts if they
@@ -25,7 +25,7 @@ It is recommended that this be enabled as in many cases if these
 scripts exist in a package source directory, it is required to be
 run for proper operation.
 
-=item B<logfile>
+=item * C<logfile>
 
 This option configures a file for pkgman to log its operation if
 desired.

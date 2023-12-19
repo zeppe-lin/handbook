@@ -1,1 +1,0 @@
-=head2 4.10. Prepare a Linux Kernel
