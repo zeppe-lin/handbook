@@ -1,11 +1,18 @@
+=encoding UTF-8
+
+=begin pdf
+
+=ff
+
+=end pdf
+
 =head1 1. PREFACE
 
 This handbook (and Zeppe-Lin itself) is inspired and based on the
-L<CRUX Handbook|http://crux.nu/Main/Documentation>. It's not an
-extensive guide on how to use and configure common Linux software.
-The purpose of the handbook is to explain how to install, configure,
-and maintain Zeppe-Lin systems, and to highlight the differences
-between common Linux distributions and Zeppe-Lin.
+L<CRUX Handbook|http://crux.nu/Main/Documentation>.  The original
+version was written by Per Lidén L<mailto:per@fukt.bth.se> and
+maintained by CRUX Team.  This implementation was reworked and adapted
+for Zeppe-Lin by Alexandr Savca L<mailto:alexandr.savca89@gmail.com>.
 
 =cut
 
