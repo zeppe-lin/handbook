@@ -25,7 +25,7 @@ for more information about package locking.
 =back
 
 If you installed the kernel package through a package manager, you can
-jump over the next paragraph, to the L</"Prepare initramfs image">.
+jump over the next paragraph, to the L</"4.11. Prepare Initramfs Image">.
 
 =cut
 

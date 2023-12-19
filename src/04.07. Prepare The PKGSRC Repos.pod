@@ -1,7 +1,7 @@
 =head2 4.7. Prepare The PKGSRC Repos
 
 Packages' sources are organized in so-called collections, see
-L</"The pkgsrc collections"> for more information about that.
+L</"6.1.3. The pkgsrc collections"> for more information about that.
 
 Clone the collections you need, but keep in mind that each subsequent
 collection depends on the previous ones.
