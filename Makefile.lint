@@ -22,7 +22,7 @@ curllinks:
 
 spellcheck:
 	@$(MAKE) -s pod
-	@pod2html --cachedir=/tmp handbook.7.pod | hunspell -H -l - | sort | uniq
+	@pod2html --cachedir=/tmp handbook.7.pod | hunspell -H -l - | sort -u
 	@$(MAKE) -s clean
 
 deadlinks:
