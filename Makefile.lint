@@ -21,7 +21,9 @@ curllinks:
 ######################################################################
 
 spellcheck:
+	@$(MAKE) -s pod
 	@pod2html --cachedir=/tmp handbook.7.pod | hunspell -H -l - | sort | uniq
+	@$(MAKE) -s clean
 
 deadlinks:
 	@echo "=======> Check for dead links"
@@ -30,7 +32,7 @@ deadlinks:
 podchecker:
 	@echo "=======> Check PODs for syntax errors"
 	@$(MAKE) -s pod
-	@podchecker handbook.7.pod
+	@sed '/^=ff$$/d' handbook.7.pod | podchecker -
 	@$(MAKE) -s clean
 
 shellcheck:
