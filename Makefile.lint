@@ -21,7 +21,7 @@ curllinks:
 ######################################################################
 
 spellcheck:
-	@pod2html handbook.7.pod | hunspell -H -l - | sort | uniq
+	@pod2html --cachedir=/tmp handbook.7.pod | hunspell -H -l - | sort | uniq
 
 deadlinks:
 	@echo "=======> Check for dead links"
