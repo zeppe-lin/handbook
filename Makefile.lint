@@ -21,9 +21,12 @@ curllinks:
 ######################################################################
 
 spellcheck:
+	@echo "=======> Check handbook for spelling errors"
 	@$(MAKE) -s pod
 	@pod2html --cachedir=/tmp handbook.7.pod | hunspell -H -l - | sort -u
 	@$(MAKE) -s clean
+	@echo "=======> Check README.md for spelling errors"
+	@hunspell -l README.md | sort -u
 
 deadlinks:
 	@echo "=======> Check for dead links"
