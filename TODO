@@ -1,5 +1,7 @@
 TODO handbook
 
+	- [ ] mention in the handbook the cron jobs that are enabled by default
+
 	- [ ] fix handbook in text variant
 
 	- [ ] move some instructions from INSTALL section to CONFIGURATION,
