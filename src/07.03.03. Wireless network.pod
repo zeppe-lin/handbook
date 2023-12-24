@@ -8,15 +8,15 @@ the relevant interfaces are soft- or hard-blocked:
 
 Next, install the C<wpa-supplicant> package.  It includes utilities to
 configure wireless interfaces and handle wireless security protocols.
-To use C<wpa_supplicant>, you will need to enable
-F</etc/rc.d/wpa_supplicant> service.
+To use C<wpa_supplicant>, you will need to edit (specify your wireless
+interface) and enable F</etc/rc.d/wpa_supplicant> service.
 
 To use B<WPA-PSK>, generate a pre-shared key with L<wpa_passphrase(8)>
 and append the output to the F</etc/wpa_supplicant.conf> file:
 
     # wpa_passphrase <MYSSID> <PASSPHRASE> >> /etc/wpa_supplicant.conf
 
-Then, edit and run the following service files:
+Then edit and run the following service files:
 F</etc/rc.d/wpa_supplicant>, F</etc/rc.d/dhcpcd>.
 
     # $EDITOR /etc/rc.d/wpa_supplicant
