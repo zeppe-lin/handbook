@@ -13,9 +13,9 @@ collection depends on the previous ones.
     (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop
 
 Edit F</etc/pkgman.conf> (see L<pkgman.conf(5)> for more information)
-and enable the collections you cloned.  By default, only C<core>
-collection is enabled.  Also, you may like to edit F</etc/pkgmk.conf>
-(see L<pkgmk.conf(5)> for more information).
+and enable the collections you cloned.  By default, only
+C<pkgsrc-core> collection is enabled.  Also, you may like to edit
+F</etc/pkgmk.conf> (see L<pkgmk.conf(5)> for more information).
 
 =cut
 
