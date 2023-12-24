@@ -1,6 +1,6 @@
 =head2 2.2. Why use Zeppe-Lin?
 
-In short, B<Zeppe-Lin> might suit you very well if you are:
+In short, Zeppe-Lin might suit you very well if you are:
 
 =over 3
 
