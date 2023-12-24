@@ -6,7 +6,7 @@
 
 =head2 6.2. Using The Pkgsrc
 
-=head3 B<6.2.1. Synchronizing your local pkgsrc repository>
+=head3 B<6.2.1. Synchronizing your local pkgsrc repositories>
 
 When Zeppe-Lin is installed for the first time there are no local
 pkgsrc collections (F<usr/src/pkgsrc*>).  To obtain the collection
@@ -19,11 +19,10 @@ you need the first time, use C<git clone>.  Example:
     # git clone https://github.com/zeppe-lin/pkgsrc-desktop
 
 Edit F</etc/pkgman.conf> and enable the collections you cloned.  By
-default, only C<core> collection is enabled.  See L<pkgman.conf(5)>
-for more information.
+default, only C<pkgsrc-core> collection is enabled.  See
+L<pkgman.conf(5)> for more information.
 
-To bring your local C<core> collection up to date use C<git pull>.
-Example:
+To bring your local collections up to date use C<git pull>.  Example:
 
     # git -C /usr/src/pkgsrc-core     pull
     # git -C /usr/src/pkgsrc-system   pull

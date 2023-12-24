@@ -34,7 +34,8 @@ desired.
 
 This is B<NOT> an exhaustive list of all of pkgman's commands,
 features, and configuration options, merely a starting point.  More
-information can be found in L<pkgman(1)> and L<pkgman.conf(5)>.
+information can be found in L<pkgman(1)> and L<pkgman.conf(5)> manual
+pages.
 
 =cut
 
