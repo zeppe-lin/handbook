@@ -17,11 +17,10 @@ man: pod
 	@: prepare temporary pod file for future manual page:
 	@: 1. remove section numbering from '=head[1-4]' and 'L</"...">'
 	@: 2. remove '=ff' pdf extension
-	sed -e 's/^(=head[12])\s+([0-9\.]+)\s+(.*)/\1 \3/' \
+	sed -r -e 's/^(=head[12])\s+([0-9\.]+)\s+(.*)/\1 \3/' \
 	    -e 's/^(=head[34])\s+B<([0-9\.]+)\s+(.*)>/\1 B<\3>/' \
 	    -e 's/L<\/"([0-9\.]+)\s+(.*)">/L<\/"\2\">/' \
-	    -e 's/^=ff$$//' \
-	    -r ${POD} > MAN.${POD}
+	    -e 's/^=ff$$//' ${POD} > MAN.${POD}
 	@: 3. check generated pod for syntax errors
 	podchecker MAN.${POD}
 	@: 4. prepare manual page
