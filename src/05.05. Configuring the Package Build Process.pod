@@ -1,8 +1,8 @@
-=head2 5.5. Adjusting/Configuring the Package Build Process
+=head2 5.5. Configuring the Package Build Process
 
-Many settings of the package build process can be adjusted by
-editing the L<pkgmk(8)> configuration file F</etc/pkgmk.conf>.  Some
-of these configurable settings include:
+Many settings of the package build process can be configured by
+editing the F</etc/pkgmk.conf> configuration file.  Some of these
+configurable settings include:
 
 =begin man
 
