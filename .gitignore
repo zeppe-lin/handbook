@@ -3,6 +3,8 @@ handbook.7
 handbook.7.pdf
 handbook.7.pod
 handbook.7.txt
+MAN.handbook.7.pod
+PDF.handbook.7.pod
 
 # vim undo and swap files
 .*.un~
