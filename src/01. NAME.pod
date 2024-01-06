@@ -10,7 +10,7 @@ handbook - Zeppe-Lin Handbook
 
 C< >
 
-O<handbook-cover.png>
+O<pdf-cover.png>
 
 =end pdf
 
