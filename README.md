@@ -10,12 +10,12 @@ REQUIREMENTS
 
 Build time
 ----------
-- POSIX sh(1p) and "mandatory utilities"
-- GNU make(1)
-- Perl
-- pod2man(1pm) to build manual page (optional)
-- pod2pdf(1pm) to build pdf version (optional)
-- pod2txt(1pm) to build txt version (optional)
+* POSIX sh(1p) and "mandatory utilities"
+* GNU make(1)
+* Perl
+* pod2man(1pm) to build manual page (optional)
+* pod2pdf(1pm) to build pdf version (optional)
+* pod2txt(1pm) to build txt version (optional)
 
 
 INSTALL
