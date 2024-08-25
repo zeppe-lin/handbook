@@ -17,12 +17,12 @@ Linux distributions and Zeppe-Lin.
 =item *
 
 The online version of this handbook is placed at:
-L<http://zeppel.ink/handbook.7.html>.
+L<https://zeppe-lin.github.io/handbook.7.html>.
 
 =item *
 
 The pdf version of this handbook can be downloaded at:
-L<http://zeppel.ink/handbook.7.pdf>.
+L<https://zeppe-lin.github.io/handbook.7.pdf>.
 
 =item *
 
