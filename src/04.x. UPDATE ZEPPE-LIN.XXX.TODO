@@ -16,6 +16,10 @@ C<#zeppe-lin> on Libera.Chat.  Thank you.
 
 TODO
 
+=head2 Upgrade core build tools
+
+  pkgman upgrade -f pkgmk pkgman revdep rejmerge ...
+
 =head2 Upgrade Toolchain
 
 Toolchain build order is:
