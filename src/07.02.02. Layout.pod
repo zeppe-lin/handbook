@@ -84,7 +84,7 @@ _
 
 =end text
 
-C</etc/rc.local> is empty by default.
+F</etc/rc.local> is empty by default.
 
 Modify F</etc/rc.modules>, F</etc/rc.local>, and F</etc/rc.conf>
 according to your needs.  See L<rc.conf(5)> and L<rc(8)> for more
