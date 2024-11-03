@@ -38,7 +38,7 @@ static IP address.  Example:
 
     # End of file.
 
-You will also need to configure DNS settings in C</etc/resolv.conf>.
+You will also need to configure DNS settings in F</etc/resolv.conf>.
 Example:
 
     #
