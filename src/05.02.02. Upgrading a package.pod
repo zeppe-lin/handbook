@@ -51,7 +51,7 @@ rules in this file are exceptions to that rule.
 
 =item B<Caution>:
 
-A pattern should never contain an initial "/" since you are
+A pattern should never contain an initial C<B</>> since you are
 referring to the files in the package, not the files on the disk.
 
 =back
