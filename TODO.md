@@ -25,12 +25,13 @@ No milestone
   - [ ] reword "{Download,Extract} rootfs tarball" sections:
         https://github.com/zeppe-lin/handbook/issues/1
 
-        The following sections of the documentation contain a hardcoded version
-        of rootfs:
+        The following sections of the documentation contain a hardcoded
+        version of rootfs:
 
         https://zeppe-lin.github.io/handbook.7.html#Download-rootfs-tarball
         https://zeppe-lin.github.io/handbook.7.html#Extract-rootfs-tarball
 
-        It would be better to make the text more generalized with a link to the
-        page with the latest release. Then there is no need to change the
-        version in the handbook with each new release of rootfs
+        It would be better to make the text more generalized with a link
+        to the page with the latest release.  Then there is no need to
+        change the version in the handbook with each new release of
+        rootfs.
