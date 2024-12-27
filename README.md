@@ -1,8 +1,8 @@
 OVERVIEW
 ========
 
-This directory contains the Zeppe-Lin handbook(7) that covers the
-installation, configuration, and administration of Zeppe-Lin GNU/Linux.
+This directory contains the handbook(7) that covers the installation,
+configuration, and administration of Zeppe-Lin.
 
 
 REQUIREMENTS
