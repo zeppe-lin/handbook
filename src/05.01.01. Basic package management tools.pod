@@ -40,7 +40,7 @@ however, does support dependencies.
 
 The following sections will describe in short how to use the package
 utilities.  Additional information about these utilities can be found
-on their respective manpage.
+on their respective manual page.
 
 =cut
 
