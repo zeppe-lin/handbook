@@ -55,18 +55,21 @@ Some examples of pkgman's functionality and use are as follows:
 
 =item Viewing dependency lists:
 
-    $ pkgman dep bash
-    readline
+    $ pkgman dep vim
+    acl
+    ncurses
 
-    $ pkgman dep bash --recursive
-    readline
-     ncurses
+    $ pkgman dep vim --resursive
+    acl
+     attr
+    ncurses
 
-    $ pkgman dep bash --recursive --tree -vv
+    $ pkgman dep vim --recursive --tree -vv
     -- dependencies ([i] = installed, --> seen before)
-    [i] bash 5.1.8-1: GNU Bourne Again Shell
-    [i]   readline 8.1.1-1: Lets users edit command lines as they are typed in
-    [i]     ncurses 6.3-1: System V Release 4.0 curses emulation library
+    [i] vim 9.1.0889-1: Highly configurable text editor
+    [i]   acl 2.3.2-1: Access Control List filesystem support
+    [i]     attr 2.5.2-1: Extended attribute support library for ACL support
+    [i]   ncurses 6.5-1: System V Release 4.0 curses emulation library
 
 =item Installing packages:
 
