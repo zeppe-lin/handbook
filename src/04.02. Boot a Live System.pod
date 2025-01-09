@@ -5,8 +5,8 @@ containing a root filesystem, you will first need to boot your
 computer using a Linux-based image, so called "Live CD/DVD/USB"
 operating system.
 
-Boot from the live CD/DVD/USB, open a terminal and get root privileges
-(e.g. C<sudo su>).
+Boot your preferred Live system, open a terminal and get root
+privileges (e.g. C<sudo su>).
 
 =cut
 
