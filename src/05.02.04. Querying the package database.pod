@@ -11,11 +11,11 @@ l | l
 l | l.
 Option @ Description
 _
--f, --footprint=FILE@print footprint for FILE
+-f, --footprint=file@print footprint for file
 -i, --installed@list installed packages and their version
--l, --list=PACKAGE|FILE@list files in PACKAGE or FILE
--o, --owner=PATTERN@list owner(s) of file(s) matching PATTERN
--r, --root=DIR@specify an alternate root directory
+-l, --list=pkgname|file@list files in package or file
+-o, --owner=pattern@list owner(s) of file(s) matching pattern
+-r, --root=rootdir@specify an alternate root directory
 -v, --version@print version and exit
 -h, --help@print help and exit
 .TE
@@ -30,23 +30,23 @@ _
             <th>Description</th>
         </tr>
         <tr>
-            <td>-f, --footprint=FILE</td>
-            <td>print footprint for FILE</td>
+            <td>-f, --footprint=file</td>
+            <td>print footprint for file</td>
         </tr>
         <tr>
             <td>-i, --installed</td>
             <td>list installed packages and their version</td>
         </tr>
         <tr>
-            <td>-l, --list=PACKAGE|FILE</td>
-            <td>list files in PACKAGE or FILE</td>
+            <td>-l, --list=package|file</td>
+            <td>list files in package or file</td>
         </tr>
         <tr>
-            <td>-o, --owner=PATTERN</td>
-            <td>list owner(s) of file(s) matching PATTERN</td>
+            <td>-o, --owner=pattern</td>
+            <td>list owner(s) of file(s) matching pattern</td>
         </tr>
         <tr>
-            <td>-r, --root=DIR</td>
+            <td>-r, --root=rootdir</td>
             <td>specify an alternate root directory</td>
         </tr>
         <tr>
@@ -66,11 +66,11 @@ _
     +-------------------------+-------------------------------------------+
     | Option                  | Description                               |
     +-------------------------+-------------------------------------------+
-    | -f, --footprint=FILE    | print footprint for FILE                  |
+    | -f, --footprint=file    | print footprint for file                  |
     | -i, --installed         | list installed packages and their version |
-    | -l, --list=PACKAGE|FILE | list files in PACKAGE or FILE             |
-    | -o, --owner=PATTERN     | list owner(s) of file(s) matching PATTERN |
-    | -r, --root=DIR          | specify an alternate root directory       |
+    | -l, --list=package|file | list files in package or file             |
+    | -o, --owner=pattern     | list owner(s) of file(s) matching pattern |
+    | -r, --root=rootdir      | specify an alternate root directory       |
     | -v, --version           | print version and exit                    |
     | -h, --help              | print help and exit                       |
     +-------------------------+-------------------------------------------+
@@ -90,7 +90,7 @@ _
     zip 2.3-1
     zlib 1.1.4-1
 
-=item List files in PACKAGE or FILE:
+=item List files in package or file:
 
     $ pkginfo -l bash
     bin/
