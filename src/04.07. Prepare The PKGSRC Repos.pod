@@ -7,10 +7,17 @@ Clone the collections you need, but keep in mind that each subsequent
 collection depends on the previous ones.
 
     (chrooted) # cd /usr/src/
-    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core
-    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-system
-    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-xorg
-    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop
+    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-core    \
+                    --branch 1.x
+    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-system  \
+                    --branch 1.x
+    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-xorg    \
+                    --branch 1.x
+    (chrooted) # git clone https://github.com/zeppe-lin/pkgsrc-desktop \
+                    --branch 1.x
+
+Where C<--branch 1.x> corresponds to the current Zeppe-Lin release
+branch.
 
 Edit F</etc/pkgman.conf> (see L<pkgman.conf(5)> for more information)
 and enable the collections you cloned.  By default, only
