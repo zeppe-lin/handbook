@@ -7,7 +7,7 @@ for our system.  Let's download the rootfs tarball into this directory
 so we won't pollute live CD/DVD/USB RAM:
 
     # cd /mnt
-    # wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v0.99.1/rootfs-v0.99.1-x86_64.tar.xz{,.sig}
+    # wget -c https://github.com/zeppe-lin/pkgsrc-core/releases/download/v1.0/rootfs-v1.0-x86_64.tar.xz{,.sig}
 
 =head3 B<4.4.2. Verify downloaded tarball>
 
@@ -16,7 +16,7 @@ It's a good practice to verify authenticity and integrity of
 downloaded files when possible.
 
     # gpg --keyserver keyserver.ubuntu.com --recv-keys 59ec1986fbd902cf
-    # gpg --verify rootfs-v0.99.1-x86_64.tar.xz{.sig,}
+    # gpg --verify rootfs-v1.0-x86_64.tar.xz{.sig,}
 
 =head3 B<4.4.3. Extract rootfs tarball>
 
@@ -24,7 +24,7 @@ Once the rootfs tarball is downloaded and verified, extract the
 contents with the following command:
 
     # tar --numeric-owner --xattrs --xattrs-include='*' -xpf \
-        rootfs-v0.99.1-x86_64.tar.xz
+        rootfs-v1.0-x86_64.tar.xz
 
 =over
 
