@@ -1,7 +1,7 @@
 OVERVIEW
 ========
 
-This directory contains the handbook(7) that covers the installation,
+This repository contains the handbook(7) that covers the installation,
 configuration, and administration of Zeppe-Lin.
 
 
