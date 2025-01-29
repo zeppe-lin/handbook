@@ -12,6 +12,10 @@ please consider opening a bug at
 <L<https://github.com/zeppe-lin/handbook>> or asking for assistance at
 C<#zeppe-lin> on Libera.Chat.  Thank you.
 
+=head2 Release Notes
+
+Read carefully release notes at ...
+
 =head2 Set Release And Sync
 
 TODO
@@ -71,3 +75,5 @@ packages and upgrade them via L<pkgadd(8)>.
 =end comment
 
 =cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70
