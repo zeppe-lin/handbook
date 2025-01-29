@@ -213,10 +213,10 @@ not be written correctly, and overwrite system files.
 
 =end text
 
-If you will build packages with non-root privileges, the installed
-files will have user permissions.  This is wrong, both in terms of
-security and distribution of these packages.  It is better to use
-L<fakeroot(1)>, to run L<pkgmk(8)> in an environment faking root
+If you will build packages with unprivileged user, the installed files
+will have user permissions.  This is wrong, both in terms of security
+and distribution of these packages.  It is better to use
+L<fakeroot(1)> to run L<pkgmk(8)> in an environment faking root
 privileges.  Example:
 
     $ fakeroot pkgmk -d
