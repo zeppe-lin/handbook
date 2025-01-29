@@ -311,7 +311,7 @@ Mount the tmpfs:
 
 Edit F</etc/pkgmk.conf>:
 
-Set where you put your RAM file system from F</etc/fstab> file:
+Set where you put your RAM filesystem from F</etc/fstab> file:
 
     PKGMK_WORK_DIR="/var/cache/pkgmk/work/$name"
 
