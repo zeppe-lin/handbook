@@ -1,0 +1,150 @@
+=head3 B<7.4.3. PAM modules>
+
+The core packages C<linux-pam> and C<dumb-runtime-dir> provide a
+variety of modules that can be loaded upon logging in.  The files in
+F</etc/pam.d> govern the association between the type of login (e.g.,
+tty, SSH, su, X Display Manager) and the modules that get loaded
+(e.g., pam_env, pam_exec, pam_limits).  Typical situations that can be
+handled cleanly with PAM modules are listed in the table below.
+
+=begin man
+
+.TS
+center, box, tab (|) ;
+l | l
+l | l.
+File in /etc/pam.d      | Typical usage
+_
+.SP
+pam_dumb_runtime_dir.so | Create an XDG_RUNTIME_DIR for apps
+                        | that conform to the freedesktop.org
+                        | specification.
+_
+pam_env.so              | Export some common environment
+                        | variables, no matter what login
+                        | shell the user has chosen.
+_
+pam_limits.so           | Increase the allowed number of
+                        | opened files, to ensure proper
+                        | operation of some games.
+_
+pam_xauth.so            | Grant another user access to the
+                        | X display of the logged-in user,
+                        | so that programs invoked with su
+                        | can work properly.
+_
+pam_mount.so            | Automatically mount a LUKS-encrypted
+                        | home partition after successful
+                        | authentication.
+.TE
+
+=end man
+
+=begin html
+
+    <table>
+        <tr>
+            <th>File in /etc/pam.d</th>
+            <th>Typical usage</th>
+        </tr>
+        <tr>
+            <th>pam_dumb_runtime_dir.so</th>
+            <th>
+                Create an XDG_RUNTIME_DIR for apps
+                that confirm to the freedesktop.org
+                specification.
+            </th>
+        </tr>
+        <tr>
+            <th>pam_env.so</th>
+            <th>
+                Export some common environment
+                variables, no matter what login
+                shell the user has chosen.
+            </th>
+        </tr>
+        <tr>
+            <th>pam_limits.so</th>
+            <th>
+                Increate the allowed number of
+                opened files, to ensure proper
+                operation of some games.
+            </th>
+        </tr>
+        <tr>
+            <th>pam_xauth.so</th>
+            <th>
+                Grant another user access to the
+                X display of the logged-in user,
+                so that programs invoked with su
+                can work properly.
+            </th>
+        </tr>
+        <tr>
+            <th>pam_mount.so</th>
+            <th>
+                Automatically mount a LUKS-encrypted
+                home partition after successful
+                authentication.
+            </th>
+        </tr>
+    </table>
+
+=end html
+
+=begin text
+
+    +-------------------------+--------------------------------------+
+    | File in /etc/pam.d      | Typical usage                        |
+    +-------------------------+--------------------------------------+
+    | pam_dumb_runtime_dir.so | Create an XDG_RUNTIME_DIR for apps   |
+    |                         | that confirm to the freedesktop.org  |
+    |                         | specification.                       |
+    |-------------------------|--------------------------------------|
+    | pam_env.so              | Export some common environment       |
+    |                         | variables, no matter what login      |
+    |                         | shell the user has chosen.           |
+    |-------------------------|--------------------------------------|
+    | pam_limits.so           | Increase the allowed number of       |
+    |                         | opened files, to ensure proper       |
+    |                         | operation of some games.             |
+    |-------------------------|--------------------------------------|
+    | pam_xauth.so            | Grant another user access to the     |
+    |                         | X display of the logged-in user,     |
+    |                         | so that programs invoked with su     |
+    |                         | can work properly.                   |
+    |-------------------------|--------------------------------------|
+    | pam_mount.so            | Automatically mount a LUKS-encrypted |
+    |                         | home partition after successful      |
+    |                         | authentication.                      |
+    +-------------------------+--------------------------------------+
+
+=end text
+
+=over
+
+=item B<Note>:
+
+The existence of a writable C<XDG_RUNTIME_DIR> is required for proper
+operation of many desktop applications.  A B<clean> Zeppe-Lin
+installation (starting from C<v1.0>) will place a line in
+F</etc/pam.d/common-session> that loads the module
+F<pam_dumb_runtime_dir.so> to satisfy this requirement.
+An B<upgrade> to Zeppe-Lin C<v1.0> might not do so, depending on your
+C<UPGRADE> directives in F</etc/pkgadd.conf> or may require
+L<rejmerge(8)> to update your F</etc/pam.d> configuration.
+
+F<pam_dumb_runtime_dir.so> has a simple design and is limited to
+creating the runtime directory and exporting C<XDG_RUNTIME_DIR>.
+It's not managing all environment variables defined in the
+freedesktop.org specification.
+
+If you find yourself in one of the other situations in the table
+above, read the man page for the corresponding PAM module to learn how
+to accomplish the desired configuration.
+
+=back
+
+=cut
+
+# vim: spell sw=4 ts=4 sts=4 et cc=72 tw=70

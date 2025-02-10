@@ -1,0 +1,30 @@
+=head3 B<7.4.2. User environment>
+
+Configuration settings in F</etc/login.defs> like C<CREATE_HOME> and
+C<USERGROUPS_ENAB> control the behaviour of L<useradd(8)> when
+creating new users.
+
+Creating a new user via C<useradd -m> will not populate the home
+directory with a basic shell startup file, like other distributions
+whose F</etc/skel> contains the idea of an initial home directory.
+
+The C<PATH> value for shells that use F</etc/profile> is consistent
+regardless of C<UID> and is set to C</sbin:/usr/sbin:/bin:/usr/bin>.
+This configuration allows unprivileged users easy access to
+administrative commands without needing to type the full path,
+provided they use L<bash(1)> or L<dash(1)>/L<sh(1p)> and have
+appropriate L<sudo(8)> permissions.
+
+=over
+
+=item B<Note>:
+
+Zeppe-Lin users can create F</etc/skel> skeletons, choose different
+shells and manage C<PATH> themselves.  The default setup aims to
+reduce confusion.
+
+=back
+
+=cut
+
+# vim: spell sw=4 ts=4 sts=4 et cc=72 tw=70
