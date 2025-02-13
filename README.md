@@ -25,6 +25,27 @@ The shell commands `make man && make install-man` should build and
 install this handbook as a manual page.
 
 
+DOCUMENTATION
+=============
+
+Online documentation
+--------------------
+
+The html version of this handbook is available at:
+<https://zeppe-lin.github.io/handbook.7.html>
+
+The pdf version of this handbook can be downloaded at:
+<https://zeppe-lin.github.io/handbook.7.pdf>
+
+
+CREDITS
+=======
+
+Original authors:
+  * Per Lidén <mailto:per@fukt.bth.se>
+  * CRUX Team <https://crux.nu>
+
+
 LICENSE
 =======
 
