@@ -1,11 +1,11 @@
 =head3 B<6.1.3. The pkgsrc collections>
 
 Packages' sources are organized in so-called collections.  There are
-five different layers (or five categories) of packages.
+four official collections:
 
 =over 2
 
-=item * I<pkgsrc-core>
+=item 1. I<pkgsrc-core>
 
 This collection contains build scripts and files for the packages
 required to create a basic system, on the basis of which you can build
@@ -22,25 +22,32 @@ L<pkgmaint|https://github.com/zeppe-lin/pkgmaint> and corresponding
 B<system/pkgmaint> package for various package maintaining utilities.
 It will not be superfluous to mention L<revdep(1)>.
 
-=item * I<pkgsrc-system>
+=item 2. I<pkgsrc-system>
 
 This collection contains build scripts and files for the packages
 required for minimal installation on real hardware: boot loader,
 filesystem utilities, hw-monitors, servers, and so on.  Packages in
 this collection depend B<only> on the C<pkgsrc-core> collection.
 
-=item * I<pkgsrc-xorg>
+=item 3. I<pkgsrc-xorg>
 
 This collection contains build scripts and files for the packages
 required for X Window System applications.  Packages in this
 collection depend on the C<pkgsrc-system> collection.
 
-=item * I<pkgsrc-desktop>
+=item 4. I<pkgsrc-desktop>
 
 This collection contains build scripts and files for the packages
 typically used on a desktop: web browser, music/video player, file
 manager, chat messenger, etc.  Packages in this collection depend on
 the C<pkgsrc-xorg> collection.
+
+=back
+
+In addition to the official ones, there are unofficial collections of
+packages:
+
+=over 2
 
 =item * I<pkgsrc-stuff>
 
@@ -50,6 +57,16 @@ depend on any of the collections listed above.  Since this collection
 contains packages of different (often dubious) quality and purpose, we
 will not use it in the examples and warn you that if you can live
 without it - it's better to do so.
+
+=item * I<pkgsrc-games>
+
+This collection contains build scripts and files for the games and
+emulators.
+
+=item * I<pkgsrc-wmaker>
+
+This collection contains build scripts and files for Window Maker &
+dockapps packages.
 
 =back
 
