@@ -1,3 +1,7 @@
+=pod
+
+=encoding UTF-8
+
 =begin man
 
 =head1 1. NAME
@@ -10,7 +14,21 @@ handbook - Zeppe-Lin Handbook
 
 C< >
 
-O<extra/pdf-cover.png>
+O<extra/pdf-cover-2.png>
+
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                  "Simplify, then add lightness." - Colin Chapman
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
 
 =end pdf
 
