@@ -9,7 +9,7 @@
 =head3 B<6.2.1. Synchronizing your local pkgsrc repositories>
 
 When Zeppe-Lin is installed for the first time there are no local
-pkgsrc collections (F<usr/src/pkgsrc*>).  To obtain the collection
+pkgsrc collections (F</usr/src/pkgsrc*>).  To obtain the collection
 you need the first time, use C<git clone>.  Example:
 
     # cd /usr/src/
