@@ -51,3 +51,5 @@ LICENSE
 
 handbook is licensed through WTFPLv2 License.
 See LICENSE file for copyright and license details.
+**See LICENSE.CC-BY-SA-3.0 for exceptions.**
+
