@@ -13,29 +13,29 @@ handled cleanly with PAM modules are listed in the table below.
 center, box, tab (|) ;
 l | l
 l | l.
-File in /etc/pam.d      | Typical usage
+\fBFile in /etc/pam.d\fR|\fBTypical usage\fR
 _
 .SP
-pam_dumb_runtime_dir.so | Create an XDG_RUNTIME_DIR for apps
-                        | that conform to the freedesktop.org
-                        | specification.
+pam_dumb_runtime_dir.so|Create an XDG_RUNTIME_DIR for apps
+                       |that conform to the freedesktop.org
+                       |specification.
 _
-pam_env.so              | Export some common environment
-                        | variables, no matter what login
-                        | shell the user has chosen.
+pam_env.so             |Export some common environment
+                       |variables, no matter what login
+                       |shell the user has chosen.
 _
-pam_limits.so           | Increase the allowed number of
-                        | opened files, to ensure proper
-                        | operation of some games.
+pam_limits.so          |Increase the allowed number of
+                       |opened files, to ensure proper
+                       |operation of some games.
 _
-pam_xauth.so            | Grant another user access to the
-                        | X display of the logged-in user,
-                        | so that programs invoked with su
-                        | can work properly.
+pam_xauth.so           |Grant another user access to the
+                       |X display of the logged-in user,
+                       |so that programs invoked with su
+                       |can work properly.
 _
-pam_mount.so            | Automatically mount a LUKS-encrypted
-                        | home partition after successful
-                        | authentication.
+pam_mount.so           |Automatically mount a LUKS-encrypted
+                       |home partition after successful
+                       |authentication.
 .TE
 
 =end man

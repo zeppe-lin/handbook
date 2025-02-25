@@ -9,14 +9,14 @@ F</etc/inittab>):
 center, box, tab (|) ;
 l | l
 l | l.
-Runlevel | Description
+\fBRunlevel\fR|\fBDescription\fR
 _
 .SP
-0     | Halt
-1 (S) | Single-User Mode
-2     | Multi-User Mode
-3-5   | (Not Used)
-6     | Reboot
+0    |Halt
+1 (S)|Single-User Mode
+2    |Multi-User Mode
+3-5  |(Not Used)
+6    |Reboot
 .TE
 
 =end man

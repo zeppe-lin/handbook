@@ -9,17 +9,17 @@ The initialization scripts used in Zeppe-Lin follow the BSD-style
 center, box, tab (|) ;
 l | l
 l | l.
-File | Description
+\fBFile\fR|\fBDescription\fR
 _
 .SP
-/etc/rc          | System boot script
-/etc/rc.single   | Single-user startup script
-/etc/rc.multi    | Multi-user startup script
-/etc/rc.modules  | Module initialization script
-/etc/rc.local    | Local multi-user startup script
-/etc/rc.shutdown | System shutdown script
-/etc/rc.conf     | System configuration file
-/etc/rc.d/       | Service start/stop directory
+/etc/rc         |System boot script
+/etc/rc.single  |Single-user startup script
+/etc/rc.multi   |Multi-user startup script
+/etc/rc.modules |Module initialization script
+/etc/rc.local   |Local multi-user startup script
+/etc/rc.shutdown|System shutdown script
+/etc/rc.conf    |System configuration file
+/etc/rc.d/      |Service start/stop directory
 .TE
 
 =end man

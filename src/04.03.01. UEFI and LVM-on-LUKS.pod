@@ -29,7 +29,7 @@ as run C<sed 's/sda/sdb/g'>.
 center, box, tab (|) ;
 l | l | l | l
 l | l | l | l.
-Partition|Filesystem|Size|Description
+\fBPartition\fR|\fBFilesystem\fR|\fBSize\fR|\fBDescription\fR
 _
 .SP
 /dev/sda1|fat32|512MB|boot partition
@@ -119,7 +119,7 @@ volumes scheme used in this section:
 center, box, tab (|) ;
 l | l | l | l
 l | l | l | l.
-Volume name|Filesystem|Size|Description
+\fBVolume name\fR|\fBFilesystem\fR|\fBSize\fR|\fBDescription\fR
 _
 .SP
 swap|swap|2 * RAM|swap area

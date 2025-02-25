@@ -12,7 +12,7 @@ Example:
 center, box, tab (|) ;
 c
 c.
-<WARNING>
+\fB<WARNING>\fR
 _
 .SP
 This will remove all files owned by the package, no questions

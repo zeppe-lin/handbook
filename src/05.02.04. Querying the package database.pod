@@ -6,18 +6,18 @@ utility has a few options to answer different queries.
 =begin man
 
 .TS
-center, box, tab (@) ;
+center, box, tab (#) ;
 l | l
 l | l.
-Option @ Description
+\fBOption\fR#\fBDescription\fR
 _
--f, --footprint=file@print footprint for file
--i, --installed@list installed packages and their version
--l, --list=pkgname|file@list files in package or file
--o, --owner=pattern@list owner(s) of file(s) matching pattern
--r, --root=rootdir@specify an alternate root directory
--v, --version@print version and exit
--h, --help@print help and exit
+-f, --footprint=file   #print footprint for file
+-i, --installed        #list installed packages and their version
+-l, --list=pkgname|file#list files in package or file
+-o, --owner=pattern    #list owner(s) of file(s) matching pattern
+-r, --root=rootdir     #specify an alternate root directory
+-v, --version          #print version and exit
+-h, --help             #print help and exit
 .TE
 
 =end man

@@ -34,7 +34,7 @@ Directories can however be owned by more than one package.
 center, box, tab (|) ;
 c
 c.
-<WARNING>
+\fB<WARNING>\fR
 _
 .SP
 It is often not a good idea to force the installation

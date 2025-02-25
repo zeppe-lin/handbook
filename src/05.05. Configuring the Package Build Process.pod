@@ -10,31 +10,31 @@ configurable settings include:
 center, box, tab (|) ;
 l | l
 l | l.
-Setting|Description
+\fBSetting\fR|\fBDescription\fR
 _
 .SP
-CFLAGS|Define optimization and
-CXXFLAGS|architecture options for package
-|compilation.
-|
-|It's best NOT change these settings
-|unless you absolutely know what
-|you're doing!
+CFLAGS, CXXFLAGS    |Define optimization and
+                    |architecture options for package
+                    |compilation.
+                    |
+                    |It's best NOT change these settings
+                    |unless you absolutely know what
+                    |you're doing!
 _
 PKGMK_SOURCE_MIRRORS|Define location(s) from which pkgmk
-|will attempt to fetch source
-|archives.
+                    |will attempt to fetch source
+                    |archives.
 _
-PKGMK_SOURCE_DIR|Define location where pkgmk will
-|store (if downloading) and use
-|source archives when building.
+PKGMK_SOURCE_DIR    |Define location where pkgmk will
+                    |store (if downloading) and use
+                    |source archives when building.
 _
-PKGMK_PACKAGE_DIR|Define location where pkgmk will
-|create package files once the
-|build process is complete.
+PKGMK_PACKAGE_DIR   |Define location where pkgmk will
+                    |create package files once the
+                    |build process is complete.
 _
-PKGMK_WORK_DIR|Define a work area that pkgmk will
-|use to build the package.
+PKGMK_WORK_DIR      |Define a work area that pkgmk will
+                    |use to build the package.
 .TE
 
 =end man
