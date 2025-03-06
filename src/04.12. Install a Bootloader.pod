@@ -14,6 +14,20 @@ Create F</etc/default/grub> file with the following content:
     GRUB_DISTRIBUTOR=ZPLN
     GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/zpln/swap"
 
+=over
+
+=item B<Note>:
+
+As in case of F</etc/fstab>, you can use C</dev/disk/by-uuid/*> or
+C<UUID=...> instead of C</dev/*> to specify resume partition and
+prevent resume from hibernation failures on machines with multiple
+disks.  Use L<blkid(8)> to verify the disk's C<UUID>:
+
+    (chrooted) # blkid -o value -s UUID <DEVICE>
+    ...
+
+=back
+
 Next, install B<GRUB> on C</dev/sda> (your case may differ) drive:
 
     (chrooted) # grub-install --target=x86_64-efi \
