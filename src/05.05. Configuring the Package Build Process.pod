@@ -47,7 +47,7 @@ PKGMK_WORK_DIR      |Define a work area that pkgmk will
             <th>Description</th>
         </tr>
         <tr>
-            <td>CFLAGS CXXFLAGS</td>
+            <td>CFLAGS, CXXFLAGS</td>
             <td>
                 Define optimization and architecture options for
                 package compilation.  It's best NOT change these
