@@ -34,7 +34,7 @@ following:
 
 =item B<Note>:
 
-You can use C</dev/disk/by-uuid/*> or C<UUID=xxx> instead of
+You can use C</dev/disk/by-uuid/*> or C<UUID=...> instead of
 C</dev/*> used above to prevent boot failures on machines with
 multiple disks.  Use L<blkid(8)> to verify the disk's UUID:
 
