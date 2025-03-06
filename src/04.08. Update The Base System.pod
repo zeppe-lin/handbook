@@ -32,7 +32,7 @@ And it's a good idea to check which packages need to be rebuilt:
 
 If L<revdep(1)> showed anything rebuild them as follows:
 
-    (chrooted) # pkgman update -fr --depsort `revdep`
+    (chrooted) # pkgman update -fr --depsort $(revdep)
 
 =cut
 
