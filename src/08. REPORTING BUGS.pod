@@ -6,7 +6,9 @@
 
 =head1 8. REPORTING BUGS
 
-For bug reports, use the issue tracker at:
-L<https://github.com/zeppe-lin/handbook/issues>.
+For bug reports regarding this handbook, please use the issue tracker
+at L<https://github.com/zeppe-lin/handbook/issues>.
 
 =cut
+
+# vim: sw=4 ts=4 sts=4 et cc=72 tw=70
